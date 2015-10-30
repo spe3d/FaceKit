@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  Insta3D_iOS-Sample
+
+  Created by Daniel iMac on 2015/10/29.
+  Copyright © 2015年 Speed 3D Inc. All rights reserved.
+*/
+
+"CFBundleDisplayName" = "FaceKit";
