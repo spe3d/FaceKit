@@ -10,7 +10,7 @@ import UIKit
 import AFNetworking
 import FaceKit
 
-private let FK_API_KEY = <#T##Insert your API key#>
+private let FK_API_KEY: String = <#T##Insert_your_API_key#>
 private let FK_Platform = "iOS"
 
 public class FKHTTPRequestOperationManager: AFHTTPRequestOperationManager {
