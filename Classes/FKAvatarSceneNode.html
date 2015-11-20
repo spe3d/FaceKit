@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>FKAvatarHair Class Reference</title>
+    <title>FKAvatarSceneNode Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -9,8 +9,8 @@
     <script src="../js/jazzy.js" defer></script>
   </head>
   <body>
-    <a name="//apple_ref/swift/Class/FKAvatarHair" class="dashAnchor"></a>
-    <a title="FKAvatarHair Class Reference"></a>
+    <a name="//apple_ref/swift/Class/FKAvatarSceneNode" class="dashAnchor"></a>
+    <a title="FKAvatarSceneNode Class Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">FaceKit Docs</a> (97% documented)</p>
@@ -21,7 +21,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">FaceKit Reference</a>
         <img id="carat" src="../img/carat.png" />
-        FKAvatarHair Class Reference
+        FKAvatarSceneNode Class Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -66,14 +66,14 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>FKAvatarHair</h1>
+            <h1>FKAvatarSceneNode</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">FKAvatarHair</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">FKAvatarSceneNode</span><span class="p">:</span> <span class="kt">SCNNode</span></code></pre>
 
                 </div>
               </div>
-            <p>An hair of avatar.</p>
+            <p>An <code>FKAvatarSceneNode</code> object is a node in a scene graph that include the avatar.</p>
 
           </section>
           <section class="section task-group-section">
@@ -82,9 +82,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC7FaceKit12FKAvatarHaircFMS0_FT6genderOS_8FKGender_S0_"></a>
-                    <a name="//apple_ref/swift/Method/init(gender:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC7FaceKit12FKAvatarHaircFMS0_FT6genderOS_8FKGender_S0_">init(gender:)</a>
+                    <a name="/s:FC7FaceKit17FKAvatarSceneNodecFMS0_FT5coderCSo7NSCoder_GSqS0__"></a>
+                    <a name="//apple_ref/swift/Method/init(coder:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7FaceKit17FKAvatarSceneNodecFMS0_FT5coderCSo7NSCoder_GSqS0__">init(coder:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -92,44 +92,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Creates random a hair of avatar from gender of avatar.</p>
-
-<ul>
-<li>Parameters:
-
-<ul>
-<li>gender: Gender of avatar</li>
-</ul></li>
-</ul>
+                        <p>Undocumented</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">gender</span><span class="p">:</span> <span class="kt">FKGender</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">FKAvatarSceneNode</span><span class="p">:</span> <span class="kt">SCNNode</span></code></pre>
 
                         </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>gender</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Gender of avatar</p>
-
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
                       </div>
                     </section>
                   </div>
@@ -137,9 +109,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC7FaceKit12FKAvatarHaircFMS0_FT6genderOS_8FKGender6numberSi_S0_"></a>
-                    <a name="//apple_ref/swift/Method/init(gender:number:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC7FaceKit12FKAvatarHaircFMS0_FT6genderOS_8FKGender6numberSi_S0_">init(gender:number:)</a>
+                    <a name="/s:FC7FaceKit17FKAvatarSceneNode10setClothesFS0_FGSQCS_15FKAvatarClothes_T_"></a>
+                    <a name="//apple_ref/swift/Method/setClothes(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7FaceKit17FKAvatarSceneNode10setClothesFS0_FGSQCS_15FKAvatarClothes_T_">setClothes(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -147,60 +119,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Creates the hair of avatar from a gender of avatar and hair ID.</p>
-
-<p>TODO: <code>init(gender: <a href="../Enums/FKGender.html">FKGender</a>, number: Int)</code> changes to find hair&rsquo;s DAE file from CloudKit or Amazon S3.</p>
-
-<ul>
-<li>Parameters:
-
-<ul>
-<li>gender: Gender of Avatar</li>
-<li>number: The hair ID</li>
-</ul></li>
-</ul>
+                        <p>Changes clothes at the avatar.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">gender</span><span class="p">:</span> <span class="kt">FKGender</span><span class="p">,</span> <span class="nv">number</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setClothes</span><span class="p">(</span><span class="nv">clothes</span><span class="p">:</span> <span class="kt">FKAvatarClothes</span><span class="o">!</span><span class="p">)</span></code></pre>
 
                         </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>gender</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Gender of Avatar</p>
-
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>number</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The hair ID</p>
-
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
                       </div>
                     </section>
                   </div>
@@ -208,9 +136,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC7FaceKit12FKAvatarHair4nameFS0_FT_SS"></a>
-                    <a name="//apple_ref/swift/Method/name()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC7FaceKit12FKAvatarHair4nameFS0_FT_SS">name()</a>
+                    <a name="/s:FC7FaceKit17FKAvatarSceneNode9setMotionFS0_FGSQCS_14FKAvatarMotion_T_"></a>
+                    <a name="//apple_ref/swift/Method/setMotion(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7FaceKit17FKAvatarSceneNode9setMotionFS0_FGSQCS_14FKAvatarMotion_T_">setMotion(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -218,14 +146,41 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Get the name of avatar&rsquo;s hair.</p>
+                        <p>Changes motion at the avatar.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">name</span><span class="p">()</span><span class="o">-&gt;</span><span class="kt">String</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setMotion</span><span class="p">(</span><span class="nv">animation</span><span class="p">:</span> <span class="kt">FKAvatarMotion</span><span class="o">!</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7FaceKit17FKAvatarSceneNode7setHairFS0_FGSQCS_12FKAvatarHair_T_"></a>
+                    <a name="//apple_ref/swift/Method/setHair(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7FaceKit17FKAvatarSceneNode7setHairFS0_FGSQCS_12FKAvatarHair_T_">setHair(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Changes hair at the avatar.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setHair</span><span class="p">(</span><span class="nv">hair</span><span class="p">:</span> <span class="kt">FKAvatarHair</span><span class="o">!</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>

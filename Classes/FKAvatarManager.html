@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>FKGender Enum Reference</title>
+    <title>FKAvatarManager Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -9,8 +9,8 @@
     <script src="../js/jazzy.js" defer></script>
   </head>
   <body>
-    <a name="//apple_ref/swift/Enum/FKGender" class="dashAnchor"></a>
-    <a title="FKGender Enum Reference"></a>
+    <a name="//apple_ref/swift/Class/FKAvatarManager" class="dashAnchor"></a>
+    <a title="FKAvatarManager Class Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">FaceKit Docs</a> (97% documented)</p>
@@ -21,7 +21,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">FaceKit Reference</a>
         <img id="carat" src="../img/carat.png" />
-        FKGender Enum Reference
+        FKAvatarManager Class Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -66,16 +66,15 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>FKGender</h1>
+            <h1>FKAvatarManager</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">FKGender</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">FKAvatarManager</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
 
                 </div>
               </div>
-            <p>Options for gender of avatar.</p>
-
-<p>The key name follows API v3.</p>
+            <p>An <code>FKAvatarManager</code> object lets you create a scene node, including a avatar.
+ An avatar manager object is usually your first interaction with the scene node.</p>
 
           </section>
           <section class="section task-group-section">
@@ -84,9 +83,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FO7FaceKit8FKGender4MaleFMS0_S0_"></a>
-                    <a name="//apple_ref/swift/Element/Male" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FO7FaceKit8FKGender4MaleFMS0_S0_">Male</a>
+                    <a name="/s:ZvC7FaceKit15FKAvatarManager14currentManagerS0_"></a>
+                    <a name="//apple_ref/swift/Variable/currentManager" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZvC7FaceKit15FKAvatarManager14currentManagerS0_">currentManager</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -94,30 +93,26 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The gender of avatar is male.</p>
+                        <p>Returns the shared manager object.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Male</span> <span class="o">=</span> <span class="s">"AM"</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">currentManager</span> <span class="o">=</span> <span class="kt">FKAvatarManager</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FO7FaceKit8FKGender6FemaleFMS0_S0_"></a>
-                    <a name="//apple_ref/swift/Element/Female" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FO7FaceKit8FKGender6FemaleFMS0_S0_">Female</a>
+                    <a name="/s:FC7FaceKit15FKAvatarManager12createAvatarFS0_FT6genderOS_8FKGender9faceImageGSQCSo7UIImage_7successGSqFT10avatarNodeCS_17FKAvatarSceneNode_T__7failureGSqFT5errorCSo7NSError_T___T_"></a>
+                    <a name="//apple_ref/swift/Method/createAvatar(gender:faceImage:success:failure:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7FaceKit15FKAvatarManager12createAvatarFS0_FT6genderOS_8FKGender9faceImageGSQCSo7UIImage_7successGSqFT10avatarNodeCS_17FKAvatarSceneNode_T__7failureGSqFT5errorCSo7NSError_T___T_">createAvatar(gender:faceImage:success:failure:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -125,14 +120,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The gender of avatar is female.</p>
+                        <p>Uploads image of face, that creates the avatar node.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Female</span> <span class="o">=</span> <span class="s">"AFM"</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">createAvatar</span><span class="p">(</span><span class="n">gender</span> <span class="nv">mode</span><span class="p">:</span> <span class="kt">FKGender</span><span class="p">,</span> <span class="n">faceImage</span> <span class="nv">photo</span><span class="p">:</span> <span class="kt">UIImage</span><span class="o">!</span><span class="p">,</span> <span class="nv">success</span><span class="p">:</span> <span class="p">((</span><span class="nv">avatarNode</span><span class="p">:</span> <span class="kt">FKAvatarSceneNode</span><span class="p">)</span><span class="o">-&gt;</span><span class="kt">Void</span><span class="p">)?,</span> <span class="nv">failure</span><span class="p">:</span> <span class="p">((</span><span class="nv">error</span><span class="p">:</span> <span class="kt">NSError</span><span class="p">)</span><span class="o">-&gt;</span><span class="kt">Void</span><span class="p">)?)</span></code></pre>
 
                         </div>
                       </div>
