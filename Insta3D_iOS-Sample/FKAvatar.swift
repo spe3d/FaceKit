@@ -2,41 +2,54 @@
 //  FKAvatar.swift
 //  Insta3D_iOS-Sample
 //
-//  Created by Daniel iMac on 2015/10/21.
+//  Created by Daniel on 2015/10/21.
+//  Modified by Daniel on 2015/11/10.
 //  Copyright © 2015年 Speed 3D Inc. All rights reserved.
 //
 
 import UIKit
 import SceneKit
+import AFNetworking
 
-/** An avatar object.
+/**
+ An avatar object.
  
  TODO: This class will be changed private and created `class FKAvatarNode: SCNNode`, `class FKAvatarView: SCNView`
  */
-public class FKAvatar: NSObject {
-    /** The `avatarID` for avatar's ID.
+class FKAvatar: NSObject {
+    
+    /**
+     The `avatarID` for avatar's ID.
      */
-    public let avatarID: String!
-    /** The `gender` for gender of avatar. Default is `Male`.
+    let avatarID: String!
+    
+    /**
+     The `gender` for gender of avatar. Default is `Male`.
      */
-    public let gender: FKGender!
-    /** The `headImages` for head of avatar.
+    let gender: FKGender!
+    
+    /**
+     The `headImages` for head of avatar.
      
      TODO: Complete parameter `skinColor`, the parameter `headImages` and `bodyImages` are set to private.
      */
-    public var headImages: [FKHeadSkinColor: UIImage] = [:] {
+    var headImages: [FKHeadSkinColor: UIImage] = [:] {
         didSet {
             self.defaultDownloaded = self.headImages[.Default] != nil && self.refInfo != nil
         }
     }
-    /** The `bodyImages` for body of avatar.
+    
+    /**
+     The `bodyImages` for body of avatar.
      
      TODO: Complete parameter `skinColor`, the parameter `headImages` and `bodyImages` are set to private.
      */
-    public var bodyImages: [FKBodySkinColor: UIImage] = [:]
-    /** The `refInfo` for information of avatar. This string include all expression for avatar.
+    var bodyImages: [FKBodySkinColor: UIImage] = [:]
+    
+    /**
+     The `refInfo` for information of avatar. This string include all expression for avatar.
      */
-    public var refInfo: String? {
+    var refInfo: String? {
         willSet {
             if let refInfo = newValue {
                 self.setupGeometrySources(refInfo)
@@ -46,44 +59,55 @@ public class FKAvatar: NSObject {
             self.defaultDownloaded = self.headImages[.Default] != nil && self.refInfo != nil
         }
     }
-    /** The `defaultDownloaded` for `refInfo` and default of `headImages` downloaded complete. The value can use ReactiveCocoa.
+    
+    /**
+     The `defaultDownloaded` for `refInfo` and default of `headImages` downloaded complete. The value can use ReactiveCocoa.
      */
-    public dynamic var defaultDownloaded = false
+    dynamic var defaultDownloaded = false
+    
     var oriHeadCenter: SCNVector3?
     var refHeadCenter: SCNVector3?
     var scaleFactor: SCNVector3?
     
-    /** The `geometrySourcesSemanticNormal` for avatar of head's 15 geometry source are an array of normal vectors.
+    /**
+     The `geometrySourcesSemanticNormal` for avatar of head's 15 geometry source are an array of normal vectors.
      */
-    public var geometrySourcesSemanticNormal: [SCNGeometrySource] = []
-    /** The `geometrySourcesSemanticVertex` for avatar of head's 15 geometry source are an array of vertex positions.
-     */
-    public var geometrySourcesSemanticVertex: [SCNGeometrySource] = []
+    var geometrySourcesSemanticNormal: [SCNGeometrySource] = []
     
-    /** The `hair` for hair of avatar. If `nil`, the avatar hasn't hair.
+    /**
+     The `geometrySourcesSemanticVertex` for avatar of head's 15 geometry source are an array of vertex positions.
      */
-    public var hair: FKAvatarHair?
-    /** The `clothes` for clothes of avatar. If `nil`, the avatar hasn't clothes.
-     */
-    public var clothes: FKAvatarClothes?
-    /** The `motion` for motion of avatar. If `nil`, the avatar hasn't motion.
-     */
-    public var motion: FKAvatarMotion?
+    var geometrySourcesSemanticVertex: [SCNGeometrySource] = []
     
-    /** Creates a avatar from an avatar's id. The gender of avatar default is `Male`.
+    /**
+     The `hair` for hair of avatar. If `nil`, the avatar hasn't hair.
+     */
+    var hair: FKAvatarHair?
+    
+    /**
+     The `clothes` for clothes of avatar. If `nil`, the avatar hasn't clothes.
+     */
+    var clothes: FKAvatarClothes?
+    
+    /**
+     The `motion` for motion of avatar. If `nil`, the avatar hasn't motion.
+     */
+    var motion: FKAvatarMotion?
+    
+    /**
+     Creates a avatar from an avatar's id. The gender of avatar default is `Male`.
      
      TODO: This initialization will be changed to find avatar at CoreData.
      */
-    public init(avatarID: String!) {
+    init(avatarID: String!) {
         self.avatarID = avatarID
         self.gender = .Male
     }
     
-    /** Creates a avatar from an avatar's id and gender of avatar.
-     
-     TODO: This initialization will be deprecated and replaced by `class func createAvatar(faceImage: UIImage)`.
+    /**
+     Creates a avatar from an avatar's id and gender of avatar.
      */
-    public init(avatarID: String!, gender: FKGender!) {
+    init(avatarID: String!, gender: FKGender!) {
         self.avatarID = avatarID
         self.gender = gender
     }
@@ -131,61 +155,134 @@ public class FKAvatar: NSObject {
             self.geometrySourcesSemanticVertex.append(SCNGeometrySource(vertices: vertexVectors, count: vertexNum))
         }
     }
+    
+    func setupAvatar(data: [String:String]) {
+        for (skinColorName, skinColorURL) in data {
+            if let url = NSURL(string: skinColorURL) {
+                if let headSkinColor = FKHeadSkinColor(rawValue: skinColorName) {
+                    self.getAvatarHeadImage(headSkinColor, url: url)
+                }
+                else if let bodySkinColor = FKBodySkinColor(rawValue: skinColorName) {
+                    self.getAvatarBodyImage(bodySkinColor, url: url)
+                }
+                else if skinColorName == "RefInfo" {
+                    self.getAvatarRefInfo(url)
+                }
+            }
+        }
+    }
+    
+    func getAvatarHeadImage(skinColor: FKHeadSkinColor, url: NSURL) {
+        let request = NSURLRequest(URL: url, cachePolicy: .ReloadIgnoringLocalCacheData, timeoutInterval: 30)
+        let requestOperation = AFHTTPRequestOperation(request: request)
+        requestOperation.responseSerializer = AFImageResponseSerializer()
+        requestOperation.setCompletionBlockWithSuccess({ (operation, responseObject) -> Void in
+            if let responseObject = responseObject as? UIImage {
+                self.headImages[skinColor] = responseObject
+            }
+            }, failure: { (operation, error) -> Void in
+                
+        })
+        requestOperation.start()
+    }
+    
+    func getAvatarBodyImage(skinColor: FKBodySkinColor, url: NSURL) {
+        let request = NSURLRequest(URL: url, cachePolicy: .ReloadIgnoringLocalCacheData, timeoutInterval: 30)
+        let requestOperation = AFHTTPRequestOperation(request: request)
+        requestOperation.responseSerializer = AFImageResponseSerializer()
+        requestOperation.setCompletionBlockWithSuccess({ (operation, responseObject) -> Void in
+            if let responseObject = responseObject as? UIImage {
+                self.bodyImages[skinColor] = responseObject
+            }
+            }, failure: { (operation, error) -> Void in
+                
+        })
+        requestOperation.start()
+    }
+    
+    func getAvatarRefInfo(url: NSURL) {
+        let request = NSURLRequest(URL: url, cachePolicy: .ReloadIgnoringLocalCacheData, timeoutInterval: 30)
+        let requestOperation = AFHTTPRequestOperation(request: request)
+        requestOperation.responseSerializer = AFHTTPResponseSerializer()
+        requestOperation.setCompletionBlockWithSuccess({ (operation, responseObject) -> Void in
+            if let responseObject = responseObject as? NSData {
+                self.refInfo = String(NSString(data: responseObject, encoding: NSUTF8StringEncoding))
+            }
+            }, failure: { (operation, error) -> Void in
+                
+        })
+        requestOperation.start()
+    }
 }
 
-/** Options for gender of avatar.
+/**
+ Options for gender of avatar.
  
  The key name follows API v3.
  */
 public enum FKGender: String {
-    /** The gender of avatar is male.
+    /**
+     The gender of avatar is male.
      */
     case Male = "AM"
-    /** The gender of avatar is female.
+    /**
+     The gender of avatar is female.
      */
     case Female = "AFM"
 }
 
-/** Options for skin color of avatar to head.
+/**
+ Options for skin color of avatar to head.
  
  The key name follows API v3.
  */
 public enum FKHeadSkinColor: String {
-    /** The skin color is default color.
+    /**
+     The skin color is default color.
      */
     case Default = "Hd"
-    /** The skin color is black.
+    /**
+     The skin color is black.
      */
     case Black = "Hd_black"
-    /** The skin color is brown.
+    /**
+     The skin color is brown.
      */
     case Brown = "Hd_brown"
-    /** The skin color is red.
+    /**
+     The skin color is red.
      */
     case Red = "Hd_red"
-    /** The skin color is yellow.
+    /**
+     The skin color is yellow.
      */
     case Yellow = "Hd_yellow"
 }
 
-/** Options for skin color fo avatar to body.
+/**
+ Options for skin color fo avatar to body.
  
  The key name follows API v3.
  */
 public enum FKBodySkinColor: String {
-    /** The skin color is default color.
+    /**
+     The skin color is default color.
      */
     case Default = "Bd"
-    /** The skin color is black.
+    /**
+     The skin color is black.
      */
     case Black = "Bd_black"
-    /** The skin color is brown.
+    /**
+     The skin color is brown.
      */
     case Brown = "Bd_brown"
-    /** The skin color is red.
+    /**
+     The skin color is red.
      */
     case Red = "Bd_red"
-    /** The skin color is yellow.
+    /**
+     The skin color is yellow.
      */
     case Yellow = "Bd_yellow"
 }

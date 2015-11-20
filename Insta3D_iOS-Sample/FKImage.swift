@@ -2,7 +2,8 @@
 //  FKImage.swift
 //  Insta3D_iOS-Sample
 //
-//  Created by Daniel iMac on 2015/10/19.
+//  Created by Daniel on 2015/10/19.
+//  Modified by Daniel on 2015/11/5.
 //  Copyright © 2015年 Speed 3D Inc. All rights reserved.
 //
 

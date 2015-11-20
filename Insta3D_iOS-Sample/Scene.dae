@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+ <asset>
+  <contributor>
+   <authoring_tool>SceneKit Collada Exporter v1.0</authoring_tool>
+  </contributor>
+  <created>2015-11-03T08:20:45Z</created>
+  <modified>2015-11-03T08:20:45Z</modified>
+  <up_axis>Y_UP</up_axis>
+ </asset>
+ <library_visual_scenes>
+  <visual_scene id="scene1"/>
+ </library_visual_scenes>
+ <scene>
+  <instance_visual_scene url="#scene1"/>
+ </scene>
+</COLLADA>

@@ -16,19 +16,25 @@
 		1A0E79591BE1F0A00052F8FE /* FKAvatarClothes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FFC2891BDE46990068A70C /* FKAvatarClothes.swift */; };
 		1A0E795B1BE1F0B00052F8FE /* FKRandom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FFC28B1BDE4CE80068A70C /* FKRandom.swift */; };
 		1A0E795D1BE1F2710052F8FE /* SPECameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A6A9471BD0A51500749E87 /* SPECameraViewController.swift */; };
-		1A0E795E1BE1FF070052F8FE /* FKHTTPRequestOperationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A6A9561BD1568F00749E87 /* FKHTTPRequestOperationManager.swift */; };
+		650327551BF3279C0089B9AC /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651BB0E51BE1C88300BEB2F1 /* SceneKit.framework */; };
 		651BB0E61BE1C88300BEB2F1 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651BB0E51BE1C88300BEB2F1 /* SceneKit.framework */; };
 		651BB0E91BE1EF0800BEB2F1 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651BB0E81BE1EF0800BEB2F1 /* StoreKit.framework */; };
 		651BB0EB1BE1EFF600BEB2F1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 651BB0EA1BE1EFF600BEB2F1 /* InfoPlist.strings */; };
-		651BB0ED1BE223FC00BEB2F1 /* FKGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650A310A1BDF610C00BC865B /* FKGeometry.swift */; };
 		652824C71BCF8934008E0FAF /* SPEAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652824C61BCF8934008E0FAF /* SPEAppDelegate.swift */; };
 		652824CE1BCF8934008E0FAF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 652824CC1BCF8934008E0FAF /* Main.storyboard */; };
 		652824D01BCF8934008E0FAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 652824CF1BCF8934008E0FAF /* Assets.xcassets */; };
 		652824D31BCF8934008E0FAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 652824D11BCF8934008E0FAF /* LaunchScreen.storyboard */; };
 		652824DB1BCF8C48008E0FAF /* avatar.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 652824DA1BCF8C48008E0FAF /* avatar.scnassets */; };
+		655D5D9D1BF08DB6000C100F /* FKAvatarSceneNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655D5D9C1BF08DB6000C100F /* FKAvatarSceneNode.swift */; };
+		658F0D871BE6FF9D006878DD /* FKAvatarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658F0D861BE6FF9D006878DD /* FKAvatarManager.swift */; };
+		658F0D8C1BE771C4006878DD /* FKHTTPRequestOperationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A6A9561BD1568F00749E87 /* FKHTTPRequestOperationManager.swift */; };
+		658F0D8E1BE8A578006878DD /* Scene.scn in Resources */ = {isa = PBXBuildFile; fileRef = 658F0D8D1BE8A578006878DD /* Scene.scn */; };
+		658F0D901BE8A5E6006878DD /* Scene.dae in Resources */ = {isa = PBXBuildFile; fileRef = 658F0D8F1BE8A5E6006878DD /* Scene.dae */; };
+		658F0D931BEA07ED006878DD /* RACSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B630C01BD4D1CB006E0A0E /* RACSignal.swift */; };
+		658F0D941BEA09E7006878DD /* RACSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B630C01BD4D1CB006E0A0E /* RACSignal.swift */; };
 		65A6A9451BCF909800749E87 /* SPEAvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A6A9441BCF909800749E87 /* SPEAvatarViewController.swift */; };
 		65A6A94C1BD0CBF800749E87 /* SPEViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A6A94B1BD0CBF800749E87 /* SPEViewController.swift */; };
-		65B630C11BD4D1CB006E0A0E /* RACSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B630C01BD4D1CB006E0A0E /* RACSignal.swift */; };
+		65ABC0141BF1A13600ED8E26 /* FKGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650A310A1BDF610C00BC865B /* FKGeometry.swift */; };
 		65B630C31BD4F665006E0A0E /* FKImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B630C21BD4F665006E0A0E /* FKImage.swift */; };
 		95E8E48E3A074D2E2DD5E057 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25FDEBDD2F888441061A6A06 /* Pods.framework */; };
 /* End PBXBuildFile section */
@@ -62,6 +68,7 @@
 		1A0E794B1BE1F0680052F8FE /* FaceKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FaceKit.h; sourceTree = "<group>"; };
 		1A0E794D1BE1F0680052F8FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25FDEBDD2F888441061A6A06 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		650327531BF327910089B9AC /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		650A310A1BDF610C00BC865B /* FKGeometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKGeometry.swift; sourceTree = "<group>"; };
 		651BB0E31BE1C87D00BEB2F1 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		651BB0E51BE1C88300BEB2F1 /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
@@ -76,6 +83,10 @@
 		652824D41BCF8934008E0FAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		652824DA1BCF8C48008E0FAF /* avatar.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = avatar.scnassets; sourceTree = "<group>"; };
 		653C509C1BD774D900CB8133 /* FKAvatar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKAvatar.swift; sourceTree = "<group>"; };
+		655D5D9C1BF08DB6000C100F /* FKAvatarSceneNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKAvatarSceneNode.swift; sourceTree = "<group>"; };
+		658F0D861BE6FF9D006878DD /* FKAvatarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKAvatarManager.swift; sourceTree = "<group>"; };
+		658F0D8D1BE8A578006878DD /* Scene.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Scene.scn; sourceTree = "<group>"; };
+		658F0D8F1BE8A5E6006878DD /* Scene.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = Scene.dae; sourceTree = "<group>"; };
 		65A6A9441BCF909800749E87 /* SPEAvatarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPEAvatarViewController.swift; sourceTree = "<group>"; };
 		65A6A9471BD0A51500749E87 /* SPECameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPECameraViewController.swift; sourceTree = "<group>"; };
 		65A6A94B1BD0CBF800749E87 /* SPEViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPEViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				650327551BF3279C0089B9AC /* SceneKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,10 +176,14 @@
 				65FFC2871BDE468E0068A70C /* FKAvatarMotion.swift */,
 				65FFC2891BDE46990068A70C /* FKAvatarClothes.swift */,
 				65A6A9561BD1568F00749E87 /* FKHTTPRequestOperationManager.swift */,
+				658F0D861BE6FF9D006878DD /* FKAvatarManager.swift */,
+				655D5D9C1BF08DB6000C100F /* FKAvatarSceneNode.swift */,
 				65A6A94B1BD0CBF800749E87 /* SPEViewController.swift */,
 				65A6A9461BD0A26200749E87 /* Camera */,
 				652824DA1BCF8C48008E0FAF /* avatar.scnassets */,
 				65A6A9441BCF909800749E87 /* SPEAvatarViewController.swift */,
+				658F0D8D1BE8A578006878DD /* Scene.scn */,
+				658F0D8F1BE8A5E6006878DD /* Scene.dae */,
 				652824CC1BCF8934008E0FAF /* Main.storyboard */,
 				652824CF1BCF8934008E0FAF /* Assets.xcassets */,
 				652824D11BCF8934008E0FAF /* LaunchScreen.storyboard */,
@@ -188,6 +204,7 @@
 		B0ACC74801783F992643914F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				650327531BF327910089B9AC /* CoreImage.framework */,
 				651BB0E81BE1EF0800BEB2F1 /* StoreKit.framework */,
 				651BB0E51BE1C88300BEB2F1 /* SceneKit.framework */,
 				651BB0E31BE1C87D00BEB2F1 /* AssetsLibrary.framework */,
@@ -313,7 +330,9 @@
 				652824D31BCF8934008E0FAF /* LaunchScreen.storyboard in Resources */,
 				652824D01BCF8934008E0FAF /* Assets.xcassets in Resources */,
 				652824DB1BCF8C48008E0FAF /* avatar.scnassets in Resources */,
+				658F0D8E1BE8A578006878DD /* Scene.scn in Resources */,
 				652824CE1BCF8934008E0FAF /* Main.storyboard in Resources */,
+				658F0D901BE8A5E6006878DD /* Scene.dae in Resources */,
 				651BB0EB1BE1EFF600BEB2F1 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -373,10 +392,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				655D5D9D1BF08DB6000C100F /* FKAvatarSceneNode.swift in Sources */,
+				658F0D8C1BE771C4006878DD /* FKHTTPRequestOperationManager.swift in Sources */,
 				1A0E79561BE1F0710052F8FE /* FKAvatar.swift in Sources */,
+				658F0D871BE6FF9D006878DD /* FKAvatarManager.swift in Sources */,
 				1A0E795B1BE1F0B00052F8FE /* FKRandom.swift in Sources */,
 				1A0E79581BE1F0A00052F8FE /* FKAvatarMotion.swift in Sources */,
 				1A0E79591BE1F0A00052F8FE /* FKAvatarClothes.swift in Sources */,
+				658F0D931BEA07ED006878DD /* RACSignal.swift in Sources */,
+				65ABC0141BF1A13600ED8E26 /* FKGeometry.swift in Sources */,
 				1A0E79571BE1F0A00052F8FE /* FKAvatarHair.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -385,12 +409,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				651BB0ED1BE223FC00BEB2F1 /* FKGeometry.swift in Sources */,
 				1A0E795D1BE1F2710052F8FE /* SPECameraViewController.swift in Sources */,
 				65B630C31BD4F665006E0A0E /* FKImage.swift in Sources */,
-				1A0E795E1BE1FF070052F8FE /* FKHTTPRequestOperationManager.swift in Sources */,
 				652824C71BCF8934008E0FAF /* SPEAppDelegate.swift in Sources */,
-				65B630C11BD4D1CB006E0A0E /* RACSignal.swift in Sources */,
+				658F0D941BEA09E7006878DD /* RACSignal.swift in Sources */,
 				65A6A94C1BD0CBF800749E87 /* SPEViewController.swift in Sources */,
 				65A6A9451BCF909800749E87 /* SPEAvatarViewController.swift in Sources */,
 			);
@@ -430,11 +452,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 3;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = FaceKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -453,10 +475,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 3;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = FaceKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -560,7 +582,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEFINES_MODULE = NO;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "Insta3D_iOS-Sample/Info.plist";
@@ -583,7 +605,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEFINES_MODULE = NO;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "Insta3D_iOS-Sample/Info.plist";

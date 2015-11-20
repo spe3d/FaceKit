@@ -12,12 +12,15 @@ import ReactiveCocoa
 import Swift_RAC_Macros
 import MBProgressHUD
 import FaceKit
+import SceneKit
 
 class SPECameraViewController: SPEViewController, AVCaptureMetadataOutputObjectsDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet var videoView: UIView?
 
     @IBOutlet var changeCameraButton: UIButton?
+    
+    var delegate: SPECameraViewControllerDelegate?
     
     var frontCameraSession = AVCaptureSession()
     var backCameraSession = AVCaptureSession()
@@ -27,7 +30,6 @@ class SPECameraViewController: SPEViewController, AVCaptureMetadataOutputObjects
     var backCameraPreviewLayer: AVCaptureVideoPreviewLayer?
     
     dynamic var faceImage: UIImage?
-    dynamic var avatar: FKAvatar?
     
     override func loadView() {
         super.loadView()
@@ -41,19 +43,13 @@ class SPECameraViewController: SPEViewController, AVCaptureMetadataOutputObjects
         
         RACObserve(self, "faceImage").ignoreNil().subscribeNext { (faceImage) -> Void in
             if let faceImage = faceImage as? UIImage {
-                FKHTTPRequestOperationManager.currentManager().createAvatar(.Male, photo: faceImage, success: { (operation, responseObject) -> Void in
-                    if let responseObject = responseObject as? [String:AnyObject] {
-                        if let error = responseObject["error"] as? [String:AnyObject] {
-                            if let errorCode = error["code"] as? Int {
-                                if errorCode == 0 {
-                                    if let avatarID = responseObject["avatar_id"] as? String {
-                                        self.avatar = FKAvatar(avatarID: avatarID, gender: .Male)
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    }, failure: { (operation, error) -> Void in
+                FKAvatarManager.currentManager.createAvatar(gender: .Male, faceImage: faceImage, success: { (avatarNode) -> Void in
+                    MBProgressHUD.hideAllHUDsForView(self.view.window, animated: true)
+                    
+                    self.delegate?.cameraViewController?(self, didCreateAvatarNode: avatarNode)
+                    
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                    }, failure: { (error) -> Void in
                         
                 })
             }
@@ -237,4 +233,9 @@ class SPECameraViewController: SPEViewController, AVCaptureMetadataOutputObjects
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         picker.dismissViewControllerAnimated(true, completion: nil)
     }
+}
+
+@objc
+protocol SPECameraViewControllerDelegate: NSObjectProtocol {
+    optional func cameraViewController(viewController: SPECameraViewController, didCreateAvatarNode avatarNode: FKAvatarSceneNode)
 }

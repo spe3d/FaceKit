@@ -2,7 +2,8 @@
 //  FKGeometry.swift
 //  Insta3D_iOS-Sample
 //
-//  Created by Daniel iMac on 2015/10/27.
+//  Created by Daniel on 2015/10/27.
+//  Modified by Daniel on 2015/11/11.
 //  Copyright © 2015年 Speed 3D Inc. All rights reserved.
 //
 
@@ -29,6 +30,14 @@ extension SCNGeometry {
             }
             
             if let content = material.specular.contents {
+                if let url = content as? NSURL {
+                    if let path = url.path {
+                        material.specular.contents = UIImage(named: "avatar.scnassets/" + path)
+                    }
+                }
+            }
+            
+            if let content = material.transparent.contents {
                 if let url = content as? NSURL {
                     if let path = url.path {
                         material.specular.contents = UIImage(named: "avatar.scnassets/" + path)

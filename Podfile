@@ -1,9 +1,11 @@
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 
+link_with 'Insta3D_iOS-Sample', 'FaceKit'
+
 use_frameworks!
 
-pod 'AFNetworking'
+pod 'AFNetworking', '2.6.2'
 pod 'Fabric'
 pod 'Crashlytics'
 pod 'ReactiveCocoa', '4.0.4-alpha-1'
