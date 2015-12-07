@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>FKAvatarClothes Class Reference</title>
+    <title>FKSkinColor Enum Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -9,8 +9,8 @@
     <script src="../js/jazzy.js" defer></script>
   </head>
   <body>
-    <a name="//apple_ref/swift/Class/FKAvatarClothes" class="dashAnchor"></a>
-    <a title="FKAvatarClothes Class Reference"></a>
+    <a name="//apple_ref/swift/Enum/FKSkinColor" class="dashAnchor"></a>
+    <a title="FKSkinColor Enum Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">FaceKit Docs</a> (100% documented)</p>
@@ -21,7 +21,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">FaceKit Reference</a>
         <img id="carat" src="../img/carat.png" />
-        FKAvatarClothes Class Reference
+        FKSkinColor Enum Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -66,15 +66,16 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>FKAvatarClothes</h1>
+            <h1>FKSkinColor</h1>
               <div class="declaration">
                 <div class="Swift">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">FKAvatarClothes</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">FKSkinColor</span><span class="p">:</span> <span class="kt">String</span></code></pre>
 
                 </div>
               </div>
-            <p>An instance of the <code>FKAvatarClothes</code> class implements a clothes on the avatar.
- You can use this class to wear clothes, such as those you might let your avatar in clothes.</p>
+            <p>Options for skin color of avatar to head.</p>
+
+<p>The key name follows API v3.</p>
 
           </section>
           <section class="section task-group-section">
@@ -83,9 +84,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC7FaceKit15FKAvatarClothescFMS0_FT6genderOS_8FKGender_S0_"></a>
-                    <a name="//apple_ref/swift/Method/init(gender:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC7FaceKit15FKAvatarClothescFMS0_FT6genderOS_8FKGender_S0_">init(gender:)</a>
+                    <a name="/s:FO7FaceKit11FKSkinColor7DefaultFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/Default" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO7FaceKit11FKSkinColor7DefaultFMS0_S0_">Default</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -93,54 +94,30 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Creates random a clothes of avatar from a gender of avatar.</p>
-
-<ul>
-<li>Parameters:
-
-<ul>
-<li>gender: Gender of Avatar</li>
-</ul></li>
-</ul>
+                        <p>The skin color is default color.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">gender</span><span class="p">:</span> <span class="kt">FKGender</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Default</span> <span class="o">=</span> <span class="s">""</span></code></pre>
 
                         </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>gender</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Gender of Avatar</p>
-
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
                       </div>
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC7FaceKit15FKAvatarClothescFMS0_FT6genderOS_8FKGender6numberSi_S0_"></a>
-                    <a name="//apple_ref/swift/Method/init(gender:number:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC7FaceKit15FKAvatarClothescFMS0_FT6genderOS_8FKGender6numberSi_S0_">init(gender:number:)</a>
+                    <a name="/s:FO7FaceKit11FKSkinColor5BlackFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/Black" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO7FaceKit11FKSkinColor5BlackFMS0_S0_">Black</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -148,70 +125,30 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Creates the clothes of avatar from a gender of avatar and clothes ID.</p>
-
-<p>TODO: <code>init(gender: FKGender, number: Int)</code> changes to find clothes&rsquo;s DAE file from CloudKit or Amazon S3.</p>
-
-<ul>
-<li>Parameters:
-
-<ul>
-<li>gender: Gender of Avatar</li>
-<li>number: The clothes ID</li>
-</ul></li>
-</ul>
+                        <p>The skin color is black.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">gender</span><span class="p">:</span> <span class="kt">FKGender</span><span class="p">,</span> <span class="nv">number</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Black</span> <span class="o">=</span> <span class="s">"black"</span></code></pre>
 
                         </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>gender</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Gender of Avatar</p>
-
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>number</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The clothes ID</p>
-
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
                       </div>
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC7FaceKit15FKAvatarClothes4nameFS0_FT_SS"></a>
-                    <a name="//apple_ref/swift/Method/name()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC7FaceKit15FKAvatarClothes4nameFS0_FT_SS">name()</a>
+                    <a name="/s:FO7FaceKit11FKSkinColor5BrownFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/Brown" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO7FaceKit11FKSkinColor5BrownFMS0_S0_">Brown</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -219,14 +156,76 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Get the name of avatar&rsquo;s clothes.</p>
+                        <p>The skin color is brown.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">name</span><span class="p">()</span><span class="o">-&gt;</span><span class="kt">String</span></code></pre>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Brown</span> <span class="o">=</span> <span class="s">"brown"</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO7FaceKit11FKSkinColor3RedFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/Red" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO7FaceKit11FKSkinColor3RedFMS0_S0_">Red</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The skin color is red.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Red</span> <span class="o">=</span> <span class="s">"red"</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO7FaceKit11FKSkinColor6YellowFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/Yellow" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO7FaceKit11FKSkinColor6YellowFMS0_S0_">Yellow</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The skin color is yellow.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Yellow</span> <span class="o">=</span> <span class="s">"yellow"</span></code></pre>
 
                         </div>
                       </div>

@@ -12,7 +12,7 @@
     <a title="Classes  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">FaceKit Docs</a> (97% documented)</p>
+        <p><a href="index.html">FaceKit Docs</a> (100% documented)</p>
         <p class="header-right"><a href="https://github.com/spe3d/FaceKit-Swift"><img src="img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -27,10 +27,13 @@
       <nav class="sidebar">
         <ul class="nav-groups">
           <li class="nav-group-name">
-            <a href="Classes.html">Classes</a>
+          <a href="Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Classes/FKAvatarClothes.html">FKAvatarClothes</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/FKAvatarGlasses.html">FKAvatarGlasses</a>
               </li>
               <li class="nav-group-task">
                 <a href="Classes/FKAvatarHair.html">FKAvatarHair</a>
@@ -42,21 +45,18 @@
                 <a href="Classes/FKAvatarMotion.html">FKAvatarMotion</a>
               </li>
               <li class="nav-group-task">
-                <a href="Classes/FKAvatarSceneNode.html">FKAvatarSceneNode</a>
+                <a href="Classes/FKAvatarObject.html">FKAvatarObject</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Enums.html">Enums</a>
+          <a href="Enums.html">Enums</a>
             <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Enums/FKBodySkinColor.html">FKBodySkinColor</a>
-              </li>
               <li class="nav-group-task">
                 <a href="Enums/FKGender.html">FKGender</a>
               </li>
               <li class="nav-group-task">
-                <a href="Enums/FKHeadSkinColor.html">FKHeadSkinColor</a>
+                <a href="Enums/FKSkinColor.html">FKSkinColor</a>
               </li>
             </ul>
           </li>
@@ -75,9 +75,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:C7FaceKit17FKAvatarSceneNode"></a>
-                    <a name="//apple_ref/swift/Class/FKAvatarSceneNode" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C7FaceKit17FKAvatarSceneNode">FKAvatarSceneNode</a>
+                    <a name="/s:C7FaceKit15FKAvatarClothes"></a>
+                    <a name="//apple_ref/swift/Class/FKAvatarClothes" class="dashAnchor"></a>
+                    <a class="token" href="#/s:C7FaceKit15FKAvatarClothes">FKAvatarClothes</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -85,15 +85,116 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>An <code>FKAvatarSceneNode</code> object is a node in a scene graph that include the avatar.</p>
+                        <p>An instance of the <code>FKAvatarClothes</code> class implements a clothes on the avatar.
+ You can use this class to wear clothes, such as those you might let your avatar in clothes.</p>
 
-                        <a href="Classes/FKAvatarSceneNode.html" class="slightly-smaller">See more</a>
+                        <a href="Classes/FKAvatarClothes.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="language">
+                        <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">FKAvatarSceneNode</span><span class="p">:</span> <span class="kt">SCNNode</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">FKAvatarClothes</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:C7FaceKit15FKAvatarGlasses"></a>
+                    <a name="//apple_ref/swift/Class/FKAvatarGlasses" class="dashAnchor"></a>
+                    <a class="token" href="#/s:C7FaceKit15FKAvatarGlasses">FKAvatarGlasses</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An instance of the <code>FKAvatarGlasses</code> class implements a glasses on the avatar.
+ You can use this class to wear glasses, such as those you might let your avatar in glesses.</p>
+
+                        <a href="Classes/FKAvatarGlasses.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">FKAvatarGlasses</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:C7FaceKit14FKAvatarMotion"></a>
+                    <a name="//apple_ref/swift/Class/FKAvatarMotion" class="dashAnchor"></a>
+                    <a class="token" href="#/s:C7FaceKit14FKAvatarMotion">FKAvatarMotion</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An instance of the <code>FKAvatarMotion</code> class implements a motion on the avatar.
+ You can use this class to motion, such as those you might let your avatar dancing.</p>
+
+                        <a href="Classes/FKAvatarMotion.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">FKAvatarMotion</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:C7FaceKit14FKAvatarObject"></a>
+                    <a name="//apple_ref/swift/Class/FKAvatarObject" class="dashAnchor"></a>
+                    <a class="token" href="#/s:C7FaceKit14FKAvatarObject">FKAvatarObject</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An <code>FKAvatarObject</code> object has a node of the avatar on a scene graph.
+ You have to show the avatar, you need to add <code>sceneNode</code> in your scene.
+ To modify style on the avatar, use methods of <code>FKAvatarObject</code> can immediately to update on the <code>sceneNode</code>.</p>
+
+                        <a href="Classes/FKAvatarObject.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">FKAvatarObject</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
 
                         </div>
                       </div>
@@ -124,73 +225,9 @@
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="language">
+                        <div class="Swift">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">FKAvatarManager</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:C7FaceKit14FKAvatarMotion"></a>
-                    <a name="//apple_ref/swift/Class/FKAvatarMotion" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C7FaceKit14FKAvatarMotion">FKAvatarMotion</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>An motion of avatar.</p>
-
-                        <a href="Classes/FKAvatarMotion.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">FKAvatarMotion</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:C7FaceKit15FKAvatarClothes"></a>
-                    <a name="//apple_ref/swift/Class/FKAvatarClothes" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C7FaceKit15FKAvatarClothes">FKAvatarClothes</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>An clothes of avatar.</p>
-
-                        <a href="Classes/FKAvatarClothes.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">FKAvatarClothes</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
 
                         </div>
                       </div>
@@ -214,13 +251,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>An hair of avatar.</p>
+                        <p>An instance of the <code>FKAvatarHair</code> class implements a hair on the avatar.
+ You can use this class to hair design, such as those you might dress up your hair.</p>
 
                         <a href="Classes/FKAvatarHair.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
-                        <div class="language">
+                        <div class="Swift">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">FKAvatarHair</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
 
@@ -234,8 +272,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2015 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2015-11-20)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.4.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2015 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2015-12-07)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.3.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>
