@@ -3,7 +3,7 @@
 //  Insta3D_iOS-Sample
 //
 //  Created by Daniel on 2015/11/2.
-//  Modified by Daniel on 2015/12/4.
+//  Modified by Daniel on 2015/12/7.
 //  Copyright © 2015年 Speed 3D Inc. All rights reserved.
 //
 
@@ -46,9 +46,9 @@ public class FKAvatarManager: NSObject {
     
     func setupScene() {
         if self.avatar?.gender == .Male {
-            self.lastAvatarScene = SCNScene(named: "avatar.scnassets/DefaultAvatar.dae")
+            self.lastAvatarScene = SCNScene(named: "Frameworks/FaceKit_Swift.framework/avatar.scnassets/DefaultAvatar.dae")
         } else if self.avatar?.gender == .Female {
-            self.lastAvatarScene = SCNScene(named: "avatar.scnassets/Female_NO_Morph.dae")
+            self.lastAvatarScene = SCNScene(named: "Frameworks/FaceKit_Swift.framework/avatar.scnassets/Female_NO_Morph.dae")
         }
     }
     

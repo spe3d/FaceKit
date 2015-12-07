@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name         = "FaceKit-Swift"
-    s.version      = "1.3"
+    s.version      = "1.3.1"
     s.summary      = "Library to generate a 3D avatar from one single front face photo."
 
     s.description  = <<-DESC
@@ -33,6 +33,7 @@ Pod::Spec.new do |s|
 
 
     s.source_files  = "FaceKit/*.swift"
+    s.resource = "FaceKit/avatar.scnassets"
 
 
     s.frameworks = "SceneKit", "UIKit"
@@ -40,6 +41,6 @@ Pod::Spec.new do |s|
 
     s.requires_arc = true
 
-    s.dependency "AFNetworking", "2.6.3"
+    s.dependency "AFNetworking", "~> 2.6.3"
 
 end
