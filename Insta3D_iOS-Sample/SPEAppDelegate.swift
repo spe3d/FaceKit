@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FaceKit
 
 @UIApplicationMain
 class SPEAppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,8 @@ class SPEAppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
+        FKAvatarManager.startWithAPIKey(<#T##Insert_your_API_key#>)
+        
         return true
     }
 

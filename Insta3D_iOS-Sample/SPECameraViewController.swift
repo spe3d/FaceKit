@@ -8,17 +8,15 @@
 
 import UIKit
 import AVFoundation
-import ReactiveCocoa
-import Swift_RAC_Macros
 import MBProgressHUD
 import FaceKit
 import SceneKit
 
 class SPECameraViewController: SPEViewController, AVCaptureMetadataOutputObjectsDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    @IBOutlet var videoView: UIView?
+    @IBOutlet var videoView: UIView!
 
-    @IBOutlet var changeCameraButton: UIButton?
+    @IBOutlet var changeCameraButton: UIButton!
     
     var delegate: SPECameraViewControllerDelegate?
     
@@ -26,57 +24,60 @@ class SPECameraViewController: SPEViewController, AVCaptureMetadataOutputObjects
     var backCameraSession = AVCaptureSession()
     var frontCameraStillImageOutput = AVCaptureStillImageOutput()
     var backCameraStillImageOutput = AVCaptureStillImageOutput()
-    var frontCameraPreviewLayer: AVCaptureVideoPreviewLayer?
-    var backCameraPreviewLayer: AVCaptureVideoPreviewLayer?
+    var frontCameraPreviewLayer = AVCaptureVideoPreviewLayer()
+    var backCameraPreviewLayer = AVCaptureVideoPreviewLayer()
     
-    dynamic var faceImage: UIImage?
+    var showCameraDeniedMessage = false
+    
+    var faceImage: UIImage?
     
     override func loadView() {
         super.loadView()
         
-        self.frontCameraSession.sessionPreset = AVCaptureSessionPreset1280x720
-        self.backCameraSession.sessionPreset = AVCaptureSessionPreset1280x720
+        self.frontCameraSession.sessionPreset = AVCaptureSessionPresetHigh
+        self.backCameraSession.sessionPreset = AVCaptureSessionPresetHigh
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        RACObserve(self, "faceImage").ignoreNil().subscribeNext { (faceImage) -> Void in
-            if let faceImage = faceImage as? UIImage {
-                FKAvatarManager.currentManager.createAvatar(gender: .Male, faceImage: faceImage, success: { (avatarNode) -> Void in
-                    MBProgressHUD.hideAllHUDsForView(self.view.window, animated: true)
-                    
-                    self.delegate?.cameraViewController?(self, didCreateAvatarNode: avatarNode)
-                    
-                    self.dismissViewControllerAnimated(true, completion: nil)
-                    }, failure: { (error) -> Void in
-                        
-                })
-            }
+        switch AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo) {
+        case .Authorized:
+            self.setupCamera()
+            break
+        case .NotDetermined:
+            AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo, completionHandler: { (granted: Bool) -> Void in
+                if granted {
+                    self.setupCamera()
+                }
+                else {
+                    self.showCameraDeniedMessage = true
+                }
+            })
+            break
+        case .Restricted:
+            break
+        case .Denied:
+            self.showCameraDeniedMessage = true
+            break
         }
         
-        self.setupCamera()
-        
         self.frontCameraAction()
-        changeCameraButton?.addTarget(self, action: "backCameraAction", forControlEvents: .TouchUpInside)
+        changeCameraButton.addTarget(self, action: "backCameraAction", forControlEvents: .TouchUpInside)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        if let videoView = self.videoView {
-            self.frontCameraPreviewLayer?.frame = videoView.bounds
-            self.backCameraPreviewLayer?.frame = videoView.bounds
-        }
+        self.frontCameraPreviewLayer.frame = self.videoView.bounds
+        self.backCameraPreviewLayer.frame = self.videoView.bounds
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        if !UIImagePickerController.isSourceTypeAvailable(.Camera) {
-            let alertController = UIAlertController(title: NSLocalizedString("No camera available in this device", comment: "Showing error while there is no camera in this device"), message: NSLocalizedString("Insta3D requires camera to work", comment: "Showing error while there is o camera in this device"), preferredStyle: .Alert)
-            alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "OK"), style: .Cancel, handler: nil))
-            self.presentViewController(alertController, animated: true, completion: nil)
+        if self.showCameraDeniedMessage {
+            self.cameraDenied()
         }
     }
 
@@ -100,9 +101,9 @@ class SPECameraViewController: SPEViewController, AVCaptureMetadataOutputObjects
                                 self.frontCameraSession.addOutput(frontCameraStillImageOutput)
                             }
                             
-                            self.frontCameraPreviewLayer = AVCaptureVideoPreviewLayer(session: self.frontCameraSession)
-                            self.frontCameraPreviewLayer!.videoGravity = AVLayerVideoGravityResizeAspectFill
-                            self.videoView?.layer.addSublayer(self.frontCameraPreviewLayer!)
+                            self.frontCameraPreviewLayer.session = self.frontCameraSession
+                            self.frontCameraPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+                            self.videoView.layer.addSublayer(self.frontCameraPreviewLayer)
                             break
                         case .Back:
                             let backCameraInput = try AVCaptureDeviceInput(device: device)
@@ -112,9 +113,9 @@ class SPECameraViewController: SPEViewController, AVCaptureMetadataOutputObjects
                                 self.backCameraSession.addOutput(backCameraStillImageOutput)
                             }
                             
-                            self.backCameraPreviewLayer = AVCaptureVideoPreviewLayer(session: self.backCameraSession)
-                            self.backCameraPreviewLayer!.videoGravity = AVLayerVideoGravityResizeAspectFill
-                            self.videoView?.layer.addSublayer(self.backCameraPreviewLayer!)
+                            self.backCameraPreviewLayer.session = self.backCameraSession
+                            self.backCameraPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+                            self.videoView.layer.addSublayer(self.backCameraPreviewLayer)
                             break
                         default:
                             break
@@ -126,18 +127,54 @@ class SPECameraViewController: SPEViewController, AVCaptureMetadataOutputObjects
         }
     }
     
+    func cameraDenied() {
+        let alertView = UIAlertController(title: NSLocalizedString("Error", comment: ""), message: nil, preferredStyle: .Alert)
+        
+        var alertText = ""
+        // `UIApplicationOpenSettingsURLString` availables in iOS 8.0 and later.
+        // This APP supports iOS 8.0 or later.
+        // So, we do not need to consider other cases in general.
+        if let openSettingsURL = NSURL(string: UIApplicationOpenSettingsURLString) {
+            alertText = NSLocalizedString("It looks like your privacy settings are preventing us from accessing your camera to do barcode scanning. You can fix this by doing the following:\n\n1. Touch the Go button below to open the Settings app.\n\n2. Touch Privacy.\n\n3. Turn the Camera on.\n\n4. Open this app and try again.", comment: "")
+            
+            alertView.addAction(UIAlertAction(title: NSLocalizedString("Go", comment: ""), style: UIAlertActionStyle.Default, handler: { (action :UIAlertAction) -> Void in
+                UIApplication.sharedApplication().openURL(openSettingsURL)
+            }))
+        }
+        
+        alertView.message = alertText
+        
+        alertView.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .Cancel, handler: nil))
+        
+        self.presentViewController(alertView, animated: true, completion: nil)
+    }
+    
     func showLoadingView() {
         self.frontCameraSession.stopRunning()
         self.backCameraSession.stopRunning()
-        self.frontCameraPreviewLayer?.hidden = true
-        self.backCameraPreviewLayer?.hidden = true
-        self.videoView?.layer.contents = self.faceImage?.CGImage
+        self.frontCameraPreviewLayer.hidden = true
+        self.backCameraPreviewLayer.hidden = true
+        self.videoView.layer.contents = self.faceImage?.CGImage
         
         let hud = MBProgressHUD(view: self.view.window)
         hud.labelText = "Loading..."
         
         self.view.window?.addSubview(hud)
         hud.show(true)
+    }
+    
+    func createAvatar() {
+        if let faceImage = self.faceImage {
+            FKAvatarManager.currentManager.createAvatar(gender: .Male, faceImage: faceImage, success: { (avatarObject) -> Void in
+                MBProgressHUD.hideAllHUDsForView(self.view.window, animated: true)
+                
+                self.delegate?.cameraViewController?(self, didCreateAvatarObject: avatarObject)
+                
+                self.dismissViewControllerAnimated(true, completion: nil)
+                }, failure: { (error) -> Void in
+                    
+            })
+        }
     }
     
     // MARK: - action
@@ -158,7 +195,7 @@ class SPECameraViewController: SPEViewController, AVCaptureMetadataOutputObjects
         
         var stillImageOutput: AVCaptureStillImageOutput
         
-        if self.backCameraPreviewLayer?.hidden == true {
+        if self.backCameraPreviewLayer.hidden == true {
             stillImageOutput = frontCameraStillImageOutput
         }
         else {
@@ -181,6 +218,7 @@ class SPECameraViewController: SPEViewController, AVCaptureMetadataOutputObjects
                 
                 if let image = UIImage(data: imageData)?.fixOrientation() {
                     self.faceImage = image
+                    self.createAvatar()
                     
                     self.showLoadingView()
                 }
@@ -195,26 +233,26 @@ class SPECameraViewController: SPEViewController, AVCaptureMetadataOutputObjects
         self.backCameraSession.stopRunning()
         self.frontCameraSession.startRunning()
         
-        self.backCameraPreviewLayer?.hidden = true
-        self.frontCameraPreviewLayer?.hidden = false
+        self.backCameraPreviewLayer.hidden = true
+        self.frontCameraPreviewLayer.hidden = false
         
-        changeCameraButton?.removeTarget(self, action: "frontCameraAction", forControlEvents: .TouchUpInside)
-        changeCameraButton?.addTarget(self, action: "backCameraAction", forControlEvents: .TouchUpInside)
+        changeCameraButton.removeTarget(self, action: "frontCameraAction", forControlEvents: .TouchUpInside)
+        changeCameraButton.addTarget(self, action: "backCameraAction", forControlEvents: .TouchUpInside)
         
-        changeCameraButton?.setTitle("Back", forState: .Normal)
+        changeCameraButton.setTitle("Back", forState: .Normal)
     }
     
     func backCameraAction() {
         self.frontCameraSession.stopRunning()
         self.backCameraSession.startRunning()
         
-        self.frontCameraPreviewLayer?.hidden = true
-        self.backCameraPreviewLayer?.hidden = false
+        self.frontCameraPreviewLayer.hidden = true
+        self.backCameraPreviewLayer.hidden = false
         
-        changeCameraButton?.removeTarget(self, action: "backCameraAction", forControlEvents: .TouchUpInside)
-        changeCameraButton?.addTarget(self, action: "frontCameraAction", forControlEvents: .TouchUpInside)
+        changeCameraButton.removeTarget(self, action: "backCameraAction", forControlEvents: .TouchUpInside)
+        changeCameraButton.addTarget(self, action: "frontCameraAction", forControlEvents: .TouchUpInside)
         
-        changeCameraButton?.setTitle("Front", forState: .Normal)
+        changeCameraButton.setTitle("Front", forState: .Normal)
     }
     
     // MARK: - UIImagePickerControllerDelegate
@@ -223,6 +261,7 @@ class SPECameraViewController: SPEViewController, AVCaptureMetadataOutputObjects
         
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             self.faceImage = image.fixOrientation()
+            self.createAvatar()
         }
         
         self.dismissViewControllerAnimated(true) { () -> Void in
@@ -237,5 +276,5 @@ class SPECameraViewController: SPEViewController, AVCaptureMetadataOutputObjects
 
 @objc
 protocol SPECameraViewControllerDelegate: NSObjectProtocol {
-    optional func cameraViewController(viewController: SPECameraViewController, didCreateAvatarNode avatarNode: FKAvatarSceneNode)
+    optional func cameraViewController(viewController: SPECameraViewController, didCreateAvatarObject avatarObject: FKAvatarObject)
 }

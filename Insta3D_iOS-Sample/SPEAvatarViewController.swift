@@ -8,8 +8,6 @@
 
 import UIKit
 import SceneKit
-import ReactiveCocoa
-import Swift_RAC_Macros
 import AFNetworking
 import MBProgressHUD
 import FaceKit
@@ -18,7 +16,7 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
 
     @IBOutlet var avatarView: SCNView!
     
-    var avatarNode: FKAvatarSceneNode?
+    var avatarObject: FKAvatarObject?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,23 +45,45 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
     }
     
     @IBAction func changeHair(sender: UIButton) {
-        self.avatarNode?.setHair(FKAvatarHair(gender: .Male))
+        self.avatarObject?.setHair(FKAvatarHair(gender: .Male))
     }
     
     @IBAction func changeClothes(sender: UIButton) {
-        self.avatarNode?.setClothes(FKAvatarClothes(gender: .Male))
+        self.avatarObject?.setClothes(FKAvatarClothes(gender: .Male))
     }
     
     @IBAction func changeMotion(sender: UIButton) {
-        self.avatarNode?.setMotion(FKAvatarMotion(gender: .Male))
+        self.avatarObject?.setMotion(FKAvatarMotion(gender: .Male))
+    }
+    
+    @IBAction func changeGlasses(sender: UIButton) {
+        self.avatarObject?.setGlasses(FKAvatarGlasses(gender: .Male))
+    }
+    
+    var index = 0
+    @IBAction func changeFacial(sender: UIButton) {
+        var weights = [Float].init(count: 14, repeatedValue: 0)
+        weights[index++ % 14] = 1
+        self.avatarObject?.setFacial(weights)
+    }
+    
+    @IBAction func changeSkinColor(sender: UIButton) {
+        if sender.tag == 0 {
+            self.avatarObject?.setSkinColor(.Black)
+            sender.tag = 1
+        }
+        else {
+            self.avatarObject?.setSkinColor(.Default)
+            sender.tag = 0
+        }
     }
 
     // MARK: - SPECameraViewControllerDelegate
     
-    func cameraViewController(viewController: SPECameraViewController, didCreateAvatarNode avatarNode: FKAvatarSceneNode) {
-        self.avatarNode = avatarNode
+    func cameraViewController(viewController: SPECameraViewController, didCreateAvatarObject avatarObject: FKAvatarObject) {
+        self.avatarObject = avatarObject
         
         self.avatarView.scene?.rootNode.childNodeWithName("FKAvatarNode", recursively: true)?.removeFromParentNode()
-        self.avatarView.scene?.rootNode.addChildNode(avatarNode)
+        self.avatarView.scene?.rootNode.addChildNode(avatarObject.sceneNode)
     }
 }
