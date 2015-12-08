@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name         = "FaceKit-Swift"
-    s.version      = "1.3.1"
+    s.version      = "1.3.2"
     s.summary      = "Library to generate a 3D avatar from one single front face photo."
 
     s.description  = <<-DESC
