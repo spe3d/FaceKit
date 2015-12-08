@@ -3,7 +3,7 @@
 //  Insta3D_iOS-Sample
 //
 //  Created by Daniel on 2015/11/9.
-//  Modified by Daniel on 2015/12/4.
+//  Modified by Daniel on 2015/12/8.
 //  Copyright © 2015年 Speed 3D Inc. All rights reserved.
 //
 
@@ -48,28 +48,27 @@ public class FKAvatarObject: NSObject {
             if clothes.name().isEmpty == false {
                 let clothesName = clothes.name()
                 
-                if let node = SCNScene(named: "avatar.scnassets/\(clothesName)/\(clothesName).DAE")?.rootNode {
-                    defaultBody.hidden = true
-                    
-                    for body in sceneNode.childNodes {
-                        if body.name?.rangeOfString("_S_") != nil {
-                            body.removeFromParentNode()
-                        }
+                let node = SCNScene(forDaeFileName: clothesName, subDirectory: clothesName).rootNode
+                defaultBody.hidden = true
+                
+                for body in sceneNode.childNodes {
+                    if body.name?.rangeOfString("_S_") != nil {
+                        body.removeFromParentNode()
                     }
-                    
-                    for body in node.childNodes {
-                        if let geometry = body.geometry {
-                            
-                            geometry.convertContentsPathToImage()
-                            
-                            sceneNode.addChildNode(body)
-                            body.skinner?.skeleton = defaultBody.skinner?.skeleton
-                        }
+                }
+                
+                for body in node.childNodes {
+                    if let geometry = body.geometry {
+                        
+                        geometry.convertContentsPathToImage()
+                        
+                        sceneNode.addChildNode(body)
+                        body.skinner?.skeleton = defaultBody.skinner?.skeleton
                     }
-                    
-                    if let avatar = self.avatar {
-                        self.setSkinColor(avatar.skinColor)
-                    }
+                }
+                
+                if let avatar = self.avatar {
+                    self.setSkinColor(avatar.skinColor)
                 }
             }
         }
@@ -86,7 +85,8 @@ public class FKAvatarObject: NSObject {
             
             if animation.name().isEmpty == false {
                 let animationName = animation.name()
-                let node = SCNScene(named: "avatar.scnassets/Motion/\(animationName).DAE")!.rootNode.childNodeWithName("Hips", recursively: true)!
+                
+                let node = SCNScene(forDaeFileName: animationName, subDirectory: "Motion").rootNode.childNodeWithName("Hips", recursively: true)!
                 for animationKey in node.animationKeys {
                     let animation = node.animationForKey(animationKey)!
                     animation.usesSceneTimeBase = false
@@ -112,7 +112,7 @@ public class FKAvatarObject: NSObject {
             
             if hair.name().isEmpty == false {
                 let hairName = hair.name()
-                if let node = SCNScene(named: "avatar.scnassets/\(hairName)/\(hairName).DAE")?.rootNode.childNodeWithName(hairName, recursively: true) {
+                if let node = SCNScene(forDaeFileName: hairName, subDirectory: hairName).rootNode.childNodeWithName(hairName, recursively: true) {
                     head.addChildNode(node)
                 }
             }
@@ -134,7 +134,7 @@ public class FKAvatarObject: NSObject {
             
             if glasses?.name().isEmpty == false {
                 let glassesName = glasses!.name()
-                if let node = SCNScene(named: "avatar.scnassets/\(glassesName)/\(glassesName).DAE")?.rootNode.childNodeWithName(glassesName, recursively: true) {
+                if let node = SCNScene(forDaeFileName: glassesName, subDirectory: glassesName).rootNode.childNodeWithName(glassesName, recursively: true) {
                     head.addChildNode(node)
                 }
             }

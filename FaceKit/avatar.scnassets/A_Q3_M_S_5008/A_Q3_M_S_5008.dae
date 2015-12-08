@@ -14,14 +14,14 @@
   <library_effects>
     <effect id="I_Q5_Male_Suit_001">
       <profile_COMMON>
-        <newparam sid="I_Q3_M_S_5008_0_Co_JPG-surface">
+        <newparam sid="I_Q3_M_S_5008_0_Co_jpg-surface">
           <surface type="2D">
-            <init_from>I_Q3_M_S_5008_0_Co_JPG</init_from>
+            <init_from>I_Q3_M_S_5008_0_Co_jpg</init_from>
           </surface>
         </newparam>
-        <newparam sid="I_Q3_M_S_5008_0_Co_JPG-sampler">
+        <newparam sid="I_Q3_M_S_5008_0_Co_jpg-sampler">
           <sampler2D>
-            <source>I_Q3_M_S_5008_0_Co_JPG-surface</source>
+            <source>I_Q3_M_S_5008_0_Co_jpg-surface</source>
           </sampler2D>
         </newparam>
         <newparam sid="I_Q3_M_S_5008_0_Nr_jpg-surface">
@@ -43,7 +43,7 @@
               <color>0 0 0 1</color>
             </ambient>
             <diffuse>
-              <texture texture="I_Q3_M_S_5008_0_Co_JPG-sampler" texcoord="CHANNEL1"/>
+              <texture texture="I_Q3_M_S_5008_0_Co_jpg-sampler" texcoord="CHANNEL1"/>
             </diffuse>
             <specular>
               <color>0 0 0 1</color>
@@ -180,14 +180,14 @@
     </effect>
     <effect id="A_Q5_Male_Suit_0000_01">
       <profile_COMMON>
-        <newparam sid="I_Q3_M_S_5008_1_Co_JPG-surface">
+        <newparam sid="I_Q3_M_S_5008_1_Co_jpg-surface">
           <surface type="2D">
-            <init_from>I_Q3_M_S_5008_1_Co_JPG</init_from>
+            <init_from>I_Q3_M_S_5008_1_Co_jpg</init_from>
           </surface>
         </newparam>
-        <newparam sid="I_Q3_M_S_5008_1_Co_JPG-sampler">
+        <newparam sid="I_Q3_M_S_5008_1_Co_jpg-sampler">
           <sampler2D>
-            <source>I_Q3_M_S_5008_1_Co_JPG-surface</source>
+            <source>I_Q3_M_S_5008_1_Co_jpg-surface</source>
           </sampler2D>
         </newparam>
         <newparam sid="I_Q3_M_S_5008_1_Sp_jpg-surface">
@@ -219,7 +219,7 @@
               <color>0 0 0 1</color>
             </ambient>
             <diffuse>
-              <texture texture="I_Q3_M_S_5008_1_Co_JPG-sampler" texcoord="CHANNEL1"/>
+              <texture texture="I_Q3_M_S_5008_1_Co_jpg-sampler" texcoord="CHANNEL1"/>
             </diffuse>
             <specular>
               <texture texture="I_Q3_M_S_5008_1_Sp_jpg-sampler" texcoord="CHANNEL1"/>
@@ -645,14 +645,14 @@
     </light>
   </library_lights>
   <library_images>
-    <image id="I_Q3_M_S_5008_0_Co_JPG">
-      <init_from>../../Texture/I_Q3_M_S_5008_0_Co.JPG</init_from>
+    <image id="I_Q3_M_S_5008_0_Co_jpg">
+      <init_from>../../Texture/I_Q3_M_S_5008_0_Co.jpg</init_from>
     </image>
     <image id="I_Q3_M_S_5008_0_Nr_jpg">
       <init_from>../../Texture/I_Q3_M_S_5008_0_Nr.jpg</init_from>
     </image>
-    <image id="I_Q3_M_S_5008_1_Co_JPG">
-      <init_from>../../Texture/I_Q3_M_S_5008_1_Co.JPG</init_from>
+    <image id="I_Q3_M_S_5008_1_Co_jpg">
+      <init_from>../../Texture/I_Q3_M_S_5008_1_Co.jpg</init_from>
     </image>
     <image id="I_Q3_M_S_5008_1_Nr_jpg">
       <init_from>../../Texture/I_Q3_M_S_5008_1_Nr.jpg</init_from>
