@@ -3,7 +3,7 @@
 //  Insta3D_iOS-Sample
 //
 //  Created by Daniel on 2015/11/2.
-//  Modified by Daniel on 2015/12/8.
+//  Modified by Daniel on 2015/12/11.
 //  Copyright © 2015年 Speed 3D Inc. All rights reserved.
 //
 
@@ -19,14 +19,9 @@ public class FKAvatarManager: NSObject {
     
     let kFaceKitErrorDomain = "FKErrorDomain"
     
-    var lastAvatarScene: SCNScene?
     var lastAvatarObject: FKAvatarObject?
     
-    var avatar: FKAvatar? {
-        didSet {
-            self.setupScene()
-        }
-    }
+    var avatar: FKAvatar?
     
     /**
      Returns the shared manager object.
@@ -44,15 +39,15 @@ public class FKAvatarManager: NSObject {
         
     }
     
-    func setupScene() {
+    class func defaultScene(gender: FKGender!)-> SCNScene {
         var daeFileName = ""
-        if self.avatar?.gender == .Male {
+        if gender == .Male {
             daeFileName = "DefaultAvatar"
-        } else if self.avatar?.gender == .Female {
+        } else if gender == .Female {
             daeFileName = "Female_NO_Morph"
         }
         
-        self.lastAvatarScene = SCNScene(forDaeFileName: daeFileName, subDirectory: nil)
+        return SCNScene(forDaeFileName: daeFileName, subDirectory: nil)
     }
     
     /**
@@ -115,14 +110,13 @@ public class FKAvatarManager: NSObject {
                     let avatar = FKAvatar(avatarID: avatarID, gender: .Male)
                     avatar.setupAvatar(data)
                     avatar.downloadCompleted = { ()->Void in
-                        if let scene = self.lastAvatarScene {
-                            self.createCustomAvatar()
-                            
-                            let avatarObject = FKAvatarObject(avatar: avatar, scene: scene)
-                            
-                            self.lastAvatarObject = avatarObject
-                            success?(avatarObject: avatarObject)
-                        }
+                        let scene = FKAvatarManager.defaultScene(avatar.gender)
+                        self.createCustomAvatar(scene)
+                        
+                        let avatarObject = FKAvatarObject(avatar: avatar, scene: scene)
+                        
+                        self.lastAvatarObject = avatarObject
+                        success?(avatarObject: avatarObject)
                     }
                     
                     self.avatar = avatar
@@ -150,31 +144,30 @@ public class FKAvatarManager: NSObject {
         })
     }
     
-    func createCustomAvatar() {
-        if let node = self.lastAvatarScene?.rootNode {
-            if let defaultHead = node.childNodeWithName("A_Q3_M_Hd", recursively: true) {
+    func createCustomAvatar(avatarScene: SCNScene) {
+        let node = avatarScene.rootNode
+        if let defaultHead = node.childNodeWithName("A_Q3_M_Hd", recursively: true) {
+            
+            if let avatar = self.avatar {
                 
-                if let avatar = self.avatar {
-                    
-                    var targets: [SCNGeometry] = []
-                    for i in 0..<avatar.geometrySourcesSemanticNormal.count {
-                        var geometrySources: [SCNGeometrySource] = []
-                        if let geometry = defaultHead.geometry {
-                            geometrySources += geometry.geometrySourcesForSemantic(SCNGeometrySourceSemanticTexcoord)
-                            geometrySources.append(avatar.geometrySourcesSemanticNormal[i])
-                            geometrySources.append(avatar.geometrySourcesSemanticVertex[i])
-                            
-                            targets.append(SCNGeometry(sources: geometrySources, elements: geometry.geometryElements))
-                        }
+                var targets: [SCNGeometry] = []
+                for i in 0..<avatar.geometrySourcesSemanticNormal.count {
+                    var geometrySources: [SCNGeometrySource] = []
+                    if let geometry = defaultHead.geometry {
+                        geometrySources += geometry.geometrySourcesForSemantic(SCNGeometrySourceSemanticTexcoord)
+                        geometrySources.append(avatar.geometrySourcesSemanticNormal[i])
+                        geometrySources.append(avatar.geometrySourcesSemanticVertex[i])
+                        
+                        targets.append(SCNGeometry(sources: geometrySources, elements: geometry.geometryElements))
                     }
-                    
-                    if defaultHead.morpher == nil {
-                        defaultHead.morpher = SCNMorpher()
-                    }
-                    defaultHead.morpher?.targets = targets
-                    
-                    defaultHead.morpher?.setWeight(1, forTargetAtIndex: 0)
                 }
+                
+                if defaultHead.morpher == nil {
+                    defaultHead.morpher = SCNMorpher()
+                }
+                defaultHead.morpher?.targets = targets
+                
+                defaultHead.morpher?.setWeight(1, forTargetAtIndex: 0)
             }
         }
     }

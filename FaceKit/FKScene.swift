@@ -3,6 +3,7 @@
 //  Insta3D_iOS-Sample
 //
 //  Created by Daniel on 2015/12/8.
+//  Modified by Daniel on 2015/12/11.
 //  Copyright © 2015年 Speed 3D Inc. All rights reserved.
 //
 
@@ -11,7 +12,7 @@ import SceneKit
 
 extension SCNScene {
     convenience init(forDaeFileName daeFileName: String!, subDirectory: String?) {
-        var directory = "avatar.scnassets"
+        var directory = SCNScene.getLocalAvatarAssetsName()
         
         if let subDirectory = subDirectory {
             if !subDirectory.isEmpty {
@@ -31,5 +32,9 @@ extension SCNScene {
         else {
             fatalError("[SPE Error] avatar.scnassets or \(daeFileName).dae not found")
         }
+    }
+    
+    class func getLocalAvatarAssetsName()-> String {
+        return "avatar.scnassets"
     }
 }

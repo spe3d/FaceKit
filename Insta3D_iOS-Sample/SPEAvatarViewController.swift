@@ -23,6 +23,9 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
         
 //        self.avatarView.scene = SCNScene(named: "Scene.dae")
         self.avatarView.scene = SCNScene(named: "Scene.scn")
+        
+        self.avatarObject = FKAvatarObject(genderOfDefaultAvatar: .Male)
+        self.avatarView.scene?.rootNode.addChildNode(self.avatarObject!.sceneNode)
     }
     
     override func viewDidAppear(animated: Bool) {

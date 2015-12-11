@@ -3,7 +3,7 @@
 //  Insta3D_iOS-Sample
 //
 //  Created by Daniel on 2015/11/9.
-//  Modified by Daniel on 2015/12/8.
+//  Modified by Daniel on 2015/12/11.
 //  Copyright © 2015年 Speed 3D Inc. All rights reserved.
 //
 
@@ -16,6 +16,8 @@ import SceneKit
  To modify style on the avatar, use methods of `FKAvatarObject` can immediately to update on the `sceneNode`.
  */
 public class FKAvatarObject: NSObject {
+    let kDefaultSceneNodeName = "FKAvatarNode"
+    
     let avatar: FKAvatar?
     
     /**
@@ -23,13 +25,30 @@ public class FKAvatarObject: NSObject {
      */
     public let sceneNode = SCNNode()
     
+    /**
+     Create a default avatar.
+     */
+    public init(genderOfDefaultAvatar gender: FKGender) {
+        self.avatar = FKAvatar(gender: gender)
+        super.init()
+        let scene = FKAvatarManager.defaultScene(gender)
+        for node in scene.rootNode.childNodes {
+            sceneNode.addChildNode(node)
+        }
+        sceneNode.name = kDefaultSceneNodeName
+        
+        self.setHair(FKAvatarHair(gender: gender))
+        self.setClothes(FKAvatarClothes(gender: gender))
+        self.setSkinColor(.Default)
+    }
+    
     init(avatar: FKAvatar!, scene: SCNScene) {
         self.avatar = avatar
         super.init()
         for node in scene.rootNode.childNodes {
             sceneNode.addChildNode(node)
         }
-        sceneNode.name = "FKAvatarNode"
+        sceneNode.name = kDefaultSceneNodeName
         
         self.setHair(FKAvatarHair(gender: avatar.gender))
         self.setClothes(FKAvatarClothes(gender: avatar.gender))
@@ -176,13 +195,17 @@ public class FKAvatarObject: NSObject {
         if let avatar = self.avatar  {
             avatar.skinColor = skinColor
             
-            sceneNode.childNodeWithName("A_Q3_M_Hd", recursively: true)?.geometry?.firstMaterial?.diffuse.contents = avatar.headImages[skinColor]
+            if let image = avatar.headImages[skinColor] {
+                sceneNode.childNodeWithName("A_Q3_M_Hd", recursively: true)?.geometry?.firstMaterial?.diffuse.contents = image
+            }
             for bodyNode in sceneNode.childNodes {
                 if bodyNode.name?.rangeOfString("_S_") != nil {
                     if let geometry = bodyNode.geometry {
                         for material in geometry.materials {
                             if material.name?.rangeOfString("_Bd") != nil {
-                                material.diffuse.contents = avatar.bodyImages[skinColor]
+                                if let image = avatar.bodyImages[skinColor] {
+                                    material.diffuse.contents = image
+                                }
                             }
                         }
                     }

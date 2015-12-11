@@ -3,7 +3,7 @@
 //  Insta3D_iOS-Sample
 //
 //  Created by Daniel on 2015/10/21.
-//  Modified by Daniel on 2015/11/17.
+//  Modified by Daniel on 2015/12/11.
 //  Copyright © 2015年 Speed 3D Inc. All rights reserved.
 //
 
@@ -99,6 +99,11 @@ class FKAvatar: NSObject {
     var glasses: FKAvatarGlasses?
     
     var skinColor = FKSkinColor.Default
+    
+    init(gender: FKGender) {
+        self.avatarID = ""
+        self.gender = gender
+    }
     
     /**
      Creates a avatar from an avatar's id. The gender of avatar default is `Male`.
