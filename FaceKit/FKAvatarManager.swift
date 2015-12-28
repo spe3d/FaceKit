@@ -3,19 +3,20 @@
 //  Insta3D_iOS-Sample
 //
 //  Created by Daniel on 2015/11/2.
-//  Modified by Daniel on 2015/12/11.
+//  Modified by Daniel on 2015/12/24.
 //  Copyright © 2015年 Speed 3D Inc. All rights reserved.
 //
 
 import UIKit
 import SceneKit
-import AFNetworking
 
 /**
  An `FKAvatarManager` object lets you create a scene node, including a avatar.
  An avatar manager object is usually your first interaction with the scene node.
  */
 public class FKAvatarManager: NSObject {
+    
+    static var APIKey = ""
     
     let kFaceKitErrorDomain = "FKErrorDomain"
     
@@ -32,7 +33,7 @@ public class FKAvatarManager: NSObject {
      The recommended way to install `FaceKit` into your APP is to place a call to `+startWithAPIKey:` in your `-application:didFinishLaunchingWithOptions:` or `-applicationDidFinishLaunching:` method.
      */
     public static func startWithAPIKey(apiKey: String!) {
-        FKHTTPRequestOperationManager.defaultManager.setAPIKey(apiKey)
+        FKAvatarManager.APIKey = apiKey
     }
     
     private override init() {
@@ -54,121 +55,148 @@ public class FKAvatarManager: NSObject {
      Uploads image of face, that creates the avatar node.
      */
     public func createAvatar(gender mode: FKGender, faceImage photo: UIImage!, success: ((avatarObject: FKAvatarObject)->Void)?, failure: ((error: NSError)->Void)?) {
-        var parameter: [String: AnyObject] = [:]
+        var parameter: [String: String] = [:]
         parameter["mode"] = mode.rawValue
         
-        FKHTTPRequestOperationManager.defaultManager.POST("", parameters: parameter, constructingBodyWithBlock: { (formData: AFMultipartFormData) -> Void in
-            formData.appendPartWithFileData(UIImageJPEGRepresentation(photo, 0.75)!, name: "photo", fileName: "tempPhoto.jpg", mimeType: "image/jpeg")
-            }, success: { (operation, responseObject) -> Void in
-                var errorObject: NSError?
-                
-                if let responseObject = responseObject as? [String:AnyObject] {
-                    if let error = responseObject["error"] as? [String:AnyObject] {
-                        if let errorCode = error["code"] as? Int {
-                            if errorCode == 0 {
-                                if let avatarID = responseObject["avatar_id"] as? String {
-                                    self.fetchAvatar(avatarID, success: success, failure: failure)
-                                }
-                            }
-                            else {
-                                var userInfo: [NSObject: AnyObject] = [:]
-                                if let message = error["message"] {
-                                    userInfo[NSLocalizedDescriptionKey] = message
-                                }
-                                errorObject = NSError(domain: self.kFaceKitErrorDomain, code: errorCode, userInfo: userInfo)
-                            }
-                        }
-                        else {
-                            var userInfo: [NSObject: AnyObject] = [:]
-                            if let message = error["message"] {
-                                userInfo[NSLocalizedDescriptionKey] = message
-                            }
-                            errorObject = NSError(domain: self.kFaceKitErrorDomain, code: -1, userInfo: userInfo)
-                        }
-                    }
-                    else {
-                        errorObject = NSError(domain: self.kFaceKitErrorDomain, code: -1, userInfo: nil)
-                    }
-                }
-                else {
-                    errorObject = NSError(domain: self.kFaceKitErrorDomain, code: -1, userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("", comment: "")])
-                }
-
-                if let error = errorObject {
-                    failure?(error: error)
-                }
-            }, failure: { (operation, error) -> Void in
+        let request = FKMutableURLRequest(path: "")
+        request.HTTPMethod = "POST"
+        request.setHTTPParameters(parameter, image: photo)
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+            if let error = error {
                 failure?(error: error)
-        })
+                return
+            }
+
+            guard let data = data else {
+                failure?(error: NSError(domain: self.kFaceKitErrorDomain, code: -1, userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("Have not response data", comment: "")]))
+                return
+            }
+            
+            guard let responseObject = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0)) as? [String: AnyObject] else {
+                failure?(error: NSError(domain: self.kFaceKitErrorDomain, code: -1, userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("response data is not JSON", comment: "")]))
+                return
+            }
+            
+            guard let error = responseObject?["error"] as? [String: AnyObject] else {
+                failure?(error: NSError(domain: self.kFaceKitErrorDomain, code: -1, userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("error information not found", comment: "")]))
+                return
+            }
+            
+            var errorCode = -1
+            if let code = error["code"] as? Int {
+                errorCode = code
+            }
+            
+            if errorCode != 0 {
+                var userInfo: [NSObject: AnyObject] = [:]
+                if let message = error["message"] {
+                    userInfo[NSLocalizedDescriptionKey] = message
+                }
+                failure?(error: NSError(domain: self.kFaceKitErrorDomain, code: errorCode, userInfo: userInfo))
+                return
+            }
+            
+            guard let avatarID = responseObject?["avatar_id"] as? String else {
+                failure?(error: NSError(domain: self.kFaceKitErrorDomain, code: -1, userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("avatar id not found", comment: "")]))
+                return
+            }
+            
+            self.fetchAvatar(avatarID, success: success, failure: failure)
+        }
+        
+        task.resume()
     }
     
     func fetchAvatar(avatarID: String, success: ((avatarObject: FKAvatarObject)->Void)?, failure: ((error: NSError)->Void)?) {
         
-        FKHTTPRequestOperationManager.defaultManager.GET(avatarID, parameters: nil, success: { (operation, responseObject) -> Void in
-            if let responseObject = responseObject as? [String:AnyObject] {
-                if let data = responseObject["data"] as? [String: String] {
-                    let avatar = FKAvatar(avatarID: avatarID, gender: .Male)
-                    avatar.setupAvatar(data)
-                    avatar.downloadCompleted = { ()->Void in
-                        let scene = FKAvatarManager.defaultScene(avatar.gender)
-                        self.createCustomAvatar(scene)
-                        
-                        let avatarObject = FKAvatarObject(avatar: avatar, scene: scene)
-                        
-                        self.lastAvatarObject = avatarObject
-                        success?(avatarObject: avatarObject)
-                    }
-                    
-                    self.avatar = avatar
-                }
-                else {
-                    var errorCode = -1
-                    var userInfo: [NSObject: AnyObject]?
-                    
-                    if let error = responseObject["error"] as? [String: AnyObject] {
-                        if let message = error["message"] as? Int {
-                            userInfo = [NSLocalizedDescriptionKey: message]
-                        }
-                        if let code = error["code"] as? Int {
-                            errorCode = code
-                        }
-                    }
-                    
-                    let error = NSError(domain: self.kFaceKitErrorDomain, code: errorCode, userInfo: userInfo)
-                    
-                    failure?(error: error)
-                }
-            }
-            }, failure: { (operation, error) -> Void in
+        let request = FKMutableURLRequest(path: avatarID)
+        request.HTTPMethod = "GET"
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+            if let error = error {
                 failure?(error: error)
-        })
+                return
+            }
+            
+            guard let data = data else {
+                failure?(error: NSError(domain: self.kFaceKitErrorDomain, code: -1, userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("Have not response data", comment: "")]))
+                return
+            }
+            
+            guard let responseObject = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0)) as? [String: AnyObject] else {
+                failure?(error: NSError(domain: self.kFaceKitErrorDomain, code: -1, userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("response data is not JSON", comment: "")]))
+                return
+            }
+            
+            guard let avatarData = responseObject?["data"] as? [String: String] else {
+                var errorCode = -1
+                var userInfo: [NSObject: AnyObject]?
+
+                if let error = responseObject?["error"] as? [String: AnyObject] {
+                    if let message = error["message"] as? Int {
+                        userInfo = [NSLocalizedDescriptionKey: message]
+                    }
+                    if let code = error["code"] as? Int {
+                        errorCode = code
+                    }
+                }
+
+                let error = NSError(domain: self.kFaceKitErrorDomain, code: errorCode, userInfo: userInfo)
+                
+                failure?(error: error)
+                return
+            }
+            
+            let avatar = FKAvatar(avatarID: avatarID, gender: .Male)
+            avatar.setupAvatar(avatarData)
+            avatar.downloadCompleted = { ()->Void in
+                let scene = FKAvatarManager.defaultScene(avatar.gender)
+                self.createCustomAvatar(scene, avatar: avatar)
+
+                let avatarObject = FKAvatarObject(avatar: avatar, scene: scene)
+
+                self.lastAvatarObject = avatarObject
+                success?(avatarObject: avatarObject)
+            }
+            
+            self.avatar = avatar
+        }
+        
+        task.resume()
     }
     
-    func createCustomAvatar(avatarScene: SCNScene) {
+    func createCustomAvatar(avatarScene: SCNScene, avatar: FKAvatar) {
         let node = avatarScene.rootNode
-        if let defaultHead = node.childNodeWithName("A_Q3_M_Hd", recursively: true) {
-            
-            if let avatar = self.avatar {
-                
-                var targets: [SCNGeometry] = []
-                for i in 0..<avatar.geometrySourcesSemanticNormal.count {
-                    var geometrySources: [SCNGeometrySource] = []
-                    if let geometry = defaultHead.geometry {
-                        geometrySources += geometry.geometrySourcesForSemantic(SCNGeometrySourceSemanticTexcoord)
-                        geometrySources.append(avatar.geometrySourcesSemanticNormal[i])
-                        geometrySources.append(avatar.geometrySourcesSemanticVertex[i])
-                        
-                        targets.append(SCNGeometry(sources: geometrySources, elements: geometry.geometryElements))
-                    }
+        
+        var genderString = "M"
+        switch avatar.gender {
+        case .Female:
+            genderString = "F"
+            break
+        default:
+            break
+        }
+        
+        if let defaultHead = node.childNodeWithName("A_Q3_\(genderString)_Hd", recursively: true) {
+            var targets: [SCNGeometry] = []
+            for i in 0..<avatar.geometrySourcesSemanticNormal.count {
+                var geometrySources: [SCNGeometrySource] = []
+                if let geometry = defaultHead.geometry {
+                    geometrySources += geometry.geometrySourcesForSemantic(SCNGeometrySourceSemanticTexcoord)
+                    geometrySources.append(avatar.geometrySourcesSemanticNormal[i])
+                    geometrySources.append(avatar.geometrySourcesSemanticVertex[i])
+                    
+                    targets.append(SCNGeometry(sources: geometrySources, elements: geometry.geometryElements))
                 }
-                
-                if defaultHead.morpher == nil {
-                    defaultHead.morpher = SCNMorpher()
-                }
-                defaultHead.morpher?.targets = targets
-                
-                defaultHead.morpher?.setWeight(1, forTargetAtIndex: 0)
             }
+            
+            if defaultHead.morpher == nil {
+                defaultHead.morpher = SCNMorpher()
+            }
+            defaultHead.morpher?.targets = targets
+            
+            defaultHead.morpher?.setWeight(1, forTargetAtIndex: 0)
         }
     }
 }

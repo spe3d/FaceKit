@@ -3,7 +3,7 @@
 //  Insta3D_iOS-Sample
 //
 //  Created by Daniel on 2015/11/9.
-//  Modified by Daniel on 2015/12/11.
+//  Modified by Daniel on 2015/12/21.
 //  Copyright © 2015年 Speed 3D Inc. All rights reserved.
 //
 
@@ -26,19 +26,32 @@ public class FKAvatarObject: NSObject {
     public let sceneNode = SCNNode()
     
     /**
-     Create a default avatar.
+     The default camera shoots the avatar with full body.
      */
+    public let defaultCameraNode = SCNNode()
+    
+    /**
+     Get focused on the avatar's head of the camera.
+     */
+    public let headCameraNode = SCNNode()
+    
+    /**
+     Create a default avatar.
+    */
     public init(genderOfDefaultAvatar gender: FKGender) {
         self.avatar = FKAvatar(gender: gender)
         super.init()
         let scene = FKAvatarManager.defaultScene(gender)
         for node in scene.rootNode.childNodes {
-            sceneNode.addChildNode(node)
+            self.sceneNode.addChildNode(node)
         }
-        sceneNode.name = kDefaultSceneNodeName
+        self.setupDefaultCameraNode()
+        self.setupHeadCameraNode()
+        self.sceneNode.name = kDefaultSceneNodeName
         
         self.setHair(FKAvatarHair(gender: gender))
         self.setClothes(FKAvatarClothes(gender: gender))
+        self.setMotion(FKAvatarMotion(gender: gender))
         self.setSkinColor(.Default)
     }
     
@@ -46,47 +59,88 @@ public class FKAvatarObject: NSObject {
         self.avatar = avatar
         super.init()
         for node in scene.rootNode.childNodes {
-            sceneNode.addChildNode(node)
+            self.sceneNode.addChildNode(node)
         }
-        sceneNode.name = kDefaultSceneNodeName
+        self.setupDefaultCameraNode()
+        self.setupHeadCameraNode()
+        self.sceneNode.name = kDefaultSceneNodeName
         
         self.setHair(FKAvatarHair(gender: avatar.gender))
         self.setClothes(FKAvatarClothes(gender: avatar.gender))
+        self.setMotion(FKAvatarMotion(gender: avatar.gender))
         self.setSkinColor(.Default)
+    }
+    
+    func setupDefaultCameraNode() {
+        self.defaultCameraNode.name = "FKDefaultCameraNode"
+        let camera = SCNCamera()
+        
+        self.defaultCameraNode.position = SCNVector3Make(0, -120, 45)
+        self.defaultCameraNode.eulerAngles = SCNVector3Make(Float(M_PI_2), 0, 0)
+        camera.yFov = 60
+        camera.zFar = 300
+        
+        self.defaultCameraNode.camera = camera
+        
+        self.sceneNode.addChildNode(self.defaultCameraNode)
+    }
+    
+    func setupHeadCameraNode() {
+        self.headCameraNode.name = "FKHeadCameraNode"
+        let camera = SCNCamera()
+        
+        self.headCameraNode.position = SCNVector3Make(25, 0, 60)
+        self.headCameraNode.eulerAngles = SCNVector3Make(-Float(M_PI / 15), 0, -Float(M_PI_2))
+        camera.xFov = 50
+        camera.yFov = 40
+        camera.zFar = 100
+        
+        self.headCameraNode.camera = camera
+        
+        self.sceneNode.childNodeWithName("Neck", recursively: true)?.addChildNode(self.headCameraNode)
     }
     
     /**
      Changes clothes at the avatar.
      */
     public func setClothes(clothes: FKAvatarClothes!) {
-        self.avatar?.clothes = clothes
-        
-        if let defaultBody = sceneNode.childNodeWithName("A_Q3_M_Bd", recursively: true) {
-            defaultBody.hidden = false
+        if let avatar = self.avatar {
+            avatar.clothes = clothes
             
-            if clothes.name().isEmpty == false {
-                let clothesName = clothes.name()
+            var genderString = "M"
+            switch avatar.gender {
+            case .Female:
+                genderString = "F"
+                break
+            default:
+                break
+            }
+            
+            if let defaultBody = sceneNode.childNodeWithName("A_Q3_\(genderString)_Bd", recursively: true) {
+                defaultBody.hidden = false
                 
-                let node = SCNScene(forDaeFileName: clothesName, subDirectory: clothesName).rootNode
-                defaultBody.hidden = true
-                
-                for body in sceneNode.childNodes {
-                    if body.name?.rangeOfString("_S_") != nil {
-                        body.removeFromParentNode()
+                if clothes.name().isEmpty == false {
+                    let clothesName = clothes.name()
+                    
+                    let node = SCNScene(forDaeFileName: clothesName, subDirectory: clothesName).rootNode
+                    defaultBody.hidden = true
+                    
+                    for body in sceneNode.childNodes {
+                        if body.name?.rangeOfString("_S_") != nil {
+                            body.removeFromParentNode()
+                        }
                     }
-                }
-                
-                for body in node.childNodes {
-                    if let geometry = body.geometry {
-                        
-                        geometry.convertContentsPathToImage()
-                        
-                        sceneNode.addChildNode(body)
-                        body.skinner?.skeleton = defaultBody.skinner?.skeleton
+                    
+                    for body in node.childNodes {
+                        if let geometry = body.geometry {
+                            
+                            geometry.convertContentsPathToImage()
+                            
+                            sceneNode.addChildNode(body)
+                            body.skinner?.skeleton = defaultBody.skinner?.skeleton
+                        }
                     }
-                }
-                
-                if let avatar = self.avatar {
+                    
                     self.setSkinColor(avatar.skinColor)
                 }
             }
@@ -167,7 +221,17 @@ public class FKAvatarObject: NSObject {
      */
     public func setFacial(weights: [Float]) {
         if let avatar = self.avatar {
-            if let head = sceneNode.childNodeWithName("A_Q3_M_Hd", recursively: true) {
+            
+            var genderString = "M"
+            switch avatar.gender {
+            case .Female:
+                genderString = "F"
+                break
+            default:
+                break
+            }
+            
+            if let head = sceneNode.childNodeWithName("A_Q3_\(genderString)_Hd", recursively: true) {
                 let animationKey = "morpherKey"
                 head.removeAnimationForKey(animationKey)
                 let animationGroup = CAAnimationGroup()
@@ -195,8 +259,17 @@ public class FKAvatarObject: NSObject {
         if let avatar = self.avatar  {
             avatar.skinColor = skinColor
             
+            var genderString = "M"
+            switch avatar.gender {
+            case .Female:
+                genderString = "F"
+                break
+            default:
+                break
+            }
+            
             if let image = avatar.headImages[skinColor] {
-                sceneNode.childNodeWithName("A_Q3_M_Hd", recursively: true)?.geometry?.firstMaterial?.diffuse.contents = image
+                sceneNode.childNodeWithName("A_Q3_\(genderString)_Hd", recursively: true)?.geometry?.firstMaterial?.diffuse.contents = image
             }
             for bodyNode in sceneNode.childNodes {
                 if bodyNode.name?.rangeOfString("_S_") != nil {
@@ -214,3 +287,4 @@ public class FKAvatarObject: NSObject {
         }
     }
 }
+

@@ -3,7 +3,7 @@
 //  Insta3D_iOS-Sample
 //
 //  Created by Daniel on 2015/10/26.
-//  Modified by Daniel on 2015/12/1.
+//  Modified by Daniel on 2015/12/21.
 //  Copyright © 2015年 Speed 3D Inc. All rights reserved.
 //
 
@@ -27,13 +27,19 @@ public class FKAvatarClothes: NSObject {
      
      - Parameters:
         - gender: Gender of Avatar
+        - random: Using a Random Clothes
      */
-    public init(gender: FKGender) {
+    public init(gender: FKGender, random: Bool = false) {
         super.init()
         
         if let clothesNames = defaultClothes[gender] {
             if !clothesNames.isEmpty {
-                self.clothesName = clothesNames[FKRandom.within(0..<clothesNames.count)]
+                if random {
+                    self.clothesName = clothesNames[FKRandom.within(0..<clothesNames.count)]
+                }
+                else {
+                    self.clothesName = clothesNames[0]
+                }
             }
         }
     }

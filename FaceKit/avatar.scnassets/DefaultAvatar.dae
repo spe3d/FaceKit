@@ -4,34 +4,11 @@
   <contributor>
    <authoring_tool>SceneKit Collada Exporter v1.0</authoring_tool>
   </contributor>
-  <created>2015-12-11T04:01:10Z</created>
-  <modified>2015-12-11T04:01:10Z</modified>
+  <created>2015-12-14T11:06:30Z</created>
+  <modified>2015-12-14T11:06:30Z</modified>
   <unit meter="0.025400"/>
   <up_axis>Z_UP</up_axis>
  </asset>
- <library_cameras>
-  <camera id="camera-copy" name="camera-copy">
-   <optics>
-    <technique_common>
-     <perspective>
-      <yfov>60</yfov>
-      <znear>1</znear>
-      <zfar>300</zfar>
-     </perspective>
-    </technique_common>
-   </optics>
-   <extra>
-    <technique profile="SceneKit">
-     <depth_of_field>
-      <focal_depth>10</focal_depth>
-      <sample_radius>0</sample_radius>
-      <focal_size>0</focal_size>
-      <focal_aperture>0.125</focal_aperture>
-     </depth_of_field>
-    </technique>
-   </extra>
-  </camera>
- </library_cameras>
  <library_images>
   <image id="image1">
    <init_from>Texture/I_Q3_M_Bd_0000_Co.png</init_from>
@@ -721,10 +698,6 @@
       </technique_common>
      </bind_material>
     </instance_controller>
-   </node>
-   <node id="camera" name="camera">
-    <matrix>1 0 0 0 0 -1.192093e-07 -1 -120 0 1 -1.192093e-07 45 0 0 0 1 </matrix>
-    <instance_camera url="#camera-copy"/>
    </node>
   </visual_scene>
  </library_visual_scenes>

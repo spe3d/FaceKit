@@ -3,13 +3,12 @@
 //  Insta3D_iOS-Sample
 //
 //  Created by Daniel on 2015/10/21.
-//  Modified by Daniel on 2015/12/11.
+//  Modified by Daniel on 2015/12/24.
 //  Copyright © 2015年 Speed 3D Inc. All rights reserved.
 //
 
 import UIKit
 import SceneKit
-import AFNetworking
 
 /**
  An avatar object.
@@ -24,7 +23,7 @@ class FKAvatar: NSObject {
     /**
      The `gender` for gender of avatar. Default is `Male`.
      */
-    let gender: FKGender!
+    let gender: FKGender
     
     /**
      The `headImages` for head of avatar.
@@ -198,44 +197,72 @@ class FKAvatar: NSObject {
     
     func getAvatarHeadImage(skinColor: FKSkinColor, url: NSURL) {
         let request = NSURLRequest(URL: url, cachePolicy: .ReloadIgnoringLocalCacheData, timeoutInterval: 30)
-        let requestOperation = AFHTTPRequestOperation(request: request)
-        requestOperation.responseSerializer = AFImageResponseSerializer()
-        requestOperation.setCompletionBlockWithSuccess({ (operation, responseObject) -> Void in
-            if let responseObject = responseObject as? UIImage {
-                self.headImages[skinColor] = responseObject
-            }
-            }, failure: { (operation, error) -> Void in
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                if let _ = error {
+                    return
+                }
                 
-        })
-        requestOperation.start()
+                guard let data = data else {
+                    return
+                }
+                
+                guard let image = UIImage(data: data) else {
+                    return
+                }
+                
+                self.headImages[skinColor] = image
+            }
+        }
+        
+        task.resume()
     }
     
     func getAvatarBodyImage(skinColor: FKSkinColor, url: NSURL) {
         let request = NSURLRequest(URL: url, cachePolicy: .ReloadIgnoringLocalCacheData, timeoutInterval: 30)
-        let requestOperation = AFHTTPRequestOperation(request: request)
-        requestOperation.responseSerializer = AFImageResponseSerializer()
-        requestOperation.setCompletionBlockWithSuccess({ (operation, responseObject) -> Void in
-            if let responseObject = responseObject as? UIImage {
-                self.bodyImages[skinColor] = responseObject
-            }
-            }, failure: { (operation, error) -> Void in
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                if let _ = error {
+                    return
+                }
                 
-        })
-        requestOperation.start()
+                guard let data = data else {
+                    return
+                }
+                
+                guard let image = UIImage(data: data) else {
+                    return
+                }
+                
+                self.bodyImages[skinColor] = image
+            }
+        }
+        
+        task.resume()
     }
     
     func getAvatarRefInfo(url: NSURL) {
         let request = NSURLRequest(URL: url, cachePolicy: .ReloadIgnoringLocalCacheData, timeoutInterval: 30)
-        let requestOperation = AFHTTPRequestOperation(request: request)
-        requestOperation.responseSerializer = AFHTTPResponseSerializer()
-        requestOperation.setCompletionBlockWithSuccess({ (operation, responseObject) -> Void in
-            if let responseObject = responseObject as? NSData {
-                self.refInfo = String(NSString(data: responseObject, encoding: NSUTF8StringEncoding))
-            }
-            }, failure: { (operation, error) -> Void in
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                if let _ = error {
+                    return
+                }
                 
-        })
-        requestOperation.start()
+                guard let data = data else {
+                    return
+                }
+                
+                if let refInfo = String(data: data, encoding: NSUTF8StringEncoding) {
+                    self.refInfo = refInfo
+                }
+            }
+        }
+        
+        task.resume()
     }
 }
 

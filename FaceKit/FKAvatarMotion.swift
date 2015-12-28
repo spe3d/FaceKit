@@ -3,7 +3,7 @@
 //  Insta3D_iOS-Sample
 //
 //  Created by Daniel on 2015/10/26.
-//  Modified by Daniel on 2015/12/1.
+//  Modified by Daniel on 2015/12/21.
 //  Copyright © 2015年 Speed 3D Inc. All rights reserved.
 //
 
@@ -27,14 +27,18 @@ public class FKAvatarMotion: NSObject {
      
      - Parameters:
         - gender: Gender of Avatar
+        - random: Using a Random Motion
      */
-    public init(gender: FKGender) {
+    public init(gender: FKGender, random: Bool = false) {
         super.init()
         
-        if FKRandom.generate() {
-            if let motionNames = defaultMotion[gender] {
-                if !motionNames.isEmpty {
+        if let motionNames = defaultMotion[gender] {
+            if !motionNames.isEmpty {
+                if random {
                     self.motionName = motionNames[FKRandom.within(0..<motionNames.count)]
+                }
+                else {
+                    self.motionName = motionNames[0]
                 }
             }
         }

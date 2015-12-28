@@ -8,24 +8,27 @@
 
 import UIKit
 import SceneKit
-import AFNetworking
 import MBProgressHUD
 import FaceKit
 
 class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegate {
 
     @IBOutlet var avatarView: SCNView!
+    @IBOutlet var avatarHeadView: SCNView!
     
     var avatarObject: FKAvatarObject?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.avatarView.scene = SCNScene(named: "Scene.dae")
-        self.avatarView.scene = SCNScene(named: "Scene.scn")
+        let scene = SCNScene()
+        self.avatarView.scene = scene
+        self.avatarHeadView.scene = scene
         
         self.avatarObject = FKAvatarObject(genderOfDefaultAvatar: .Male)
         self.avatarView.scene?.rootNode.addChildNode(self.avatarObject!.sceneNode)
+        self.avatarView.pointOfView = self.avatarObject!.defaultCameraNode
+        self.avatarHeadView.pointOfView = self.avatarObject!.headCameraNode
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -48,19 +51,19 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
     }
     
     @IBAction func changeHair(sender: UIButton) {
-        self.avatarObject?.setHair(FKAvatarHair(gender: .Male))
+        self.avatarObject?.setHair(FKAvatarHair(gender: .Male, random: true))
     }
     
     @IBAction func changeClothes(sender: UIButton) {
-        self.avatarObject?.setClothes(FKAvatarClothes(gender: .Male))
+        self.avatarObject?.setClothes(FKAvatarClothes(gender: .Male, random: true))
     }
     
     @IBAction func changeMotion(sender: UIButton) {
-        self.avatarObject?.setMotion(FKAvatarMotion(gender: .Male))
+        self.avatarObject?.setMotion(FKAvatarMotion(gender: .Male, random: true))
     }
     
     @IBAction func changeGlasses(sender: UIButton) {
-        self.avatarObject?.setGlasses(FKAvatarGlasses(gender: .Male))
+        self.avatarObject?.setGlasses(FKAvatarGlasses(gender: .Male, random: true))
     }
     
     var index = 0
@@ -86,7 +89,18 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
     func cameraViewController(viewController: SPECameraViewController, didCreateAvatarObject avatarObject: FKAvatarObject) {
         self.avatarObject = avatarObject
         
-        self.avatarView.scene?.rootNode.childNodeWithName("FKAvatarNode", recursively: true)?.removeFromParentNode()
-        self.avatarView.scene?.rootNode.addChildNode(avatarObject.sceneNode)
+        if let rootNode = self.avatarView.scene?.rootNode {
+            rootNode.childNodeWithName("FKAvatarNode", recursively: true)?.removeFromParentNode()
+            rootNode.addChildNode(avatarObject.sceneNode)
+            
+            for node in rootNode.childNodes {
+                if node.camera != nil {
+                    node.removeFromParentNode()
+                }
+            }
+        }
+        
+        self.avatarView.pointOfView = avatarObject.defaultCameraNode
+        self.avatarHeadView.pointOfView = avatarObject.headCameraNode
     }
 }
