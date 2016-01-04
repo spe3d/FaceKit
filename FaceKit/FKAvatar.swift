@@ -3,8 +3,8 @@
 //  Insta3D_iOS-Sample
 //
 //  Created by Daniel on 2015/10/21.
-//  Modified by Daniel on 2015/12/24.
-//  Copyright © 2015年 Speed 3D Inc. All rights reserved.
+//  Modified by Daniel on 2016/01/04.
+//  Copyright © 2015-2016年 Speed 3D Inc. All rights reserved.
 //
 
 import UIKit
@@ -13,17 +13,19 @@ import SceneKit
 /**
  An avatar object.
  */
-class FKAvatar: NSObject {
+class FKAvatar: NSObject, NSSecureCoding {
     
     /**
      The `avatarID` for avatar's ID.
      */
     let avatarID: String!
+    let kAvatarID = "avatarID"
     
     /**
      The `gender` for gender of avatar. Default is `Male`.
      */
     let gender: FKGender
+    let kGender = "gender"
     
     /**
      The `headImages` for head of avatar.
@@ -38,6 +40,7 @@ class FKAvatar: NSObject {
             }
         }
     }
+    let kHeadImages = "headImages"
     
     /**
      The `bodyImages` for body of avatar.
@@ -45,6 +48,7 @@ class FKAvatar: NSObject {
      TODO: Complete parameter `skinColor`, the parameter `headImages` and `bodyImages` are set to private.
      */
     var bodyImages: [FKSkinColor: UIImage] = [:]
+    let kBodyImages = "bodyImages"
     
     /**
      The `refInfo` for information of avatar. This string include all expression for avatar.
@@ -62,6 +66,7 @@ class FKAvatar: NSObject {
             }
         }
     }
+    let kRefInfo = "refInfo"
     
     var downloadCompleted: (()->Void)?
     
@@ -84,20 +89,25 @@ class FKAvatar: NSObject {
      The `hair` for hair of avatar. If `nil`, the avatar hasn't hair.
      */
     var hair: FKAvatarHair?
+    let kHair = "hair"
     
     /**
      The `clothes` for clothes of avatar. If `nil`, the avatar hasn't clothes.
      */
     var clothes: FKAvatarClothes?
+    let kClothes = "clothes"
     
     /**
      The `motion` for motion of avatar. If `nil`, the avatar hasn't motion.
      */
     var motion: FKAvatarMotion?
+    let kMotion = "motion"
     
     var glasses: FKAvatarGlasses?
+    let kGlasses = "glasses"
     
     var skinColor = FKSkinColor.Default
+    let kSkinColor = "skinColor"
     
     init(gender: FKGender) {
         self.avatarID = ""
@@ -106,8 +116,6 @@ class FKAvatar: NSObject {
     
     /**
      Creates a avatar from an avatar's id. The gender of avatar default is `Male`.
-     
-     TODO: This initialization will be changed to find avatar at CoreData.
      */
     init(avatarID: String!) {
         self.avatarID = avatarID
@@ -120,6 +128,59 @@ class FKAvatar: NSObject {
     init(avatarID: String!, gender: FKGender!) {
         self.avatarID = avatarID
         self.gender = gender
+    }
+    
+    /**
+     Returns an object initialized from data in a given unarchiver.
+     */
+    required init(coder aDecoder: NSCoder) {
+        self.avatarID   = aDecoder.decodeObjectOfClass(NSString.self, forKey: self.kAvatarID) as! String
+        self.gender     = FKGender(rawValue: aDecoder.decodeObjectOfClass(NSString.self, forKey: self.kGender) as! String)!
+        
+        let headImages = aDecoder.decodeObjectOfClass(NSDictionary.self, forKey: self.kHeadImages) as! [String: NSData]
+        for (key, value) in headImages {
+            self.headImages[FKSkinColor(rawValue: key)!] = NSKeyedUnarchiver.unarchiveObjectWithData(value) as? UIImage
+        }
+        
+        let bodyImages = aDecoder.decodeObjectOfClass(NSDictionary.self, forKey: self.kBodyImages) as! [String: NSData]
+        for (key, value) in bodyImages {
+            self.bodyImages[FKSkinColor(rawValue: key)!] = NSKeyedUnarchiver.unarchiveObjectWithData(value) as? UIImage
+        }
+        
+        self.refInfo    = aDecoder.decodeObjectOfClass(NSString.self, forKey: self.kRefInfo) as? String
+        self.hair       = aDecoder.decodeObjectOfClass(FKAvatarHair.self, forKey: self.kHair)
+        self.clothes    = aDecoder.decodeObjectOfClass(FKAvatarClothes.self, forKey: self.kClothes)
+        self.motion     = aDecoder.decodeObjectOfClass(FKAvatarMotion.self, forKey: self.kMotion)
+        self.glasses    = aDecoder.decodeObjectOfClass(FKAvatarGlasses.self, forKey: self.kGlasses)
+        
+        self.skinColor  = FKSkinColor(rawValue: aDecoder.decodeObjectOfClass(NSString.self, forKey: self.kSkinColor) as! String)!
+    }
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(self.avatarID, forKey: self.kAvatarID)
+        aCoder.encodeObject(self.gender.rawValue, forKey: self.kGender)
+        var headImages: [String: NSData] = [:]
+        for (key, value) in self.headImages {
+            headImages[key.rawValue] = NSKeyedArchiver.archivedDataWithRootObject(value)
+        }
+        aCoder.encodeObject(headImages, forKey: self.kHeadImages)
+        
+        var bodyImages: [String: NSData] = [:]
+        for (key, value) in self.bodyImages {
+            bodyImages[key.rawValue] = NSKeyedArchiver.archivedDataWithRootObject(value)
+        }
+        aCoder.encodeObject(bodyImages, forKey: self.kBodyImages)
+        
+        aCoder.encodeObject(self.refInfo, forKey: self.kRefInfo)
+        aCoder.encodeObject(self.hair, forKey: self.kHair)
+        aCoder.encodeObject(self.clothes, forKey: self.kClothes)
+        aCoder.encodeObject(self.motion, forKey: self.kMotion)
+        aCoder.encodeObject(self.glasses, forKey: self.kGlasses)
+        aCoder.encodeObject(self.skinColor.rawValue, forKey: self.kSkinColor)
+    }
+    
+    static func supportsSecureCoding() -> Bool {
+        return true
     }
     
     func setupGeometrySources(refInfo: String) {

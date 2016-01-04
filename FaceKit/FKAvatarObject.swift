@@ -3,8 +3,8 @@
 //  Insta3D_iOS-Sample
 //
 //  Created by Daniel on 2015/11/9.
-//  Modified by Daniel on 2015/12/21.
-//  Copyright © 2015年 Speed 3D Inc. All rights reserved.
+//  Modified by Daniel on 2016/01/04.
+//  Copyright © 2015-2016年 Speed 3D Inc. All rights reserved.
 //
 
 import UIKit
@@ -14,32 +14,46 @@ import SceneKit
  An `FKAvatarObject` object has a node of the avatar on a scene graph.
  You have to show the avatar, you need to add `sceneNode` in your scene.
  To modify style on the avatar, use methods of `FKAvatarObject` can immediately to update on the `sceneNode`.
+ 
+ Save an Avatar Object
+ 
+ FaceKit provides to save an avatar object to a file.
+ FaceKit objects support the `NSSecureCoding` protocol.
+ Use the `NSKeyedArchiver` class to serialize an avatar object and all its contents, and the `NSKeyedUnarchiver` class to load an archived avatar object.
+ Archived avatar objects support all features of FaceKit.
  */
-public class FKAvatarObject: NSObject {
+public class FKAvatarObject: NSObject, NSSecureCoding {
     let kDefaultSceneNodeName = "FKAvatarNode"
     
     let avatar: FKAvatar?
+    let kAvatar = "avatar"
     
     /**
      The node of the avatar on the scene graph.
      */
-    public let sceneNode = SCNNode()
+    public let sceneNode: SCNNode
+    let kSceneNode = "sceneNode"
     
     /**
      The default camera shoots the avatar with full body.
      */
-    public let defaultCameraNode = SCNNode()
+    public let defaultCameraNode: SCNNode
+    let kDefaultCameraNode = "defaultCameraNode"
     
     /**
      Get focused on the avatar's head of the camera.
      */
-    public let headCameraNode = SCNNode()
+    public let headCameraNode: SCNNode
+    let kHeadCameraNode = "headCameraNode"
     
     /**
      Create a default avatar.
-    */
+     */
     public init(genderOfDefaultAvatar gender: FKGender) {
         self.avatar = FKAvatar(gender: gender)
+        self.sceneNode = SCNNode()
+        self.defaultCameraNode = SCNNode()
+        self.headCameraNode = SCNNode()
         super.init()
         let scene = FKAvatarManager.defaultScene(gender)
         for node in scene.rootNode.childNodes {
@@ -57,6 +71,9 @@ public class FKAvatarObject: NSObject {
     
     init(avatar: FKAvatar!, scene: SCNScene) {
         self.avatar = avatar
+        self.sceneNode = SCNNode()
+        self.defaultCameraNode = SCNNode()
+        self.headCameraNode = SCNNode()
         super.init()
         for node in scene.rootNode.childNodes {
             self.sceneNode.addChildNode(node)
@@ -69,6 +86,34 @@ public class FKAvatarObject: NSObject {
         self.setClothes(FKAvatarClothes(gender: avatar.gender))
         self.setMotion(FKAvatarMotion(gender: avatar.gender))
         self.setSkinColor(.Default)
+    }
+    
+    /**
+     Returns an object initialized from data in a given unarchiver.
+     */
+    public required init?(coder aDecoder: NSCoder) {
+        self.avatar = aDecoder.decodeObjectForKey(self.kAvatar) as? FKAvatar
+        self.sceneNode = aDecoder.decodeObjectForKey(self.kSceneNode) as! SCNNode
+        self.defaultCameraNode = aDecoder.decodeObjectForKey(self.kDefaultCameraNode) as! SCNNode
+        self.headCameraNode = aDecoder.decodeObjectForKey(self.kHeadCameraNode) as! SCNNode
+        super.init()
+    }
+    
+    /**
+     Encodes the receiver using a given archiver.
+     */
+    public func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(self.avatar, forKey: self.kAvatar)
+        aCoder.encodeObject(self.sceneNode, forKey: self.kSceneNode)
+        aCoder.encodeObject(self.defaultCameraNode, forKey: self.kDefaultCameraNode)
+        aCoder.encodeObject(self.headCameraNode, forKey: self.kHeadCameraNode)
+    }
+    
+    /**
+     Returns the class supports secure coding.
+     */
+    public static func supportsSecureCoding() -> Bool {
+        return true
     }
     
     func setupDefaultCameraNode() {
@@ -287,4 +332,3 @@ public class FKAvatarObject: NSObject {
         }
     }
 }
-
