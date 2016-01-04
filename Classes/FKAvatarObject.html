@@ -69,13 +69,20 @@
             <h1>FKAvatarObject</h1>
               <div class="declaration">
                 <div class="Swift">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">FKAvatarObject</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">FKAvatarObject</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">NSSecureCoding</span></code></pre>
 
                 </div>
               </div>
             <p>An <code>FKAvatarObject</code> object has a node of the avatar on a scene graph.
  You have to show the avatar, you need to add <code>sceneNode</code> in your scene.
  To modify style on the avatar, use methods of <code>FKAvatarObject</code> can immediately to update on the <code>sceneNode</code>.</p>
+
+<p>Save an Avatar Object</p>
+
+<p>FaceKit provides to save an avatar object to a file.
+ FaceKit objects support the <code>NSSecureCoding</code> protocol.
+ Use the <code>NSKeyedArchiver</code> class to serialize an avatar object and all its contents, and the <code>NSKeyedUnarchiver</code> class to load an archived avatar object.
+ Archived avatar objects support all features of FaceKit.</p>
 
           </section>
           <section class="section task-group-section">
@@ -101,7 +108,7 @@
                         <h4>Declaration</h4>
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">sceneNode</span> <span class="o">=</span> <span class="kt">SCNNode</span><span class="p">()</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">sceneNode</span><span class="p">:</span> <span class="kt">SCNNode</span></code></pre>
 
                         </div>
                       </div>
@@ -128,7 +135,7 @@
                         <h4>Declaration</h4>
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">defaultCameraNode</span> <span class="o">=</span> <span class="kt">SCNNode</span><span class="p">()</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">defaultCameraNode</span><span class="p">:</span> <span class="kt">SCNNode</span></code></pre>
 
                         </div>
                       </div>
@@ -155,7 +162,7 @@
                         <h4>Declaration</h4>
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">headCameraNode</span> <span class="o">=</span> <span class="kt">SCNNode</span><span class="p">()</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">headCameraNode</span><span class="p">:</span> <span class="kt">SCNNode</span></code></pre>
 
                         </div>
                       </div>
@@ -183,6 +190,87 @@
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">genderOfDefaultAvatar</span> <span class="nv">gender</span><span class="p">:</span> <span class="kt">FKGender</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7FaceKit14FKAvatarObjectcFMS0_FT5coderCSo7NSCoder_GSqS0__"></a>
+                    <a name="//apple_ref/swift/Method/init(coder:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7FaceKit14FKAvatarObjectcFMS0_FT5coderCSo7NSCoder_GSqS0__">init(coder:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns an object initialized from data in a given unarchiver.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">required</span> <span class="nf">init</span><span class="p">?(</span><span class="n">coder</span> <span class="nv">aDecoder</span><span class="p">:</span> <span class="kt">NSCoder</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC7FaceKit14FKAvatarObject15encodeWithCoderFS0_FCSo7NSCoderT_"></a>
+                    <a name="//apple_ref/swift/Method/encodeWithCoder(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC7FaceKit14FKAvatarObject15encodeWithCoderFS0_FCSo7NSCoderT_">encodeWithCoder(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Encodes the receiver using a given archiver.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">encodeWithCoder</span><span class="p">(</span><span class="nv">aCoder</span><span class="p">:</span> <span class="kt">NSCoder</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZFC7FaceKit14FKAvatarObject20supportsSecureCodingFMS0_FT_Sb"></a>
+                    <a name="//apple_ref/swift/Method/supportsSecureCoding()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZFC7FaceKit14FKAvatarObject20supportsSecureCodingFMS0_FT_Sb">supportsSecureCoding()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the class supports secure coding.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">supportsSecureCoding</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -358,7 +446,7 @@ The <code>weight</code> range is 0-1.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2015 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2015-12-28)</p>
+          <p>&copy; 2016 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2016-01-04)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.3.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
