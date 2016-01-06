@@ -3,7 +3,7 @@
 //  Insta3D_iOS-Sample
 //
 //  Created by Daniel on 2015/11/9.
-//  Modified by Daniel on 2016/01/04.
+//  Modified by Daniel on 2016/01/06.
 //  Copyright © 2015-2016年 Speed 3D Inc. All rights reserved.
 //
 
@@ -55,10 +55,13 @@ public class FKAvatarObject: NSObject, NSSecureCoding {
         self.defaultCameraNode = SCNNode()
         self.headCameraNode = SCNNode()
         super.init()
-        let scene = FKAvatarManager.defaultScene(gender)
+        
+        let scene = self.createSceneForAvatar(self.avatar!)
+        
         for node in scene.rootNode.childNodes {
             self.sceneNode.addChildNode(node)
         }
+        
         self.setupDefaultCameraNode()
         self.setupHeadCameraNode()
         self.sceneNode.name = kDefaultSceneNodeName
@@ -69,12 +72,15 @@ public class FKAvatarObject: NSObject, NSSecureCoding {
         self.setSkinColor(.Default)
     }
     
-    init(avatar: FKAvatar!, scene: SCNScene) {
+    init(avatar: FKAvatar!) {
         self.avatar = avatar
         self.sceneNode = SCNNode()
         self.defaultCameraNode = SCNNode()
         self.headCameraNode = SCNNode()
         super.init()
+        
+        let scene = self.createSceneForAvatar(avatar)
+        
         for node in scene.rootNode.childNodes {
             self.sceneNode.addChildNode(node)
         }
@@ -92,11 +98,35 @@ public class FKAvatarObject: NSObject, NSSecureCoding {
      Returns an object initialized from data in a given unarchiver.
      */
     public required init?(coder aDecoder: NSCoder) {
-        self.avatar = aDecoder.decodeObjectForKey(self.kAvatar) as? FKAvatar
-        self.sceneNode = aDecoder.decodeObjectForKey(self.kSceneNode) as! SCNNode
-        self.defaultCameraNode = aDecoder.decodeObjectForKey(self.kDefaultCameraNode) as! SCNNode
-        self.headCameraNode = aDecoder.decodeObjectForKey(self.kHeadCameraNode) as! SCNNode
+        guard let avatar = aDecoder.decodeObjectForKey(self.kAvatar) as? FKAvatar else {
+            self.avatar = nil
+            self.sceneNode = SCNNode()
+            self.defaultCameraNode = SCNNode()
+            self.headCameraNode = SCNNode()
+            super.init()
+            return nil
+        }
+        self.avatar = avatar
+        
+        self.sceneNode = SCNNode()
+        self.defaultCameraNode = SCNNode()
+        self.headCameraNode = SCNNode()
+        
         super.init()
+        
+        let scene = self.createSceneForAvatar(avatar)
+        
+        for node in scene.rootNode.childNodes {
+            self.sceneNode.addChildNode(node)
+        }
+        self.setupDefaultCameraNode()
+        self.setupHeadCameraNode()
+        self.sceneNode.name = kDefaultSceneNodeName
+        
+        self.setHair(FKAvatarHair(gender: avatar.gender))
+        self.setClothes(FKAvatarClothes(gender: avatar.gender))
+        self.setMotion(FKAvatarMotion(gender: avatar.gender))
+        self.setSkinColor(.Default)
     }
     
     /**
@@ -104,9 +134,6 @@ public class FKAvatarObject: NSObject, NSSecureCoding {
      */
     public func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(self.avatar, forKey: self.kAvatar)
-        aCoder.encodeObject(self.sceneNode, forKey: self.kSceneNode)
-        aCoder.encodeObject(self.defaultCameraNode, forKey: self.kDefaultCameraNode)
-        aCoder.encodeObject(self.headCameraNode, forKey: self.kHeadCameraNode)
     }
     
     /**
@@ -114,6 +141,60 @@ public class FKAvatarObject: NSObject, NSSecureCoding {
      */
     public static func supportsSecureCoding() -> Bool {
         return true
+    }
+    
+    func createSceneForAvatar(avatar: FKAvatar) -> SCNScene {
+        let scene = defaultScene(avatar.gender)
+        
+        let node = scene.rootNode
+        
+        var genderString = "M"
+        switch avatar.gender {
+        case .Female:
+            genderString = "F"
+            break
+        default:
+            break
+        }
+        
+        guard let defaultHead = node.childNodeWithName("A_Q3_\(genderString)_Hd", recursively: true) else {
+            fatalError("The DAE file is fail on avatar.scnassets. Please reinstall FaceKit-Swift to latest version.")
+        }
+        
+        var targets: [SCNGeometry] = []
+        for i in 0..<avatar.geometrySourcesSemanticNormal.count {
+            var geometrySources: [SCNGeometrySource] = []
+            guard let geometry = defaultHead.geometry else {
+                continue
+            }
+            geometrySources += geometry.geometrySourcesForSemantic(SCNGeometrySourceSemanticTexcoord)
+            geometrySources.append(avatar.geometrySourcesSemanticNormal[i])
+            geometrySources.append(avatar.geometrySourcesSemanticVertex[i])
+            
+            targets.append(SCNGeometry(sources: geometrySources, elements: geometry.geometryElements))
+        }
+        
+        if defaultHead.morpher == nil {
+            defaultHead.morpher = SCNMorpher()
+        }
+        defaultHead.morpher?.targets = targets
+        
+        if targets.count > 0 {
+            defaultHead.morpher?.setWeight(1, forTargetAtIndex: 0)
+        }
+        
+        return scene
+    }
+    
+    func defaultScene(gender: FKGender!)-> SCNScene {
+        var daeFileName = ""
+        if gender == .Male {
+            daeFileName = "DefaultAvatar"
+        } else if gender == .Female {
+            daeFileName = "Female_NO_Morph"
+        }
+        
+        return SCNScene(forDaeFileName: daeFileName, subDirectory: nil)
     }
     
     func setupDefaultCameraNode() {
@@ -331,4 +412,8 @@ public class FKAvatarObject: NSObject, NSSecureCoding {
             }
         }
     }
+}
+
+enum FKAvatarError: ErrorType {
+    case CannotCreateScene
 }

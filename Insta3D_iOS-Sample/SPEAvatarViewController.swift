@@ -25,7 +25,18 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
         self.avatarView.scene = scene
         self.avatarHeadView.scene = scene
         
-        self.avatarObject = FKAvatarObject(genderOfDefaultAvatar: .Male)
+        let object = FKAvatarObject(genderOfDefaultAvatar: .Male)
+        let avatarData = NSKeyedArchiver.archivedDataWithRootObject(object)
+        guard let newObject = NSKeyedUnarchiver.unarchiveObjectWithData(avatarData) else {
+            return
+        }
+        
+        guard let avatarObject = newObject as? FKAvatarObject else {
+            return
+        }
+        
+        self.avatarObject = avatarObject
+        
         self.avatarView.scene?.rootNode.addChildNode(self.avatarObject!.sceneNode)
         self.avatarView.pointOfView = self.avatarObject!.defaultCameraNode
         self.avatarHeadView.pointOfView = self.avatarObject!.headCameraNode

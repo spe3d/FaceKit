@@ -3,8 +3,8 @@
 //  Insta3D_iOS-Sample
 //
 //  Created by Daniel on 2015/11/2.
-//  Modified by Daniel on 2015/12/24.
-//  Copyright © 2015年 Speed 3D Inc. All rights reserved.
+//  Modified by Daniel on 2016/01/06.
+//  Copyright © 2015-2016年 Speed 3D Inc. All rights reserved.
 //
 
 import UIKit
@@ -38,17 +38,6 @@ public class FKAvatarManager: NSObject {
     
     private override init() {
         
-    }
-    
-    class func defaultScene(gender: FKGender!)-> SCNScene {
-        var daeFileName = ""
-        if gender == .Male {
-            daeFileName = "DefaultAvatar"
-        } else if gender == .Female {
-            daeFileName = "Female_NO_Morph"
-        }
-        
-        return SCNScene(forDaeFileName: daeFileName, subDirectory: nil)
     }
     
     /**
@@ -151,10 +140,8 @@ public class FKAvatarManager: NSObject {
             let avatar = FKAvatar(avatarID: avatarID, gender: .Male)
             avatar.setupAvatar(avatarData)
             avatar.downloadCompleted = { ()->Void in
-                let scene = FKAvatarManager.defaultScene(avatar.gender)
-                self.createCustomAvatar(scene, avatar: avatar)
-
-                let avatarObject = FKAvatarObject(avatar: avatar, scene: scene)
+                
+                let avatarObject = FKAvatarObject(avatar: avatar)
 
                 self.lastAvatarObject = avatarObject
                 success?(avatarObject: avatarObject)
@@ -164,39 +151,5 @@ public class FKAvatarManager: NSObject {
         }
         
         task.resume()
-    }
-    
-    func createCustomAvatar(avatarScene: SCNScene, avatar: FKAvatar) {
-        let node = avatarScene.rootNode
-        
-        var genderString = "M"
-        switch avatar.gender {
-        case .Female:
-            genderString = "F"
-            break
-        default:
-            break
-        }
-        
-        if let defaultHead = node.childNodeWithName("A_Q3_\(genderString)_Hd", recursively: true) {
-            var targets: [SCNGeometry] = []
-            for i in 0..<avatar.geometrySourcesSemanticNormal.count {
-                var geometrySources: [SCNGeometrySource] = []
-                if let geometry = defaultHead.geometry {
-                    geometrySources += geometry.geometrySourcesForSemantic(SCNGeometrySourceSemanticTexcoord)
-                    geometrySources.append(avatar.geometrySourcesSemanticNormal[i])
-                    geometrySources.append(avatar.geometrySourcesSemanticVertex[i])
-                    
-                    targets.append(SCNGeometry(sources: geometrySources, elements: geometry.geometryElements))
-                }
-            }
-            
-            if defaultHead.morpher == nil {
-                defaultHead.morpher = SCNMorpher()
-            }
-            defaultHead.morpher?.targets = targets
-            
-            defaultHead.morpher?.setWeight(1, forTargetAtIndex: 0)
-        }
     }
 }
