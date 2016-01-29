@@ -117,7 +117,7 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
             
             self.view.addSubview(hud)
             hud.show(true)
-            self.avatarObject?.playVoice(wavFileURL, willPlayClosure: { () -> Void in
+            self.avatarObject?.saveAndPlayVoice(wavFileURL, willPlayClosure: { () -> Void in
                 MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
                 }, completion: { (success: Bool) -> Void in
                     
