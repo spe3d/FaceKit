@@ -9,7 +9,7 @@
 import UIKit
 import SceneKit
 import MBProgressHUD
-import FaceKit_Swift
+import FaceKit
 
 class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegate {
 
@@ -92,6 +92,36 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
         else {
             self.avatarObject?.setSkinColor(.Default)
             sender.tag = 0
+        }
+    }
+    
+    @IBAction func talkAction(sender: UIButton) {
+        var wavFileURL: NSURL? = nil
+        switch sender.tag {
+        case 1:
+            wavFileURL = NSBundle.mainBundle().URLForResource("hello", withExtension: "wav")
+            break
+        case 2:
+            wavFileURL = NSBundle.mainBundle().URLForResource("KP_NewYear_clip", withExtension: "wav")
+            break
+        case 3:
+            wavFileURL = NSBundle.mainBundle().URLForResource("welcome_to_talkii", withExtension: "wav")
+            break
+        default:
+            break
+        }
+        
+        if let wavFileURL = wavFileURL {
+            let hud = MBProgressHUD(view: self.view)
+            hud.labelText = "Calculating..."
+            
+            self.view.addSubview(hud)
+            hud.show(true)
+            self.avatarObject?.playVoice(wavFileURL, willPlayClosure: { () -> Void in
+                MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
+                }, completion: { (success: Bool) -> Void in
+                    
+            })
         }
     }
 

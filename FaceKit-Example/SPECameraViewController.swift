@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 import MBProgressHUD
-import FaceKit_Swift
+import FaceKit
 import SceneKit
 
 class SPECameraViewController: SPEViewController, AVCaptureMetadataOutputObjectsDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
