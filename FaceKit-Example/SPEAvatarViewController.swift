@@ -112,17 +112,27 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
         }
         
         if let wavFileURL = wavFileURL {
+            guard let wavFileData = NSData(contentsOfURL: wavFileURL) else {
+                return
+            }
             let hud = MBProgressHUD(view: self.view)
             hud.labelText = "Calculating..."
             
             self.view.addSubview(hud)
             hud.show(true)
-            self.avatarObject?.saveAndPlayVoice(wavFileURL, willPlayClosure: { () -> Void in
+            
+            self.avatarObject?.saveAndPlayVoice(wavFileData, willPlayClosure: { () -> Void in
                 MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
                 }, completion: { (success: Bool) -> Void in
                     
             })
         }
+    }
+    
+    @IBAction func replayTalkAction(sender: UIButton) {
+        self.avatarObject?.playLastVoice({ (success: Bool) -> Void in
+            NSLog("\(String(success))")
+        })
     }
 
     // MARK: - SPECameraViewControllerDelegate

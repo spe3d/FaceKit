@@ -134,6 +134,17 @@
                                     <action selector="talkAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Gr8-pd-LIC"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oxX-gx-w5r">
+                                <rect key="frame" x="30" y="240" width="60" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="AxT-OI-L3d"/>
+                                    <constraint firstAttribute="width" constant="60" id="R0x-xM-sMe"/>
+                                </constraints>
+                                <state key="normal" title="Replay"/>
+                                <connections>
+                                    <action selector="replayTalkAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="3Uu-KU-VWX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -155,9 +166,11 @@
                             <constraint firstItem="rMV-3S-0jG" firstAttribute="top" secondItem="bMq-cD-nCz" secondAttribute="bottom" constant="20" id="TpM-Qu-svp"/>
                             <constraint firstItem="qj1-8M-UXu" firstAttribute="centerX" secondItem="luS-kR-Sgj" secondAttribute="centerX" id="VQZ-97-q92"/>
                             <constraint firstItem="vEe-zf-o3W" firstAttribute="top" secondItem="RPQ-gy-ZcW" secondAttribute="bottom" constant="20" id="Wye-UU-Fgw"/>
+                            <constraint firstItem="oxX-gx-w5r" firstAttribute="leading" secondItem="luS-kR-Sgj" secondAttribute="leading" constant="30" id="acD-6f-v3s"/>
                             <constraint firstItem="4id-oc-wbc" firstAttribute="top" secondItem="JT5-PR-hT9" secondAttribute="bottom" constant="10" id="ccM-zC-UTH"/>
                             <constraint firstAttribute="trailing" secondItem="kMd-GD-EmD" secondAttribute="trailing" constant="30" id="dHk-H6-TBQ"/>
                             <constraint firstAttribute="trailing" secondItem="dMH-zF-BtO" secondAttribute="trailing" id="liK-jf-xHd"/>
+                            <constraint firstItem="0dH-JS-LTZ" firstAttribute="top" secondItem="oxX-gx-w5r" secondAttribute="bottom" constant="10" id="mZ2-P7-JRW"/>
                             <constraint firstItem="rMV-3S-0jG" firstAttribute="top" secondItem="dMH-zF-BtO" secondAttribute="bottom" id="mmN-55-4Zq"/>
                             <constraint firstItem="dMH-zF-BtO" firstAttribute="leading" secondItem="luS-kR-Sgj" secondAttribute="leading" id="ouR-CK-aQc"/>
                             <constraint firstItem="fYs-OS-Zgq" firstAttribute="top" secondItem="kMd-GD-EmD" secondAttribute="bottom" constant="10" id="thf-eZ-yKq"/>
