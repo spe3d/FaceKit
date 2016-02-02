@@ -1,0 +1,10 @@
+framework module FaceKit {
+  umbrella header "FaceKit.h"
+
+  export *
+  module * { export * }
+}
+
+module FaceKit.Swift {
+    header "FaceKit-Swift.h"
+}
