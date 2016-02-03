@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		65078D951C61A0330082F629 /* hello.wav in Resources */ = {isa = PBXBuildFile; fileRef = 65078D921C61A0330082F629 /* hello.wav */; };
+		65078D961C61A0330082F629 /* KP_NewYear_clip.wav in Resources */ = {isa = PBXBuildFile; fileRef = 65078D931C61A0330082F629 /* KP_NewYear_clip.wav */; };
+		65078D971C61A0330082F629 /* welcome_to_talkii.wav in Resources */ = {isa = PBXBuildFile; fileRef = 65078D941C61A0330082F629 /* welcome_to_talkii.wav */; };
 		65D9A4951C5B1F6500276155 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65D9A48C1C5B1F6500276155 /* Assets.xcassets */; };
 		65D9A4991C5B1F6600276155 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 65D9A4931C5B1F6500276155 /* InfoPlist.strings */; };
-		65D9A49A1C5B1F6600276155 /* FaceKit-Example.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 65D9A4941C5B1F6500276155 /* FaceKit-Example.entitlements */; };
 		65D9A4A01C5B1F8E00276155 /* SPEAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D9A49B1C5B1F8E00276155 /* SPEAppDelegate.swift */; };
 		65D9A4A11C5B1F8E00276155 /* SPEAvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D9A49C1C5B1F8E00276155 /* SPEAvatarViewController.swift */; };
 		65D9A4A21C5B1F8E00276155 /* SPECameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D9A49D1C5B1F8E00276155 /* SPECameraViewController.swift */; };
@@ -34,11 +36,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		65078D921C61A0330082F629 /* hello.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hello.wav; sourceTree = "<group>"; };
+		65078D931C61A0330082F629 /* KP_NewYear_clip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = KP_NewYear_clip.wav; sourceTree = "<group>"; };
+		65078D941C61A0330082F629 /* welcome_to_talkii.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = welcome_to_talkii.wav; sourceTree = "<group>"; };
 		652824C31BCF8934008E0FAF /* FaceKit-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FaceKit-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		65D9A48C1C5B1F6500276155 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		65D9A4921C5B1F6500276155 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65D9A4931C5B1F6500276155 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
-		65D9A4941C5B1F6500276155 /* FaceKit-Example.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "FaceKit-Example.entitlements"; sourceTree = "<group>"; };
 		65D9A49B1C5B1F8E00276155 /* SPEAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPEAppDelegate.swift; sourceTree = "<group>"; };
 		65D9A49C1C5B1F8E00276155 /* SPEAvatarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPEAvatarViewController.swift; sourceTree = "<group>"; };
 		65D9A49D1C5B1F8E00276155 /* SPECameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPECameraViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +67,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		65078D911C61A0330082F629 /* wav */ = {
+			isa = PBXGroup;
+			children = (
+				65078D921C61A0330082F629 /* hello.wav */,
+				65078D931C61A0330082F629 /* KP_NewYear_clip.wav */,
+				65078D941C61A0330082F629 /* welcome_to_talkii.wav */,
+			);
+			path = wav;
+			sourceTree = "<group>";
+		};
 		652824BA1BCF8934008E0FAF = {
 			isa = PBXGroup;
 			children = (
@@ -84,7 +98,7 @@
 		652824C51BCF8934008E0FAF /* FaceKit-Example */ = {
 			isa = PBXGroup;
 			children = (
-				65D9A4941C5B1F6500276155 /* FaceKit-Example.entitlements */,
+				65078D911C61A0330082F629 /* wav */,
 				65D9A49B1C5B1F8E00276155 /* SPEAppDelegate.swift */,
 				65D9A49E1C5B1F8E00276155 /* SPEImage.swift */,
 				65D9A49F1C5B1F8E00276155 /* SPEViewController.swift */,
@@ -196,11 +210,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65D9A49A1C5B1F6600276155 /* FaceKit-Example.entitlements in Resources */,
 				65D9A4AA1C5B204900276155 /* Main.storyboard in Resources */,
 				65D9A4A91C5B204900276155 /* LaunchScreen.storyboard in Resources */,
 				65D9A4951C5B1F6500276155 /* Assets.xcassets in Resources */,
+				65078D961C61A0330082F629 /* KP_NewYear_clip.wav in Resources */,
+				65078D951C61A0330082F629 /* hello.wav in Resources */,
 				65D9A4991C5B1F6600276155 /* InfoPlist.strings in Resources */,
+				65078D971C61A0330082F629 /* welcome_to_talkii.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,7 +394,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEFINES_MODULE = NO;
 				INFOPLIST_FILE = "FaceKit-Example/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -400,7 +416,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEFINES_MODULE = NO;
 				INFOPLIST_FILE = "FaceKit-Example/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
