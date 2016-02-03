@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 
     s.homepage              = "http://spe3d.co"
 
-    s.license               = "Copyright © 2015-2016 Speed 3D Inc. All rights reserved"
+    s.license               = 'Commercial'
 
     s.authors               = { "Daniel Lee" => "daniel@spe3d.co", "James Sa" => "james@spe3d.co" }
 
