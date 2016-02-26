@@ -17,6 +17,7 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
     @IBOutlet var avatarHeadView: SCNView!
     
     var avatarObject: FKAvatarObject?
+    var gender = FKGender.Female
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +26,7 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
         self.avatarView.scene = scene
         self.avatarHeadView.scene = scene
         
-        let object = FKAvatarObject(genderOfDefaultAvatar: .Male)
+        let object = FKAvatarObject(genderOfDefaultAvatar: gender)
         let avatarData = NSKeyedArchiver.archivedDataWithRootObject(object)
         guard let newObject = NSKeyedUnarchiver.unarchiveObjectWithData(avatarData) else {
             return
@@ -62,19 +63,19 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
     }
     
     @IBAction func changeHair(sender: UIButton) {
-        self.avatarObject?.setHair(FKAvatarHair(gender: .Male, random: true))
+        self.avatarObject?.setHair(FKAvatarHair(gender: gender, random: true))
     }
     
     @IBAction func changeClothes(sender: UIButton) {
-        self.avatarObject?.setClothes(FKAvatarClothes(gender: .Male, random: true))
+        self.avatarObject?.setClothes(FKAvatarClothes(gender: gender, random: true))
     }
     
     @IBAction func changeMotion(sender: UIButton) {
-        self.avatarObject?.setMotion(FKAvatarMotion(gender: .Male, random: true))
+        self.avatarObject?.setMotion(FKAvatarMotion(gender: gender, random: true))
     }
     
     @IBAction func changeGlasses(sender: UIButton) {
-        self.avatarObject?.setGlasses(FKAvatarGlasses(gender: .Male, random: true))
+        self.avatarObject?.setGlasses(FKAvatarGlasses(gender: gender, random: true))
     }
     
     var index = 0
