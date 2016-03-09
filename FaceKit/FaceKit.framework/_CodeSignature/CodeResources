@@ -6,63 +6,63 @@
 	<dict>
 		<key>Frameworks/libswiftAVFoundation.dylib</key>
 		<data>
-		6w75Trac8BpaQg6zzM/4NpI68UU=
+		546Z6Sog6Z12C/n5Ty3c5lI7c6w=
 		</data>
 		<key>Frameworks/libswiftContacts.dylib</key>
 		<data>
-		sx6jnloIWfH3tsXSfxA5NrLXrY8=
+		orbjhCgrBuqHagf5eXxVDMvVyCM=
 		</data>
 		<key>Frameworks/libswiftCore.dylib</key>
 		<data>
-		kEhvygIlgqzPECB3fMbTOgp/lcg=
+		nC4KH69OQm5wpseJbW7bdfcY65Q=
 		</data>
 		<key>Frameworks/libswiftCoreAudio.dylib</key>
 		<data>
-		bOsfeadbDAHaskNXd0Zauul7+Cc=
+		PCCFq7uigQoJufpD/XQDVn65mUU=
 		</data>
 		<key>Frameworks/libswiftCoreGraphics.dylib</key>
 		<data>
-		y1sBxB6mqgU+WiebrKq0aPY3na8=
+		3eeIKtzf0A6TyVVvFsthMnArY5Q=
 		</data>
 		<key>Frameworks/libswiftCoreImage.dylib</key>
 		<data>
-		KBNqwNTBO976QufAmIoqyaObK9w=
+		UvXEcDXYIOSNJv5PYOAS3EolP6g=
 		</data>
 		<key>Frameworks/libswiftCoreMedia.dylib</key>
 		<data>
-		ij3KyGLB9dVqIDNGlZf6am6uaQ0=
+		Srl9iLou5oFJSh0guTEa5HlSYy0=
 		</data>
 		<key>Frameworks/libswiftDarwin.dylib</key>
 		<data>
-		iR4jjd6jx7xnmFYWBiBmf2Q5CWA=
+		m0RA2cupx4Y03VQf13ueWz4kykM=
 		</data>
 		<key>Frameworks/libswiftDispatch.dylib</key>
 		<data>
-		K2au56KncMS0LbXV2EcRoDsQLCs=
+		VPeG+oJO9tQ5vW4YHLTLHy+Y3dI=
 		</data>
 		<key>Frameworks/libswiftFoundation.dylib</key>
 		<data>
-		zrAq33ClTjWBzoLFd2iSlg0HACQ=
+		LQFrbn3EQ+cWiDb5+6lFNHVPbD0=
 		</data>
 		<key>Frameworks/libswiftGLKit.dylib</key>
 		<data>
-		pvJYAyfuYqunuYAIku4Tp3qVpq4=
+		gIZON2aBrzYEx0IYUszivF9uvL8=
 		</data>
 		<key>Frameworks/libswiftObjectiveC.dylib</key>
 		<data>
-		ahh+Ra1xfkUlZaCzI3WPCnh8ito=
+		TMuLlyVVVc1rtELbRpXrWXMpbS0=
 		</data>
 		<key>Frameworks/libswiftSceneKit.dylib</key>
 		<data>
-		RvX7bMbRGbIJptkHOiev/7Hfvm0=
+		v4wRBgPV2+1/beTuZ36o5awiRaI=
 		</data>
 		<key>Frameworks/libswiftUIKit.dylib</key>
 		<data>
-		6vT7bmODvGmyi0W3Qy7Z5DpIgPI=
+		6oIJvKCAHV/JosfHvrZ8csieq5o=
 		</data>
 		<key>Frameworks/libswiftsimd.dylib</key>
 		<data>
-		cMv40IMkrnr90nLxaJeSKUS1So4=
+		vIMw7KajxzjTiluwdw5QEQQMTiw=
 		</data>
 		<key>Headers/FaceKit-Swift.h</key>
 		<data>
@@ -74,7 +74,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		VcsyUirrag0vKdKri0lnawy8KII=
+		coPVj6ezQgdstx4oYFQbAMTcS2Q=
 		</data>
 		<key>Modules/FaceKit.swiftmodule/arm.swiftdoc</key>
 		<data>
@@ -96,9 +96,17 @@
 		<data>
 		SqrkiKgjLmCuoZkIeWCmMeysmQc=
 		</data>
+		<key>avatar.scnassets/.DS_Store</key>
+		<data>
+		7+WLMWVVBf7Dx9ZVBsByEV9qcfQ=
+		</data>
+		<key>avatar.scnassets/A_Q3_F_Nude/.DS_Store</key>
+		<data>
+		vbJs8GnsMiW5OzRODb4ez+/eh+o=
+		</data>
 		<key>avatar.scnassets/A_Q3_F_Nude/A_Q3_F_Nude.dae</key>
 		<data>
-		gHIhk88Lt+ElFItGBiY2HhklUGs=
+		cqf3CKdIBwYzhps5/2r/udlH4wg=
 		</data>
 		<key>avatar.scnassets/A_Q3_F_Nude/I_Q3_F_Bd_0000_Co.png</key>
 		<data>
@@ -122,7 +130,7 @@
 		</data>
 		<key>avatar.scnassets/A_Q3_F_S_3001/A_Q3_F_S_3001.dae</key>
 		<data>
-		8jU8t4hHD3r9McRoQmbQgBJGXao=
+		aYriFSPLcxCQtkJ1XT37Bflv6KI=
 		</data>
 		<key>avatar.scnassets/A_Q3_F_S_3001/I_Q3_F_S_3001_0_Co.png</key>
 		<data>
@@ -162,7 +170,7 @@
 		</data>
 		<key>avatar.scnassets/A_Q3_F_S_3002/A_Q3_F_S_3002.dae</key>
 		<data>
-		wTENPWknyvwb4DUzLYdgu3WKJ1g=
+		YwR3RJ6HSvxJ5LgTxGLDS3sgKhE=
 		</data>
 		<key>avatar.scnassets/A_Q3_F_S_3002/I_Q3_F_S_3002_0_Co.png</key>
 		<data>
@@ -198,7 +206,7 @@
 		</data>
 		<key>avatar.scnassets/A_Q3_F_S_3006/A_Q3_F_S_3006.dae</key>
 		<data>
-		MwHpymJA2b/D4g3V/TnFGxkTYqo=
+		VkRCyxnbiv4MYd70j3RgvvuuqKQ=
 		</data>
 		<key>avatar.scnassets/A_Q3_F_S_3006/I_Q3_F_S_3006_0_Co.png</key>
 		<data>
@@ -226,7 +234,7 @@
 		</data>
 		<key>avatar.scnassets/A_Q3_F_S_3014/A_Q3_F_S_3014.dae</key>
 		<data>
-		pbaRuDU+Fj/hRciJcsBZT+8Vp4k=
+		V0hfHH72uDmXk1+jJnXe16kYhM8=
 		</data>
 		<key>avatar.scnassets/A_Q3_F_S_3014/I_Q3_F_S_3014_0_Co.jpg</key>
 		<data>
@@ -256,9 +264,33 @@
 		<data>
 		64g18zFK1F+yeT4+k3QwyKcbTbs=
 		</data>
+		<key>avatar.scnassets/A_Q3_F_S_6528/.DS_Store</key>
+		<data>
+		3y++sUAKzaCQmjLBz2v0kvESHgc=
+		</data>
+		<key>avatar.scnassets/A_Q3_F_S_6528/A_Q3_F_S_6528.dae</key>
+		<data>
+		k59/xadMFriPuKj/kmcLXawSR60=
+		</data>
+		<key>avatar.scnassets/A_Q3_F_S_6528/I_Q3_F_S_6528_0_Co.jpg</key>
+		<data>
+		b3D+HijM9PZlFKLGmNsI0hOF+IA=
+		</data>
+		<key>avatar.scnassets/A_Q3_F_S_6528/I_Q3_F_S_6528_0_Nr.JPG</key>
+		<data>
+		m+///VRpc5Z3Pucysig+1Z7NwHQ=
+		</data>
+		<key>avatar.scnassets/A_Q3_F_S_6528/I_Q3_F_S_6528_1_Co.JPG</key>
+		<data>
+		VKfqjS+LoawgI+BQ0Gc4IvFO4ik=
+		</data>
+		<key>avatar.scnassets/A_Q3_M_Nude/.DS_Store</key>
+		<data>
+		vCgxI/6MfcG8vfNCK5XfPTc54yQ=
+		</data>
 		<key>avatar.scnassets/A_Q3_M_Nude/A_Q3_M_Nude.dae</key>
 		<data>
-		/5qlsaj/+icaF+7irzXSIvo6k0s=
+		xtdZbsaiu2mP9yIYAt4sfAtPK/k=
 		</data>
 		<key>avatar.scnassets/A_Q3_M_Nude/I_Q3_M_Bd_0000_Co.png</key>
 		<data>
@@ -286,7 +318,7 @@
 		</data>
 		<key>avatar.scnassets/A_Q3_M_S_0002/A_Q3_M_S_0002.dae</key>
 		<data>
-		0XjkBw5EmifB5mE7HXujQWeor8U=
+		n502QFye3ED48wB195jwqxcG6Po=
 		</data>
 		<key>avatar.scnassets/A_Q3_M_S_0002/I_Q3_M_S_0002_0_1_Co.png</key>
 		<data>
@@ -314,7 +346,7 @@
 		</data>
 		<key>avatar.scnassets/A_Q3_M_S_0009/A_Q3_M_S_0009.dae</key>
 		<data>
-		esGdyR3/tqgqwfcZwEdTgIGidwg=
+		PfMmJ2m23Phi1ytktx6B6hXv4RM=
 		</data>
 		<key>avatar.scnassets/A_Q3_M_S_0009/I_Q3_M_S_0009_0_1_Co.png</key>
 		<data>
@@ -354,7 +386,7 @@
 		</data>
 		<key>avatar.scnassets/A_Q3_M_S_5000/A_Q3_M_S_5000.dae</key>
 		<data>
-		0GktpmJ6w2/SR28vBZNacdeoYgo=
+		rKHaii07C2OpaDWP1NIVHV4c4tE=
 		</data>
 		<key>avatar.scnassets/A_Q3_M_S_5000/I_Q3_M_Hr_5000_Co.png</key>
 		<data>
@@ -406,7 +438,7 @@
 		</data>
 		<key>avatar.scnassets/A_Q3_M_S_5008/A_Q3_M_S_5008.dae</key>
 		<data>
-		1c1MD9xSd++VejQkV9WTTFMx6NA=
+		dJwhGhPkzvXVU8aQL0YPgsq+le0=
 		</data>
 		<key>avatar.scnassets/A_Q3_M_S_5008/I_Q3_M_S_5008_0_Co.jpg</key>
 		<data>
@@ -444,9 +476,37 @@
 		<data>
 		8XdKpDaNFOFNXDHsAs2qNSrwXsw=
 		</data>
+		<key>avatar.scnassets/A_Q3_M_S_5009/.DS_Store</key>
+		<data>
+		3y++sUAKzaCQmjLBz2v0kvESHgc=
+		</data>
+		<key>avatar.scnassets/A_Q3_M_S_5009/A_Q3_M_S_5009.dae</key>
+		<data>
+		Bfsrm9sPOWEY/8Ij96ecU0Hg6yk=
+		</data>
+		<key>avatar.scnassets/A_Q3_M_S_5009/I_Q3_M_S_0005_1_Co.png</key>
+		<data>
+		EyCG+DVAWKa61Z9Uw5ICI/1kMTk=
+		</data>
+		<key>avatar.scnassets/A_Q3_M_S_5009/I_Q3_M_S_0005_1_Nr.png</key>
+		<data>
+		Mq86zW80LfQ39eHm2P47cT9RkO0=
+		</data>
+		<key>avatar.scnassets/A_Q3_M_S_5009/I_Q3_M_S_0005_2_Co.png</key>
+		<data>
+		gXCzbKTccfzcE0B9DY8UX7jeIRE=
+		</data>
+		<key>avatar.scnassets/A_Q3_M_S_5009/I_Q3_M_S_0005_2_Nr.png</key>
+		<data>
+		fKb31Kj5wV4QA14wCWKF+FEVNhI=
+		</data>
+		<key>avatar.scnassets/A_Q3_M_S_5009/I_Q3_M_S_5002_0_Co.png</key>
+		<data>
+		ngLRyWnUhWSsJtlcqd7SBHoqHsI=
+		</data>
 		<key>avatar.scnassets/A_Q3_M_S_6006/A_Q3_M_S_6006.dae</key>
 		<data>
-		glXxXmJie8wrfM5f8CcopPONZmQ=
+		D92TCVV9z7EyKdAo+P1h7rU0M7Y=
 		</data>
 		<key>avatar.scnassets/A_Q3_M_S_6006/I_Q3_M_S_6006_0_1_Co.jpg</key>
 		<data>
@@ -514,7 +574,7 @@
 		</data>
 		<key>avatar.scnassets/B_Q3_F_Acc_5003/B_Q3_F_Acc_5003.dae</key>
 		<data>
-		0xcICxQdSnAku+H3XWxd7k1cPbg=
+		VJ5agV2FLqDoW3A8LvZ/DjxIKGo=
 		</data>
 		<key>avatar.scnassets/B_Q3_F_Acc_5003/I_Q3_F_Acc_5003_1_Co.png</key>
 		<data>
@@ -528,9 +588,13 @@
 		<data>
 		VpEKOvhi5XNVBB84c4iThE5zfK0=
 		</data>
+		<key>avatar.scnassets/B_Q3_F_Acc_5005/.DS_Store</key>
+		<data>
+		3y++sUAKzaCQmjLBz2v0kvESHgc=
+		</data>
 		<key>avatar.scnassets/B_Q3_F_Acc_5005/B_Q3_F_Acc_5005.dae</key>
 		<data>
-		J5eMWqDvB+C+tFezBRU1KwOcyeA=
+		S53uWEDSi6KXpaplRV9hFfM6C7w=
 		</data>
 		<key>avatar.scnassets/B_Q3_F_Acc_5005/I_Q3_F_Acc_5005_Co.png</key>
 		<data>
@@ -546,7 +610,7 @@
 		</data>
 		<key>avatar.scnassets/B_Q3_F_Acc_5006/B_Q3_F_Acc_5006.dae</key>
 		<data>
-		w0fuV0QwmtfMuuZM1Le0xBnhq4E=
+		+rmc6hW0j1YDAoPppz/onbynHFM=
 		</data>
 		<key>avatar.scnassets/B_Q3_F_Acc_5006/I_Q3_F_Acc_5006_Co.png</key>
 		<data>
@@ -562,7 +626,7 @@
 		</data>
 		<key>avatar.scnassets/B_Q3_F_Acc_5007/B_Q3_F_Acc_5007.dae</key>
 		<data>
-		SUskcV8nhAiDuQhtj4ElZXLs6a4=
+		uOZHA5BPKH9gP1n6oUBFgyBqKmY=
 		</data>
 		<key>avatar.scnassets/B_Q3_F_Acc_5007/I_Q3_F_Acc_5007_Co.png</key>
 		<data>
@@ -578,7 +642,7 @@
 		</data>
 		<key>avatar.scnassets/B_Q3_M_Acc_0000/B_Q3_M_Acc_0000.dae</key>
 		<data>
-		ZKhmFDzH7gctGaPoPgARq+enzO4=
+		oxz7n0Z2CUYFQOEbb81eE8mBUWc=
 		</data>
 		<key>avatar.scnassets/B_Q3_M_Acc_0000/I_Q3_M_Acc_0000_Co.png</key>
 		<data>
@@ -590,7 +654,7 @@
 		</data>
 		<key>avatar.scnassets/B_Q3_M_Acc_0001/B_Q3_M_Acc_0001.dae</key>
 		<data>
-		KR3qsgGCnjkZqPXwyjSJ8eLzkWc=
+		E5lN1cD1tauX3BWRrUHHtBWoqG4=
 		</data>
 		<key>avatar.scnassets/B_Q3_M_Acc_0001/I_Q3_M_Acc_0001_1_Co.png</key>
 		<data>
@@ -614,7 +678,7 @@
 		</data>
 		<key>avatar.scnassets/B_Q3_M_Acc_0002/B_Q3_M_Acc_0002.dae</key>
 		<data>
-		KTyxEk05zuRVen4BUmnTcZLUPT8=
+		RuHk8J6eFMqf6anVgDUV+yuxsxU=
 		</data>
 		<key>avatar.scnassets/B_Q3_M_Acc_0002/I_Q3_M_Acc_0002_1_Co.png</key>
 		<data>
@@ -630,7 +694,7 @@
 		</data>
 		<key>avatar.scnassets/B_Q3_M_Acc_0003/B_Q3_M_Acc_0003.dae</key>
 		<data>
-		BNvQvXFXDRO4mZPLj98juolnPW0=
+		9ZHJI+2QZuPA5LIqP4kZS0hirhg=
 		</data>
 		<key>avatar.scnassets/B_Q3_M_Acc_0003/I_Q3_M_Acc_0003_Co.png</key>
 		<data>
@@ -646,19 +710,23 @@
 		</data>
 		<key>avatar.scnassets/B_Q3_M_Acc_0004/B_Q3_M_Acc_0004.dae</key>
 		<data>
-		RxFaw7vUTlyzi9qw6LzGZLSkoYo=
+		caWV0d81A4KCyxbLE8MpWE+RaWA=
 		</data>
 		<key>avatar.scnassets/B_Q3_M_Acc_0004/I_Q3_M_Acc_0004_Co.png</key>
 		<data>
 		lUl4/IRisZd0ymeSgaa01wKLCfQ=
 		</data>
-		<key>avatar.scnassets/Female_NO_Morph.dae</key>
+		<key>avatar.scnassets/B_Q3_M_Acc_7011/B_Q3_M_Acc_7011.dae</key>
 		<data>
-		cJLp58193ATFlw8xXoR9UkoQK5c=
+		NzUTyuLtHiyXwENQRwP0bIQUxtw=
+		</data>
+		<key>avatar.scnassets/B_Q3_M_Acc_7011/I_Q3_M_Acc_7011_Co.png</key>
+		<data>
+		CgiEdExa/FbWphI5EbQM+GmgKLU=
 		</data>
 		<key>avatar.scnassets/H_Q3_F_Hr_0011/H_Q3_F_Hr_0011.dae</key>
 		<data>
-		MXyv4wX9ACDoAsEkrd2eiUzib9U=
+		dTUJDB427N8VvITh+YwcS1Pe2x0=
 		</data>
 		<key>avatar.scnassets/H_Q3_F_Hr_0011/I_Q3_F_Hr_0011_1_Co.png</key>
 		<data>
@@ -682,7 +750,7 @@
 		</data>
 		<key>avatar.scnassets/H_Q3_F_Hr_0030/H_Q3_F_Hr_0030.dae</key>
 		<data>
-		Hzt6osp3usxdSXbU/cMZJxen0E4=
+		DECCQupkH3b6O+kgPDN8+O2zMUg=
 		</data>
 		<key>avatar.scnassets/H_Q3_F_Hr_0030/I_Q3_F_Hr_0030_Co.png</key>
 		<data>
@@ -702,7 +770,7 @@
 		</data>
 		<key>avatar.scnassets/H_Q3_F_Hr_5000/H_Q3_F_Hr_5000.dae</key>
 		<data>
-		xmM/qxj6+vw1Kmx46R+UxqckerM=
+		LQWTkJHaVo5HlA3pQ//paTIjuIs=
 		</data>
 		<key>avatar.scnassets/H_Q3_F_Hr_5000/I_Q3_F_Hr_5000_Co.png</key>
 		<data>
@@ -718,7 +786,7 @@
 		</data>
 		<key>avatar.scnassets/H_Q3_F_Hr_5001/H_Q3_F_Hr_5001.dae</key>
 		<data>
-		rdvvAuebeXpxcDn1ZBrcRlROOnc=
+		5JhmkZ04kOuyFapX8SzYzAm5Kdw=
 		</data>
 		<key>avatar.scnassets/H_Q3_F_Hr_5001/I_Q3_F_Hr_5001_Co.png</key>
 		<data>
@@ -734,7 +802,7 @@
 		</data>
 		<key>avatar.scnassets/H_Q3_M_Hr_0001/H_Q3_M_Hr_0001.dae</key>
 		<data>
-		f42UJy7nbFoIflaneSIbDUTWRXQ=
+		MHfAVTWqtwftPX11WQARNmmR2Yo=
 		</data>
 		<key>avatar.scnassets/H_Q3_M_Hr_0001/I_Q3_M_Hr_0001_0_Co.png</key>
 		<data>
@@ -760,9 +828,25 @@
 		<data>
 		Z3Jl+ui9uow43Gh7qcPMW7jfT+k=
 		</data>
+		<key>avatar.scnassets/H_Q3_M_Hr_0002/H_Q3_M_Hr_0002.dae</key>
+		<data>
+		FdaMyoyh2OLOQcl0GWfHsi+KqKg=
+		</data>
+		<key>avatar.scnassets/H_Q3_M_Hr_0002/I_Q3_M_Hr_0002_1_Co.png</key>
+		<data>
+		+AP5PnijYcoxJKdCCQljyPz6lkY=
+		</data>
+		<key>avatar.scnassets/H_Q3_M_Hr_0002/I_Q3_M_Hr_0002_1_Ma.png</key>
+		<data>
+		eSY9nON5aUNlLuNm5Pdu5YUlB+0=
+		</data>
+		<key>avatar.scnassets/H_Q3_M_Hr_0002/I_Q3_M_Hr_0002_1_Nr.png</key>
+		<data>
+		/4yiDo9jRABScmP91TjJ1nVVdSI=
+		</data>
 		<key>avatar.scnassets/H_Q3_M_Hr_0009/H_Q3_M_Hr_0009.dae</key>
 		<data>
-		I7celDVDSyG0T4WAfNa2EtQ4/vc=
+		4uGileEDcC+FA8l19ECCBluwx24=
 		</data>
 		<key>avatar.scnassets/H_Q3_M_Hr_0009/I_Q3_M_Hr_0009_1_Co.png</key>
 		<data>
@@ -794,7 +878,7 @@
 		</data>
 		<key>avatar.scnassets/H_Q3_M_Hr_5000/H_Q3_M_Hr_5000.dae</key>
 		<data>
-		xx4JrpiMl3hhmqnRc3G5aUH3+A0=
+		ipKh0FxfkeW6Gf91vax+AyS7bhE=
 		</data>
 		<key>avatar.scnassets/H_Q3_M_Hr_5000/I_Q3_M_Hr_5000_Co.png</key>
 		<data>
@@ -810,7 +894,7 @@
 		</data>
 		<key>avatar.scnassets/H_Q3_M_Hr_6002/H_Q3_M_Hr_6002.dae</key>
 		<data>
-		hWRmqD/rS24yHGtXUHN3zJU009o=
+		5lxYKnc2lFHYvfhMbAZux+a8x40=
 		</data>
 		<key>avatar.scnassets/H_Q3_M_Hr_6002/I_Q3_M_Hr_6002_Co.jpg</key>
 		<data>
@@ -824,9 +908,13 @@
 		<data>
 		Zt23Zr2mhvliUOo4lYlGjxNd4rY=
 		</data>
+		<key>avatar.scnassets/H_Q3_M_Hr_6525/.DS_Store</key>
+		<data>
+		FdLRHHA7F5N0MGL4wnruoK+0WCQ=
+		</data>
 		<key>avatar.scnassets/H_Q3_M_Hr_6525/H_Q3_M_Hr_6525.dae</key>
 		<data>
-		qGqJUzIwjUSjWnQgXg40pgIBA4M=
+		GHQ4fFD8JLE6yUwtpNfuWyxdaCg=
 		</data>
 		<key>avatar.scnassets/H_Q3_M_Hr_6525/I_Q3_M_Hr_6525_1_Co.jpg</key>
 		<data>
@@ -842,118 +930,138 @@
 		</data>
 		<key>avatar.scnassets/Motion/M_F_0000.dae</key>
 		<data>
-		IoagQkSgI8cyAX8rXOAEUHk3MXk=
+		hm3LJwzavhIb6OU9NZ82Wvj8hqI=
 		</data>
 		<key>avatar.scnassets/Motion/M_F_0001.dae</key>
 		<data>
-		ttLHm9F+uTQgN+hhRZrZvUsRyZU=
+		sAEkhjFT1Vr8N1uG4avpfWWC/hM=
 		</data>
 		<key>avatar.scnassets/Motion/M_F_0002.dae</key>
 		<data>
-		5qdHQnhDPvAl1mQUX8XPgGlCbpI=
+		CXInwgSWOVcJyq/18xFo7Vh3WJA=
 		</data>
 		<key>avatar.scnassets/Motion/M_F_0003.dae</key>
 		<data>
-		dsaKnX4JG+7tyaaG+m7T7Xhey9Y=
+		RezfPyMq4ziVIP/34f3OXHMLCgI=
 		</data>
 		<key>avatar.scnassets/Motion/M_F_0004.dae</key>
 		<data>
-		tHZAaUD9pNOQfCW+MIMZajyWfkA=
+		QO+bNgW0hHthJQZVLjwQXL3Q1SE=
 		</data>
 		<key>avatar.scnassets/Motion/M_F_0005.dae</key>
 		<data>
-		wTSnkocoA1u5TMP8PLx/Y317ZBo=
+		OyljyAf4Z7++VxLk7yTg5JCH0Zc=
+		</data>
+		<key>avatar.scnassets/Motion/M_F_0007.dae</key>
+		<data>
+		rfblvuxhRKxBFLitBn0D/Qt1Msc=
+		</data>
+		<key>avatar.scnassets/Motion/M_F_0020.dae</key>
+		<data>
+		kXZTB5nDRw4OYF33FjQrfF07UMU=
 		</data>
 		<key>avatar.scnassets/Motion/M_M_0000.dae</key>
 		<data>
-		jWGj8WlUCKkKh3WMOqlN75zGoN8=
+		HCqCigqFWOiXDNEn4R60DJ8jFVE=
 		</data>
 		<key>avatar.scnassets/Motion/M_M_0001.dae</key>
 		<data>
-		rCgLgHwKhZNJCKgXPiwScQXmLbw=
+		A0FrexiRTXC7EpYDuAHbzLvnDK8=
 		</data>
 		<key>avatar.scnassets/Motion/M_M_0002.dae</key>
 		<data>
-		+4m7qQXRR4QflHTVb0UZiy77+iI=
+		dNv3E+r7IDRquOR6t86bUdPhwXA=
 		</data>
 		<key>avatar.scnassets/Motion/M_M_0003.dae</key>
 		<data>
-		CFrJ3mztOReTErDDHfwg7/Vordw=
+		hGl6TuVWfvw/MAzSzycTsuf//xo=
 		</data>
 		<key>avatar.scnassets/Motion/M_M_0004.dae</key>
 		<data>
-		VF7c51FazISIxmzGFl3SV4t7FBc=
+		2ES7mie//laRWUhqjWbZwzT23Uk=
 		</data>
 		<key>avatar.scnassets/Motion/M_M_0005.dae</key>
 		<data>
-		z0dbPOyR6gqvEo+YrD+z/GnwZjc=
+		ET5jBz5FNQpzHoyyEPC7Wq8+LLA=
+		</data>
+		<key>avatar.scnassets/Motion/M_M_0016.dae</key>
+		<data>
+		nCgubw/YjS6s5+Oe0s4dmouCo8M=
+		</data>
+		<key>avatar.scnassets/Motion/M_M_0067.dae</key>
+		<data>
+		/KHPJXhdzcugNnV5lmNyPiTG+s8=
+		</data>
+		<key>avatar.scnassets/Motion/M_M_0083.dae</key>
+		<data>
+		rEM/XH3Dl4xYrvKoO8KgCHu2W8Q=
 		</data>
 		<key>avatar.scnassets/dance_motion.dae</key>
 		<data>
-		sFCecin3W/nV3RxUMRtYfpE6AxE=
+		MSIl8SZD/JeAn/tc7M+Zzmh6muc=
 		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
 		<key>Frameworks/libswiftAVFoundation.dylib</key>
 		<data>
-		6w75Trac8BpaQg6zzM/4NpI68UU=
+		546Z6Sog6Z12C/n5Ty3c5lI7c6w=
 		</data>
 		<key>Frameworks/libswiftContacts.dylib</key>
 		<data>
-		sx6jnloIWfH3tsXSfxA5NrLXrY8=
+		orbjhCgrBuqHagf5eXxVDMvVyCM=
 		</data>
 		<key>Frameworks/libswiftCore.dylib</key>
 		<data>
-		kEhvygIlgqzPECB3fMbTOgp/lcg=
+		nC4KH69OQm5wpseJbW7bdfcY65Q=
 		</data>
 		<key>Frameworks/libswiftCoreAudio.dylib</key>
 		<data>
-		bOsfeadbDAHaskNXd0Zauul7+Cc=
+		PCCFq7uigQoJufpD/XQDVn65mUU=
 		</data>
 		<key>Frameworks/libswiftCoreGraphics.dylib</key>
 		<data>
-		y1sBxB6mqgU+WiebrKq0aPY3na8=
+		3eeIKtzf0A6TyVVvFsthMnArY5Q=
 		</data>
 		<key>Frameworks/libswiftCoreImage.dylib</key>
 		<data>
-		KBNqwNTBO976QufAmIoqyaObK9w=
+		UvXEcDXYIOSNJv5PYOAS3EolP6g=
 		</data>
 		<key>Frameworks/libswiftCoreMedia.dylib</key>
 		<data>
-		ij3KyGLB9dVqIDNGlZf6am6uaQ0=
+		Srl9iLou5oFJSh0guTEa5HlSYy0=
 		</data>
 		<key>Frameworks/libswiftDarwin.dylib</key>
 		<data>
-		iR4jjd6jx7xnmFYWBiBmf2Q5CWA=
+		m0RA2cupx4Y03VQf13ueWz4kykM=
 		</data>
 		<key>Frameworks/libswiftDispatch.dylib</key>
 		<data>
-		K2au56KncMS0LbXV2EcRoDsQLCs=
+		VPeG+oJO9tQ5vW4YHLTLHy+Y3dI=
 		</data>
 		<key>Frameworks/libswiftFoundation.dylib</key>
 		<data>
-		zrAq33ClTjWBzoLFd2iSlg0HACQ=
+		LQFrbn3EQ+cWiDb5+6lFNHVPbD0=
 		</data>
 		<key>Frameworks/libswiftGLKit.dylib</key>
 		<data>
-		pvJYAyfuYqunuYAIku4Tp3qVpq4=
+		gIZON2aBrzYEx0IYUszivF9uvL8=
 		</data>
 		<key>Frameworks/libswiftObjectiveC.dylib</key>
 		<data>
-		ahh+Ra1xfkUlZaCzI3WPCnh8ito=
+		TMuLlyVVVc1rtELbRpXrWXMpbS0=
 		</data>
 		<key>Frameworks/libswiftSceneKit.dylib</key>
 		<data>
-		RvX7bMbRGbIJptkHOiev/7Hfvm0=
+		v4wRBgPV2+1/beTuZ36o5awiRaI=
 		</data>
 		<key>Frameworks/libswiftUIKit.dylib</key>
 		<data>
-		6vT7bmODvGmyi0W3Qy7Z5DpIgPI=
+		6oIJvKCAHV/JosfHvrZ8csieq5o=
 		</data>
 		<key>Frameworks/libswiftsimd.dylib</key>
 		<data>
-		cMv40IMkrnr90nLxaJeSKUS1So4=
+		vIMw7KajxzjTiluwdw5QEQQMTiw=
 		</data>
 		<key>Headers/FaceKit-Swift.h</key>
 		<data>
@@ -985,7 +1093,7 @@
 		</data>
 		<key>avatar.scnassets/A_Q3_F_Nude/A_Q3_F_Nude.dae</key>
 		<data>
-		gHIhk88Lt+ElFItGBiY2HhklUGs=
+		cqf3CKdIBwYzhps5/2r/udlH4wg=
 		</data>
 		<key>avatar.scnassets/A_Q3_F_Nude/I_Q3_F_Bd_0000_Co.png</key>
 		<data>
@@ -1009,7 +1117,7 @@
 		</data>
 		<key>avatar.scnassets/A_Q3_F_S_3001/A_Q3_F_S_3001.dae</key>
 		<data>
-		8jU8t4hHD3r9McRoQmbQgBJGXao=
+		aYriFSPLcxCQtkJ1XT37Bflv6KI=
 		</data>
 		<key>avatar.scnassets/A_Q3_F_S_3001/I_Q3_F_S_3001_0_Co.png</key>
 		<data>
@@ -1049,7 +1157,7 @@
 		</data>
 		<key>avatar.scnassets/A_Q3_F_S_3002/A_Q3_F_S_3002.dae</key>
 		<data>
-		wTENPWknyvwb4DUzLYdgu3WKJ1g=
+		YwR3RJ6HSvxJ5LgTxGLDS3sgKhE=
 		</data>
 		<key>avatar.scnassets/A_Q3_F_S_3002/I_Q3_F_S_3002_0_Co.png</key>
 		<data>
@@ -1085,7 +1193,7 @@
 		</data>
 		<key>avatar.scnassets/A_Q3_F_S_3006/A_Q3_F_S_3006.dae</key>
 		<data>
-		MwHpymJA2b/D4g3V/TnFGxkTYqo=
+		VkRCyxnbiv4MYd70j3RgvvuuqKQ=
 		</data>
 		<key>avatar.scnassets/A_Q3_F_S_3006/I_Q3_F_S_3006_0_Co.png</key>
 		<data>
@@ -1113,7 +1221,7 @@
 		</data>
 		<key>avatar.scnassets/A_Q3_F_S_3014/A_Q3_F_S_3014.dae</key>
 		<data>
-		pbaRuDU+Fj/hRciJcsBZT+8Vp4k=
+		V0hfHH72uDmXk1+jJnXe16kYhM8=
 		</data>
 		<key>avatar.scnassets/A_Q3_F_S_3014/I_Q3_F_S_3014_0_Co.jpg</key>
 		<data>
@@ -1143,9 +1251,25 @@
 		<data>
 		64g18zFK1F+yeT4+k3QwyKcbTbs=
 		</data>
+		<key>avatar.scnassets/A_Q3_F_S_6528/A_Q3_F_S_6528.dae</key>
+		<data>
+		k59/xadMFriPuKj/kmcLXawSR60=
+		</data>
+		<key>avatar.scnassets/A_Q3_F_S_6528/I_Q3_F_S_6528_0_Co.jpg</key>
+		<data>
+		b3D+HijM9PZlFKLGmNsI0hOF+IA=
+		</data>
+		<key>avatar.scnassets/A_Q3_F_S_6528/I_Q3_F_S_6528_0_Nr.JPG</key>
+		<data>
+		m+///VRpc5Z3Pucysig+1Z7NwHQ=
+		</data>
+		<key>avatar.scnassets/A_Q3_F_S_6528/I_Q3_F_S_6528_1_Co.JPG</key>
+		<data>
+		VKfqjS+LoawgI+BQ0Gc4IvFO4ik=
+		</data>
 		<key>avatar.scnassets/A_Q3_M_Nude/A_Q3_M_Nude.dae</key>
 		<data>
-		/5qlsaj/+icaF+7irzXSIvo6k0s=
+		xtdZbsaiu2mP9yIYAt4sfAtPK/k=
 		</data>
 		<key>avatar.scnassets/A_Q3_M_Nude/I_Q3_M_Bd_0000_Co.png</key>
 		<data>
@@ -1173,7 +1297,7 @@
 		</data>
 		<key>avatar.scnassets/A_Q3_M_S_0002/A_Q3_M_S_0002.dae</key>
 		<data>
-		0XjkBw5EmifB5mE7HXujQWeor8U=
+		n502QFye3ED48wB195jwqxcG6Po=
 		</data>
 		<key>avatar.scnassets/A_Q3_M_S_0002/I_Q3_M_S_0002_0_1_Co.png</key>
 		<data>
@@ -1201,7 +1325,7 @@
 		</data>
 		<key>avatar.scnassets/A_Q3_M_S_0009/A_Q3_M_S_0009.dae</key>
 		<data>
-		esGdyR3/tqgqwfcZwEdTgIGidwg=
+		PfMmJ2m23Phi1ytktx6B6hXv4RM=
 		</data>
 		<key>avatar.scnassets/A_Q3_M_S_0009/I_Q3_M_S_0009_0_1_Co.png</key>
 		<data>
@@ -1241,7 +1365,7 @@
 		</data>
 		<key>avatar.scnassets/A_Q3_M_S_5000/A_Q3_M_S_5000.dae</key>
 		<data>
-		0GktpmJ6w2/SR28vBZNacdeoYgo=
+		rKHaii07C2OpaDWP1NIVHV4c4tE=
 		</data>
 		<key>avatar.scnassets/A_Q3_M_S_5000/I_Q3_M_Hr_5000_Co.png</key>
 		<data>
@@ -1293,7 +1417,7 @@
 		</data>
 		<key>avatar.scnassets/A_Q3_M_S_5008/A_Q3_M_S_5008.dae</key>
 		<data>
-		1c1MD9xSd++VejQkV9WTTFMx6NA=
+		dJwhGhPkzvXVU8aQL0YPgsq+le0=
 		</data>
 		<key>avatar.scnassets/A_Q3_M_S_5008/I_Q3_M_S_5008_0_Co.jpg</key>
 		<data>
@@ -1331,9 +1455,33 @@
 		<data>
 		8XdKpDaNFOFNXDHsAs2qNSrwXsw=
 		</data>
+		<key>avatar.scnassets/A_Q3_M_S_5009/A_Q3_M_S_5009.dae</key>
+		<data>
+		Bfsrm9sPOWEY/8Ij96ecU0Hg6yk=
+		</data>
+		<key>avatar.scnassets/A_Q3_M_S_5009/I_Q3_M_S_0005_1_Co.png</key>
+		<data>
+		EyCG+DVAWKa61Z9Uw5ICI/1kMTk=
+		</data>
+		<key>avatar.scnassets/A_Q3_M_S_5009/I_Q3_M_S_0005_1_Nr.png</key>
+		<data>
+		Mq86zW80LfQ39eHm2P47cT9RkO0=
+		</data>
+		<key>avatar.scnassets/A_Q3_M_S_5009/I_Q3_M_S_0005_2_Co.png</key>
+		<data>
+		gXCzbKTccfzcE0B9DY8UX7jeIRE=
+		</data>
+		<key>avatar.scnassets/A_Q3_M_S_5009/I_Q3_M_S_0005_2_Nr.png</key>
+		<data>
+		fKb31Kj5wV4QA14wCWKF+FEVNhI=
+		</data>
+		<key>avatar.scnassets/A_Q3_M_S_5009/I_Q3_M_S_5002_0_Co.png</key>
+		<data>
+		ngLRyWnUhWSsJtlcqd7SBHoqHsI=
+		</data>
 		<key>avatar.scnassets/A_Q3_M_S_6006/A_Q3_M_S_6006.dae</key>
 		<data>
-		glXxXmJie8wrfM5f8CcopPONZmQ=
+		D92TCVV9z7EyKdAo+P1h7rU0M7Y=
 		</data>
 		<key>avatar.scnassets/A_Q3_M_S_6006/I_Q3_M_S_6006_0_1_Co.jpg</key>
 		<data>
@@ -1401,7 +1549,7 @@
 		</data>
 		<key>avatar.scnassets/B_Q3_F_Acc_5003/B_Q3_F_Acc_5003.dae</key>
 		<data>
-		0xcICxQdSnAku+H3XWxd7k1cPbg=
+		VJ5agV2FLqDoW3A8LvZ/DjxIKGo=
 		</data>
 		<key>avatar.scnassets/B_Q3_F_Acc_5003/I_Q3_F_Acc_5003_1_Co.png</key>
 		<data>
@@ -1417,7 +1565,7 @@
 		</data>
 		<key>avatar.scnassets/B_Q3_F_Acc_5005/B_Q3_F_Acc_5005.dae</key>
 		<data>
-		J5eMWqDvB+C+tFezBRU1KwOcyeA=
+		S53uWEDSi6KXpaplRV9hFfM6C7w=
 		</data>
 		<key>avatar.scnassets/B_Q3_F_Acc_5005/I_Q3_F_Acc_5005_Co.png</key>
 		<data>
@@ -1433,7 +1581,7 @@
 		</data>
 		<key>avatar.scnassets/B_Q3_F_Acc_5006/B_Q3_F_Acc_5006.dae</key>
 		<data>
-		w0fuV0QwmtfMuuZM1Le0xBnhq4E=
+		+rmc6hW0j1YDAoPppz/onbynHFM=
 		</data>
 		<key>avatar.scnassets/B_Q3_F_Acc_5006/I_Q3_F_Acc_5006_Co.png</key>
 		<data>
@@ -1449,7 +1597,7 @@
 		</data>
 		<key>avatar.scnassets/B_Q3_F_Acc_5007/B_Q3_F_Acc_5007.dae</key>
 		<data>
-		SUskcV8nhAiDuQhtj4ElZXLs6a4=
+		uOZHA5BPKH9gP1n6oUBFgyBqKmY=
 		</data>
 		<key>avatar.scnassets/B_Q3_F_Acc_5007/I_Q3_F_Acc_5007_Co.png</key>
 		<data>
@@ -1465,7 +1613,7 @@
 		</data>
 		<key>avatar.scnassets/B_Q3_M_Acc_0000/B_Q3_M_Acc_0000.dae</key>
 		<data>
-		ZKhmFDzH7gctGaPoPgARq+enzO4=
+		oxz7n0Z2CUYFQOEbb81eE8mBUWc=
 		</data>
 		<key>avatar.scnassets/B_Q3_M_Acc_0000/I_Q3_M_Acc_0000_Co.png</key>
 		<data>
@@ -1477,7 +1625,7 @@
 		</data>
 		<key>avatar.scnassets/B_Q3_M_Acc_0001/B_Q3_M_Acc_0001.dae</key>
 		<data>
-		KR3qsgGCnjkZqPXwyjSJ8eLzkWc=
+		E5lN1cD1tauX3BWRrUHHtBWoqG4=
 		</data>
 		<key>avatar.scnassets/B_Q3_M_Acc_0001/I_Q3_M_Acc_0001_1_Co.png</key>
 		<data>
@@ -1501,7 +1649,7 @@
 		</data>
 		<key>avatar.scnassets/B_Q3_M_Acc_0002/B_Q3_M_Acc_0002.dae</key>
 		<data>
-		KTyxEk05zuRVen4BUmnTcZLUPT8=
+		RuHk8J6eFMqf6anVgDUV+yuxsxU=
 		</data>
 		<key>avatar.scnassets/B_Q3_M_Acc_0002/I_Q3_M_Acc_0002_1_Co.png</key>
 		<data>
@@ -1517,7 +1665,7 @@
 		</data>
 		<key>avatar.scnassets/B_Q3_M_Acc_0003/B_Q3_M_Acc_0003.dae</key>
 		<data>
-		BNvQvXFXDRO4mZPLj98juolnPW0=
+		9ZHJI+2QZuPA5LIqP4kZS0hirhg=
 		</data>
 		<key>avatar.scnassets/B_Q3_M_Acc_0003/I_Q3_M_Acc_0003_Co.png</key>
 		<data>
@@ -1533,19 +1681,23 @@
 		</data>
 		<key>avatar.scnassets/B_Q3_M_Acc_0004/B_Q3_M_Acc_0004.dae</key>
 		<data>
-		RxFaw7vUTlyzi9qw6LzGZLSkoYo=
+		caWV0d81A4KCyxbLE8MpWE+RaWA=
 		</data>
 		<key>avatar.scnassets/B_Q3_M_Acc_0004/I_Q3_M_Acc_0004_Co.png</key>
 		<data>
 		lUl4/IRisZd0ymeSgaa01wKLCfQ=
 		</data>
-		<key>avatar.scnassets/Female_NO_Morph.dae</key>
+		<key>avatar.scnassets/B_Q3_M_Acc_7011/B_Q3_M_Acc_7011.dae</key>
 		<data>
-		cJLp58193ATFlw8xXoR9UkoQK5c=
+		NzUTyuLtHiyXwENQRwP0bIQUxtw=
+		</data>
+		<key>avatar.scnassets/B_Q3_M_Acc_7011/I_Q3_M_Acc_7011_Co.png</key>
+		<data>
+		CgiEdExa/FbWphI5EbQM+GmgKLU=
 		</data>
 		<key>avatar.scnassets/H_Q3_F_Hr_0011/H_Q3_F_Hr_0011.dae</key>
 		<data>
-		MXyv4wX9ACDoAsEkrd2eiUzib9U=
+		dTUJDB427N8VvITh+YwcS1Pe2x0=
 		</data>
 		<key>avatar.scnassets/H_Q3_F_Hr_0011/I_Q3_F_Hr_0011_1_Co.png</key>
 		<data>
@@ -1569,7 +1721,7 @@
 		</data>
 		<key>avatar.scnassets/H_Q3_F_Hr_0030/H_Q3_F_Hr_0030.dae</key>
 		<data>
-		Hzt6osp3usxdSXbU/cMZJxen0E4=
+		DECCQupkH3b6O+kgPDN8+O2zMUg=
 		</data>
 		<key>avatar.scnassets/H_Q3_F_Hr_0030/I_Q3_F_Hr_0030_Co.png</key>
 		<data>
@@ -1589,7 +1741,7 @@
 		</data>
 		<key>avatar.scnassets/H_Q3_F_Hr_5000/H_Q3_F_Hr_5000.dae</key>
 		<data>
-		xmM/qxj6+vw1Kmx46R+UxqckerM=
+		LQWTkJHaVo5HlA3pQ//paTIjuIs=
 		</data>
 		<key>avatar.scnassets/H_Q3_F_Hr_5000/I_Q3_F_Hr_5000_Co.png</key>
 		<data>
@@ -1605,7 +1757,7 @@
 		</data>
 		<key>avatar.scnassets/H_Q3_F_Hr_5001/H_Q3_F_Hr_5001.dae</key>
 		<data>
-		rdvvAuebeXpxcDn1ZBrcRlROOnc=
+		5JhmkZ04kOuyFapX8SzYzAm5Kdw=
 		</data>
 		<key>avatar.scnassets/H_Q3_F_Hr_5001/I_Q3_F_Hr_5001_Co.png</key>
 		<data>
@@ -1621,7 +1773,7 @@
 		</data>
 		<key>avatar.scnassets/H_Q3_M_Hr_0001/H_Q3_M_Hr_0001.dae</key>
 		<data>
-		f42UJy7nbFoIflaneSIbDUTWRXQ=
+		MHfAVTWqtwftPX11WQARNmmR2Yo=
 		</data>
 		<key>avatar.scnassets/H_Q3_M_Hr_0001/I_Q3_M_Hr_0001_0_Co.png</key>
 		<data>
@@ -1647,9 +1799,25 @@
 		<data>
 		Z3Jl+ui9uow43Gh7qcPMW7jfT+k=
 		</data>
+		<key>avatar.scnassets/H_Q3_M_Hr_0002/H_Q3_M_Hr_0002.dae</key>
+		<data>
+		FdaMyoyh2OLOQcl0GWfHsi+KqKg=
+		</data>
+		<key>avatar.scnassets/H_Q3_M_Hr_0002/I_Q3_M_Hr_0002_1_Co.png</key>
+		<data>
+		+AP5PnijYcoxJKdCCQljyPz6lkY=
+		</data>
+		<key>avatar.scnassets/H_Q3_M_Hr_0002/I_Q3_M_Hr_0002_1_Ma.png</key>
+		<data>
+		eSY9nON5aUNlLuNm5Pdu5YUlB+0=
+		</data>
+		<key>avatar.scnassets/H_Q3_M_Hr_0002/I_Q3_M_Hr_0002_1_Nr.png</key>
+		<data>
+		/4yiDo9jRABScmP91TjJ1nVVdSI=
+		</data>
 		<key>avatar.scnassets/H_Q3_M_Hr_0009/H_Q3_M_Hr_0009.dae</key>
 		<data>
-		I7celDVDSyG0T4WAfNa2EtQ4/vc=
+		4uGileEDcC+FA8l19ECCBluwx24=
 		</data>
 		<key>avatar.scnassets/H_Q3_M_Hr_0009/I_Q3_M_Hr_0009_1_Co.png</key>
 		<data>
@@ -1681,7 +1849,7 @@
 		</data>
 		<key>avatar.scnassets/H_Q3_M_Hr_5000/H_Q3_M_Hr_5000.dae</key>
 		<data>
-		xx4JrpiMl3hhmqnRc3G5aUH3+A0=
+		ipKh0FxfkeW6Gf91vax+AyS7bhE=
 		</data>
 		<key>avatar.scnassets/H_Q3_M_Hr_5000/I_Q3_M_Hr_5000_Co.png</key>
 		<data>
@@ -1697,7 +1865,7 @@
 		</data>
 		<key>avatar.scnassets/H_Q3_M_Hr_6002/H_Q3_M_Hr_6002.dae</key>
 		<data>
-		hWRmqD/rS24yHGtXUHN3zJU009o=
+		5lxYKnc2lFHYvfhMbAZux+a8x40=
 		</data>
 		<key>avatar.scnassets/H_Q3_M_Hr_6002/I_Q3_M_Hr_6002_Co.jpg</key>
 		<data>
@@ -1713,7 +1881,7 @@
 		</data>
 		<key>avatar.scnassets/H_Q3_M_Hr_6525/H_Q3_M_Hr_6525.dae</key>
 		<data>
-		qGqJUzIwjUSjWnQgXg40pgIBA4M=
+		GHQ4fFD8JLE6yUwtpNfuWyxdaCg=
 		</data>
 		<key>avatar.scnassets/H_Q3_M_Hr_6525/I_Q3_M_Hr_6525_1_Co.jpg</key>
 		<data>
@@ -1729,55 +1897,75 @@
 		</data>
 		<key>avatar.scnassets/Motion/M_F_0000.dae</key>
 		<data>
-		IoagQkSgI8cyAX8rXOAEUHk3MXk=
+		hm3LJwzavhIb6OU9NZ82Wvj8hqI=
 		</data>
 		<key>avatar.scnassets/Motion/M_F_0001.dae</key>
 		<data>
-		ttLHm9F+uTQgN+hhRZrZvUsRyZU=
+		sAEkhjFT1Vr8N1uG4avpfWWC/hM=
 		</data>
 		<key>avatar.scnassets/Motion/M_F_0002.dae</key>
 		<data>
-		5qdHQnhDPvAl1mQUX8XPgGlCbpI=
+		CXInwgSWOVcJyq/18xFo7Vh3WJA=
 		</data>
 		<key>avatar.scnassets/Motion/M_F_0003.dae</key>
 		<data>
-		dsaKnX4JG+7tyaaG+m7T7Xhey9Y=
+		RezfPyMq4ziVIP/34f3OXHMLCgI=
 		</data>
 		<key>avatar.scnassets/Motion/M_F_0004.dae</key>
 		<data>
-		tHZAaUD9pNOQfCW+MIMZajyWfkA=
+		QO+bNgW0hHthJQZVLjwQXL3Q1SE=
 		</data>
 		<key>avatar.scnassets/Motion/M_F_0005.dae</key>
 		<data>
-		wTSnkocoA1u5TMP8PLx/Y317ZBo=
+		OyljyAf4Z7++VxLk7yTg5JCH0Zc=
+		</data>
+		<key>avatar.scnassets/Motion/M_F_0007.dae</key>
+		<data>
+		rfblvuxhRKxBFLitBn0D/Qt1Msc=
+		</data>
+		<key>avatar.scnassets/Motion/M_F_0020.dae</key>
+		<data>
+		kXZTB5nDRw4OYF33FjQrfF07UMU=
 		</data>
 		<key>avatar.scnassets/Motion/M_M_0000.dae</key>
 		<data>
-		jWGj8WlUCKkKh3WMOqlN75zGoN8=
+		HCqCigqFWOiXDNEn4R60DJ8jFVE=
 		</data>
 		<key>avatar.scnassets/Motion/M_M_0001.dae</key>
 		<data>
-		rCgLgHwKhZNJCKgXPiwScQXmLbw=
+		A0FrexiRTXC7EpYDuAHbzLvnDK8=
 		</data>
 		<key>avatar.scnassets/Motion/M_M_0002.dae</key>
 		<data>
-		+4m7qQXRR4QflHTVb0UZiy77+iI=
+		dNv3E+r7IDRquOR6t86bUdPhwXA=
 		</data>
 		<key>avatar.scnassets/Motion/M_M_0003.dae</key>
 		<data>
-		CFrJ3mztOReTErDDHfwg7/Vordw=
+		hGl6TuVWfvw/MAzSzycTsuf//xo=
 		</data>
 		<key>avatar.scnassets/Motion/M_M_0004.dae</key>
 		<data>
-		VF7c51FazISIxmzGFl3SV4t7FBc=
+		2ES7mie//laRWUhqjWbZwzT23Uk=
 		</data>
 		<key>avatar.scnassets/Motion/M_M_0005.dae</key>
 		<data>
-		z0dbPOyR6gqvEo+YrD+z/GnwZjc=
+		ET5jBz5FNQpzHoyyEPC7Wq8+LLA=
+		</data>
+		<key>avatar.scnassets/Motion/M_M_0016.dae</key>
+		<data>
+		nCgubw/YjS6s5+Oe0s4dmouCo8M=
+		</data>
+		<key>avatar.scnassets/Motion/M_M_0067.dae</key>
+		<data>
+		/KHPJXhdzcugNnV5lmNyPiTG+s8=
+		</data>
+		<key>avatar.scnassets/Motion/M_M_0083.dae</key>
+		<data>
+		rEM/XH3Dl4xYrvKoO8KgCHu2W8Q=
 		</data>
 		<key>avatar.scnassets/dance_motion.dae</key>
 		<data>
-		sFCecin3W/nV3RxUMRtYfpE6AxE=
+		MSIl8SZD/JeAn/tc7M+Zzmh6muc=
 		</data>
 	</dict>
 	<key>rules</key>
