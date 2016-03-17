@@ -63,7 +63,7 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
     }
     
     @IBAction func changeHair(sender: UIButton) {
-        self.avatarObject?.setHair(FKAvatarHair(gender: gender, random: true))
+        self.avatarObject?.setHair(FKAvatarHair(gender: gender))
     }
     
     @IBAction func changeClothes(sender: UIButton) {
