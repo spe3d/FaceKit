@@ -75,7 +75,7 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
     }
     
     @IBAction func changeGlasses(sender: UIButton) {
-        self.avatarObject?.setGlasses(FKAvatarGlasses(gender: gender, random: true))
+        self.avatarObject?.setGlasses(FKAvatarGlasses(gender: gender))
     }
     
     var index = 0
