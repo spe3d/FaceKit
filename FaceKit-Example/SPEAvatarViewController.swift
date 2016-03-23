@@ -67,7 +67,9 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
     }
     
     @IBAction func changeClothes(sender: UIButton) {
-        self.avatarObject?.setSuit(FKAvatarSuit(gender: gender))
+        self.avatarObject?.setSuit(FKAvatarSuit(gender: gender, number: 3014)) { (success: Bool, error: NSError?) -> Void in
+            
+        }
     }
     
     @IBAction func changeMotion(sender: UIButton) {

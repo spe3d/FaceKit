@@ -32,6 +32,7 @@ Pod::Spec.new do |s|
     s.frameworks            = "SceneKit", "UIKit"
 
     s.vendored_frameworks   = "FaceKit/FaceKit.framework"
-    s.dependency 'NumSwift', '1.0.4'
+    s.dependency 'NumSwift', '~> 1.0.4'
+    s.dependency 'SSZipArchive', '~> 1.1'
 
 end
