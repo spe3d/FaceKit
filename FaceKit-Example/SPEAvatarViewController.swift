@@ -26,7 +26,9 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
         self.avatarView.scene = scene
         self.avatarHeadView.scene = scene
         
-        let object = FKAvatarObject(genderOfDefaultAvatar: gender)
+        guard let object = FKAvatarObject(genderOfDefaultAvatar: gender) else {
+            return
+        }
         let avatarData = NSKeyedArchiver.archivedDataWithRootObject(object)
         guard let newObject = NSKeyedUnarchiver.unarchiveObjectWithData(avatarData) else {
             return
