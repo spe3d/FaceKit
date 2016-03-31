@@ -17,7 +17,7 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
     @IBOutlet var avatarHeadView: SCNView!
     
     var avatarObject: FKAvatarObject?
-    var gender = FKGender.Female
+    var gender = FKGender.Male
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,9 +56,20 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
     
     // MARK: - action
     
+    @IBAction func switchGenderAction(sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            self.gender = .Male
+        case 1:
+            self.gender = .Female
+        default: break
+        }
+    }
+    
     @IBAction func uploadFaceAction(sender: UIButton) {
         if let controller = self.storyboard?.instantiateViewControllerWithIdentifier("SPECameraViewController") as? SPECameraViewController {
             controller.modalTransitionStyle = .CrossDissolve
+            controller.gender = self.gender
             controller.delegate = self
             self.presentViewController(controller, animated: true, completion: nil)
         }
