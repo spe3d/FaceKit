@@ -70,7 +70,7 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
         }
     }
     
-    @IBAction func changeClothes(sender: UIButton) {
+    @IBAction func changeSuit(sender: UIButton) {
         self.avatarObject?.setSuit(FKAvatarSuit(gender: gender, number: 3014)) { (success: Bool, error: NSError?) -> Void in
             
         }
@@ -85,24 +85,6 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
     @IBAction func changeGlasses(sender: UIButton) {
         self.avatarObject?.setGlasses(FKAvatarGlasses(gender: gender)) { (success: Bool, error: NSError?) -> Void in
             
-        }
-    }
-    
-    var index = 0
-    @IBAction func changeFacial(sender: UIButton) {
-        var weights = [Float].init(count: 14, repeatedValue: 0)
-        weights[index++ % 14] = 1
-        self.avatarObject?.setFacial(weights)
-    }
-    
-    @IBAction func changeSkinColor(sender: UIButton) {
-        if sender.tag == 0 {
-            self.avatarObject?.setSkinColor(.Black)
-            sender.tag = 1
-        }
-        else {
-            self.avatarObject?.setSkinColor(.Default)
-            sender.tag = 0
         }
     }
     
