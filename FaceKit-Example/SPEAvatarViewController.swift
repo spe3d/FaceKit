@@ -87,6 +87,7 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
         controller.selectPresetClosure = {(preset: FKAvatarPreset) -> Void in
             
         }
+        controller.title = "Hair"
         self.presentViewController(navigationController, animated: true, completion: nil)
     }
     
@@ -102,6 +103,7 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
         controller.selectPresetClosure = {(preset: FKAvatarPreset) -> Void in
             
         }
+        controller.title = "Suit"
         self.presentViewController(navigationController, animated: true, completion: nil)
     }
     
@@ -117,6 +119,7 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
         controller.selectPresetClosure = {(preset: FKAvatarPreset) -> Void in
             
         }
+        controller.title = "Motion"
         self.presentViewController(navigationController, animated: true, completion: nil)
     }
     
@@ -132,6 +135,7 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
         controller.selectPresetClosure = {(preset: FKAvatarPreset) -> Void in
             
         }
+        controller.title = "Glasses"
         self.presentViewController(navigationController, animated: true, completion: nil)
     }
     
