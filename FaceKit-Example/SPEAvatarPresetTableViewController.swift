@@ -72,4 +72,9 @@ class SPEAvatarPresetTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.selectPresetClosure?(self.avatarPresets[indexPath.row])
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
 }

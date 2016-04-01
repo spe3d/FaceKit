@@ -85,7 +85,22 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
         controller.gender = self.gender
         controller.avatarPresetType = FKAvatarHair.self
         controller.selectPresetClosure = {(preset: FKAvatarPreset) -> Void in
-            
+            if let hair = preset as? FKAvatarHair {
+                let hud = MBProgressHUD(view: self.view)
+                hud.labelText = "Downloading..."
+                
+                self.view.addSubview(hud)
+                hud.show(true)
+                self.avatarObject?.setHair(hair, completionHandler: { (success: Bool, error: NSError?) in
+                    MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
+                    
+                    if let error = error {
+                        NSLog("%@", error)
+                    }
+                    
+                    NSLog("\(success)")
+                })
+            }
         }
         controller.title = "Hair"
         self.presentViewController(navigationController, animated: true, completion: nil)
@@ -101,7 +116,22 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
         controller.gender = self.gender
         controller.avatarPresetType = FKAvatarSuit.self
         controller.selectPresetClosure = {(preset: FKAvatarPreset) -> Void in
-            
+            if let suit = preset as? FKAvatarSuit {
+                let hud = MBProgressHUD(view: self.view)
+                hud.labelText = "Downloading..."
+                
+                self.view.addSubview(hud)
+                hud.show(true)
+                self.avatarObject?.setSuit(suit, completionHandler: { (success: Bool, error: NSError?) in
+                    MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
+                    
+                    if let error = error {
+                        NSLog("%@", error)
+                    }
+                    
+                    NSLog("\(success)")
+                })
+            }
         }
         controller.title = "Suit"
         self.presentViewController(navigationController, animated: true, completion: nil)
@@ -117,7 +147,22 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
         controller.gender = self.gender
         controller.avatarPresetType = FKAvatarMotion.self
         controller.selectPresetClosure = {(preset: FKAvatarPreset) -> Void in
-            
+            if let motion = preset as? FKAvatarMotion {
+                let hud = MBProgressHUD(view: self.view)
+                hud.labelText = "Downloading..."
+                
+                self.view.addSubview(hud)
+                hud.show(true)
+                self.avatarObject?.setMotion(motion, completionHandler: { (success: Bool, error: NSError?) in
+                    MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
+                    
+                    if let error = error {
+                        NSLog("%@", error)
+                    }
+                    
+                    NSLog("\(success)")
+                })
+            }
         }
         controller.title = "Motion"
         self.presentViewController(navigationController, animated: true, completion: nil)
@@ -133,7 +178,22 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
         controller.gender = self.gender
         controller.avatarPresetType = FKAvatarGlasses.self
         controller.selectPresetClosure = {(preset: FKAvatarPreset) -> Void in
-            
+            if let glasses = preset as? FKAvatarGlasses {
+                let hud = MBProgressHUD(view: self.view)
+                hud.labelText = "Downloading..."
+                
+                self.view.addSubview(hud)
+                hud.show(true)
+                self.avatarObject?.setGlasses(glasses, completionHandler: { (success: Bool, error: NSError?) in
+                    MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
+                    
+                    if let error = error {
+                        NSLog("%@", error)
+                    }
+                    
+                    NSLog("\(success)")
+                })
+            }
         }
         controller.title = "Glasses"
         self.presentViewController(navigationController, animated: true, completion: nil)
