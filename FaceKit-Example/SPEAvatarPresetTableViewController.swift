@@ -47,6 +47,12 @@ class SPEAvatarPresetTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    // MARK: - action
+    
+    @IBAction func closeAction(sender: UIBarButtonItem) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {

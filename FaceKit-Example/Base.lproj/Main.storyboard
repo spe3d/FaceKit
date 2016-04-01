@@ -207,7 +207,13 @@
                             <outlet property="delegate" destination="4HZ-nQ-JiO" id="Zf3-hW-NuA"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="FdM-Xb-vHI"/>
+                    <navigationItem key="navigationItem" id="FdM-Xb-vHI">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="JQm-Ye-Ufj">
+                            <connections>
+                                <action selector="closeAction:" destination="4HZ-nQ-JiO" id="zee-f6-jDB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8lv-nJ-zfD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
