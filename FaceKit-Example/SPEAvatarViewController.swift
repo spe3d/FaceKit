@@ -76,27 +76,63 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
     }
     
     @IBAction func changeHair(sender: UIButton) {
-        self.avatarObject?.setHair(FKAvatarHair(gender: gender)) { (success: Bool, error: NSError?) -> Void in
+        guard let navigationController = self.storyboard?.instantiateViewControllerWithIdentifier("SPEAvatarPresetNavigationController") as? UINavigationController else {
+            return
+        }
+        guard let controller = navigationController.viewControllers[0] as? SPEAvatarPresetTableViewController else {
+            return
+        }
+        controller.gender = self.gender
+        controller.avatarPresetType = FKAvatarHair.self
+        controller.selectPresetClosure = {(preset: FKAvatarPreset) -> Void in
             
         }
+        self.presentViewController(navigationController, animated: true, completion: nil)
     }
     
     @IBAction func changeSuit(sender: UIButton) {
-        self.avatarObject?.setSuit(FKAvatarSuit(gender: gender, number: 3014)) { (success: Bool, error: NSError?) -> Void in
+        guard let navigationController = self.storyboard?.instantiateViewControllerWithIdentifier("SPEAvatarPresetNavigationController") as? UINavigationController else {
+            return
+        }
+        guard let controller = navigationController.viewControllers[0] as? SPEAvatarPresetTableViewController else {
+            return
+        }
+        controller.gender = self.gender
+        controller.avatarPresetType = FKAvatarSuit.self
+        controller.selectPresetClosure = {(preset: FKAvatarPreset) -> Void in
             
         }
+        self.presentViewController(navigationController, animated: true, completion: nil)
     }
     
     @IBAction func changeMotion(sender: UIButton) {
-        self.avatarObject?.setMotion(FKAvatarMotion(gender: gender)) { (success: Bool, error: NSError?) -> Void in
+        guard let navigationController = self.storyboard?.instantiateViewControllerWithIdentifier("SPEAvatarPresetNavigationController") as? UINavigationController else {
+            return
+        }
+        guard let controller = navigationController.viewControllers[0] as? SPEAvatarPresetTableViewController else {
+            return
+        }
+        controller.gender = self.gender
+        controller.avatarPresetType = FKAvatarMotion.self
+        controller.selectPresetClosure = {(preset: FKAvatarPreset) -> Void in
             
         }
+        self.presentViewController(navigationController, animated: true, completion: nil)
     }
     
     @IBAction func changeGlasses(sender: UIButton) {
-        self.avatarObject?.setGlasses(FKAvatarGlasses(gender: gender)) { (success: Bool, error: NSError?) -> Void in
+        guard let navigationController = self.storyboard?.instantiateViewControllerWithIdentifier("SPEAvatarPresetNavigationController") as? UINavigationController else {
+            return
+        }
+        guard let controller = navigationController.viewControllers[0] as? SPEAvatarPresetTableViewController else {
+            return
+        }
+        controller.gender = self.gender
+        controller.avatarPresetType = FKAvatarGlasses.self
+        controller.selectPresetClosure = {(preset: FKAvatarPreset) -> Void in
             
         }
+        self.presentViewController(navigationController, animated: true, completion: nil)
     }
     
     @IBAction func talkAction(sender: UIButton) {

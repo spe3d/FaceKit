@@ -15,12 +15,33 @@ class SPEAvatarPresetTableViewController: UITableViewController {
     var gender = FKGender.Male
     var selectPresetClosure: ((FKAvatarPreset) -> Void)?
     
+    var avatarPresets: [FKAvatarPreset] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.loadAvatarPresetData()
+        
         self.clearsSelectionOnViewWillAppear = true
     }
 
+    func loadAvatarPresetData() {
+        if avatarPresetType is FKAvatarHair.Type {
+            self.avatarPresets = FKAvatarHair.getNumberList(self.gender)
+        }
+        else if avatarPresetType is FKAvatarSuit.Type {
+            self.avatarPresets = FKAvatarSuit.getNumberList(self.gender)
+        }
+        else if avatarPresetType is FKAvatarMotion.Type {
+            self.avatarPresets = FKAvatarMotion.getNumberList(self.gender)
+        }
+        else if avatarPresetType is FKAvatarGlasses.Type {
+            self.avatarPresets = FKAvatarGlasses.getNumberList(self.gender)
+        }
+        
+        self.tableView.reloadData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -29,19 +50,18 @@ class SPEAvatarPresetTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return self.avatarPresets.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("avatarPresetCell", forIndexPath: indexPath)
 
-        
+        cell.textLabel?.text = self.avatarPresets[indexPath.row].name
+        cell.imageView?.image = self.avatarPresets[indexPath.row].previewImage
 
         return cell
     }
