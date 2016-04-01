@@ -9,4 +9,4 @@ And FaceKit-Swift framework is built as an universal framework, that means you c
 * Easy to display the avatar on Scene View.
 
 # Reference
-[Document](http://spe3d.github.io/FaceKit-Swift)
+[Documentation](http://spe3d.github.io/FaceKit)
