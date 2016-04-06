@@ -19,6 +19,8 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
     var avatarObject: FKAvatarObject?
     var gender = FKGender.Male
     
+    var avatarData: NSData?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -32,16 +34,10 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: - action
-    
-    @IBAction func getDefaultAvatarAction(sender: UIButton) {
+    func assignAvatarObject(avatarObject: FKAvatarObject) {
         let scene = SCNScene()
         self.avatarView.scene = scene
         self.avatarHeadView.scene = scene
-        
-        guard let avatarObject = FKAvatarObject(genderOfDefaultAvatar: gender) else {
-            return
-        }
         
         self.avatarObject = avatarObject
         
@@ -50,12 +46,33 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
         self.avatarHeadView.pointOfView = self.avatarObject!.headCameraNode
     }
     
-    @IBAction func saveAvatarAction(sender: UIButton) {
+    // MARK: - action
+    
+    @IBAction func getDefaultAvatarAction(sender: UIButton) {
+        guard let avatarObject = FKAvatarObject(genderOfDefaultAvatar: gender) else {
+            return
+        }
         
+        self.assignAvatarObject(avatarObject)
+    }
+    
+    @IBAction func saveAvatarAction(sender: UIButton) {
+        guard let avatarObject = self.avatarObject else {
+            return
+        }
+        self.avatarData = NSKeyedArchiver.archivedDataWithRootObject(avatarObject)
     }
     
     @IBAction func loadAvatarAction(sender: UIButton) {
+        guard let avatarData = self.avatarData else {
+            return
+        }
         
+        guard let avatarObject = NSKeyedUnarchiver.unarchiveObjectWithData(avatarData) as? FKAvatarObject else {
+            return
+        }
+        
+        self.assignAvatarObject(avatarObject)
     }
     
     @IBAction func cleanAvatarAction(sender: UIButton) {
