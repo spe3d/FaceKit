@@ -151,9 +151,9 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
             return
         }
         controller.gender = self.gender
-        controller.avatarPresetType = FKAvatarSuit.self
+        controller.avatarPresetType = FKSuit.self
         controller.selectPresetClosure = {(preset: FKAvatarPreset) -> Void in
-            if let suit = preset as? FKAvatarSuit {
+            if let suit = preset as? FKSuit {
                 let hud = MBProgressHUD(view: self.view)
                 hud.labelText = "Downloading..."
                 
