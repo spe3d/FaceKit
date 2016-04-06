@@ -21,28 +21,6 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let scene = SCNScene()
-        self.avatarView.scene = scene
-        self.avatarHeadView.scene = scene
-        
-        guard let object = FKAvatarObject(genderOfDefaultAvatar: gender) else {
-            return
-        }
-        let avatarData = NSKeyedArchiver.archivedDataWithRootObject(object)
-        guard let newObject = NSKeyedUnarchiver.unarchiveObjectWithData(avatarData) else {
-            return
-        }
-        
-        guard let avatarObject = newObject as? FKAvatarObject else {
-            return
-        }
-        
-        self.avatarObject = avatarObject
-        
-        self.avatarView.scene?.rootNode.addChildNode(self.avatarObject!.sceneNode)
-        self.avatarView.pointOfView = self.avatarObject!.defaultCameraNode
-        self.avatarHeadView.pointOfView = self.avatarObject!.headCameraNode
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -55,6 +33,34 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
     }
     
     // MARK: - action
+    
+    @IBAction func getDefaultAvatarAction(sender: UIButton) {
+        let scene = SCNScene()
+        self.avatarView.scene = scene
+        self.avatarHeadView.scene = scene
+        
+        guard let avatarObject = FKAvatarObject(genderOfDefaultAvatar: gender) else {
+            return
+        }
+        
+        self.avatarObject = avatarObject
+        
+        self.avatarView.scene?.rootNode.addChildNode(self.avatarObject!.sceneNode)
+        self.avatarView.pointOfView = self.avatarObject!.defaultCameraNode
+        self.avatarHeadView.pointOfView = self.avatarObject!.headCameraNode
+    }
+    
+    @IBAction func saveAvatarAction(sender: UIButton) {
+        
+    }
+    
+    @IBAction func loadAvatarAction(sender: UIButton) {
+        
+    }
+    
+    @IBAction func cleanAvatarAction(sender: UIButton) {
+        
+    }
     
     @IBAction func switchGenderAction(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
