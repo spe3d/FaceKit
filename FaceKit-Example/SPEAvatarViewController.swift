@@ -18,7 +18,7 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
     
     @IBOutlet var cleanButton: UIButton?
     
-    var avatarObject: FKAvatarObject?
+    var avatarController: FKAvatarController?
     var gender = FKGender.Male
     
     var avatarData: NSData?
@@ -36,33 +36,33 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
         // Dispose of any resources that can be recreated.
     }
     
-    func assignAvatarObject(avatarObject: FKAvatarObject) {
+    func assignAvatarController(avatarController: FKAvatarController) {
         let scene = SCNScene()
         self.avatarView.scene = scene
         self.avatarHeadView.scene = scene
         
-        self.avatarObject = avatarObject
+        self.avatarController = avatarController
         
-        self.avatarView.scene?.rootNode.addChildNode(self.avatarObject!.sceneNode)
-        self.avatarView.pointOfView = self.avatarObject!.defaultCameraNode
-        self.avatarHeadView.pointOfView = self.avatarObject!.headCameraNode
+        self.avatarView.scene?.rootNode.addChildNode(self.avatarController!.sceneNode)
+        self.avatarView.pointOfView = self.avatarController!.defaultCameraNode
+        self.avatarHeadView.pointOfView = self.avatarController!.headCameraNode
     }
     
     // MARK: - action
     
     @IBAction func getDefaultAvatarAction(sender: UIButton) {
-        guard let avatarObject = FKAvatarObject(genderOfDefaultAvatar: self.gender) else {
+        guard let avatarController = FKAvatarController(genderOfDefaultAvatar: self.gender) else {
             return
         }
         
-        self.assignAvatarObject(avatarObject)
+        self.assignAvatarController(avatarController)
     }
     
     @IBAction func saveAvatarAction(sender: UIButton) {
-        guard let avatarObject = self.avatarObject else {
+        guard let avatarController = self.avatarController else {
             return
         }
-        self.avatarData = NSKeyedArchiver.archivedDataWithRootObject(avatarObject)
+        self.avatarData = NSKeyedArchiver.archivedDataWithRootObject(avatarController)
     }
     
     @IBAction func loadAvatarAction(sender: UIButton) {
@@ -70,11 +70,11 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
             return
         }
         
-        guard let avatarObject = NSKeyedUnarchiver.unarchiveObjectWithData(avatarData) as? FKAvatarObject else {
+        guard let avatarController = NSKeyedUnarchiver.unarchiveObjectWithData(avatarData) as? FKAvatarController else {
             return
         }
         
-        self.assignAvatarObject(avatarObject)
+        self.assignAvatarController(avatarController)
     }
     
     @IBAction func cleanAvatarAction(sender: UIButton) {
@@ -86,7 +86,7 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
             node.removeFromParentNode()
         }
         
-        self.avatarObject = nil
+        self.avatarController = nil
         self.avatarView.scene = nil
         self.avatarHeadView.scene = nil
     }
@@ -128,7 +128,7 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
                 
                 self.view.addSubview(hud)
                 hud.show(true)
-                self.avatarObject?.setHair(hair, completionHandler: { (success: Bool, error: NSError?) in
+                self.avatarController?.setHair(hair, completionHandler: { (success: Bool, error: NSError?) in
                     MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
                     
                     if let error = error {
@@ -159,7 +159,7 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
                 
                 self.view.addSubview(hud)
                 hud.show(true)
-                self.avatarObject?.setSuit(suit, completionHandler: { (success: Bool, error: NSError?) in
+                self.avatarController?.setSuit(suit, completionHandler: { (success: Bool, error: NSError?) in
                     MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
                     
                     if let error = error {
@@ -190,7 +190,7 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
                 
                 self.view.addSubview(hud)
                 hud.show(true)
-                self.avatarObject?.setMotion(motion, completionHandler: { (success: Bool, error: NSError?) in
+                self.avatarController?.setMotion(motion, completionHandler: { (success: Bool, error: NSError?) in
                     MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
                     
                     if let error = error {
@@ -221,7 +221,7 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
                 
                 self.view.addSubview(hud)
                 hud.show(true)
-                self.avatarObject?.setGlasses(glasses, completionHandler: { (success: Bool, error: NSError?) in
+                self.avatarController?.setGlasses(glasses, completionHandler: { (success: Bool, error: NSError?) in
                     MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
                     
                     if let error = error {
@@ -262,7 +262,7 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
             self.view.addSubview(hud)
             hud.show(true)
             
-            self.avatarObject?.saveAndPlayVoice(wavFileData, willPlayClosure: { () -> Void in
+            self.avatarController?.saveAndPlayVoice(wavFileData, willPlayClosure: { () -> Void in
                 MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
                 }, completion: { (success: Bool) -> Void in
                     
@@ -271,19 +271,19 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
     }
     
     @IBAction func replayTalkAction(sender: UIButton) {
-        self.avatarObject?.playLastVoice({ (success: Bool) -> Void in
+        self.avatarController?.playLastVoice({ (success: Bool) -> Void in
             NSLog("\(String(success))")
         })
     }
 
     // MARK: - SPECameraViewControllerDelegate
     
-    func cameraViewController(viewController: SPECameraViewController, didCreateAvatarObject avatarObject: FKAvatarObject) {
-        self.avatarObject = avatarObject
+    func cameraViewController(viewController: SPECameraViewController, didCreateAvatarController avatarController: FKAvatarController) {
+        self.avatarController = avatarController
         
         if let rootNode = self.avatarView.scene?.rootNode {
             rootNode.childNodeWithName("FKAvatarNode", recursively: true)?.removeFromParentNode()
-            rootNode.addChildNode(avatarObject.sceneNode)
+            rootNode.addChildNode(avatarController.sceneNode)
             
             for node in rootNode.childNodes {
                 if node.camera != nil {
@@ -292,7 +292,7 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
             }
         }
         
-        self.avatarView.pointOfView = avatarObject.defaultCameraNode
-        self.avatarHeadView.pointOfView = avatarObject.headCameraNode
+        self.avatarView.pointOfView = avatarController.defaultCameraNode
+        self.avatarHeadView.pointOfView = avatarController.headCameraNode
     }
 }
