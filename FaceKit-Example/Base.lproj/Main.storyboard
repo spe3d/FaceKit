@@ -205,6 +205,7 @@
                     <connections>
                         <outlet property="avatarHeadView" destination="vEe-zf-o3W" id="e03-xm-IOz"/>
                         <outlet property="avatarView" destination="dMH-zF-BtO" id="ePu-fO-OSL"/>
+                        <outlet property="cleanButton" destination="7ry-YJ-C03" id="gRF-cZ-HhM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>

@@ -16,6 +16,8 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
     @IBOutlet var avatarView: SCNView!
     @IBOutlet var avatarHeadView: SCNView!
     
+    @IBOutlet var cleanButton: UIButton?
+    
     var avatarObject: FKAvatarObject?
     var gender = FKGender.Male
     
@@ -49,7 +51,7 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
     // MARK: - action
     
     @IBAction func getDefaultAvatarAction(sender: UIButton) {
-        guard let avatarObject = FKAvatarObject(genderOfDefaultAvatar: gender) else {
+        guard let avatarObject = FKAvatarObject(genderOfDefaultAvatar: self.gender) else {
             return
         }
         
@@ -97,6 +99,8 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
             self.gender = .Female
         default: break
         }
+        
+        self.cleanButton?.sendActionsForControlEvents(.TouchUpInside)
     }
     
     @IBAction func uploadFaceAction(sender: UIButton) {
