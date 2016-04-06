@@ -113,15 +113,15 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
     }
     
     @IBAction func changeHair(sender: UIButton) {
-        guard let navigationController = self.storyboard?.instantiateViewControllerWithIdentifier("SPEAvatarPresetNavigationController") as? UINavigationController else {
+        guard let navigationController = self.storyboard?.instantiateViewControllerWithIdentifier("SPEPresetNavigationController") as? UINavigationController else {
             return
         }
-        guard let controller = navigationController.viewControllers[0] as? SPEAvatarPresetTableViewController else {
+        guard let controller = navigationController.viewControllers[0] as? SPEPresetTableViewController else {
             return
         }
         controller.gender = self.gender
-        controller.avatarPresetType = FKHair.self
-        controller.selectPresetClosure = {(preset: FKAvatarPreset) -> Void in
+        controller.presetType = FKHair.self
+        controller.selectPresetClosure = {(preset: FKPreset) -> Void in
             if let hair = preset as? FKHair {
                 let hud = MBProgressHUD(view: self.view)
                 hud.labelText = "Downloading..."
@@ -144,15 +144,15 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
     }
     
     @IBAction func changeSuit(sender: UIButton) {
-        guard let navigationController = self.storyboard?.instantiateViewControllerWithIdentifier("SPEAvatarPresetNavigationController") as? UINavigationController else {
+        guard let navigationController = self.storyboard?.instantiateViewControllerWithIdentifier("SPEPresetNavigationController") as? UINavigationController else {
             return
         }
-        guard let controller = navigationController.viewControllers[0] as? SPEAvatarPresetTableViewController else {
+        guard let controller = navigationController.viewControllers[0] as? SPEPresetTableViewController else {
             return
         }
         controller.gender = self.gender
-        controller.avatarPresetType = FKSuit.self
-        controller.selectPresetClosure = {(preset: FKAvatarPreset) -> Void in
+        controller.presetType = FKSuit.self
+        controller.selectPresetClosure = {(preset: FKPreset) -> Void in
             if let suit = preset as? FKSuit {
                 let hud = MBProgressHUD(view: self.view)
                 hud.labelText = "Downloading..."
@@ -175,15 +175,15 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
     }
     
     @IBAction func changeMotion(sender: UIButton) {
-        guard let navigationController = self.storyboard?.instantiateViewControllerWithIdentifier("SPEAvatarPresetNavigationController") as? UINavigationController else {
+        guard let navigationController = self.storyboard?.instantiateViewControllerWithIdentifier("SPEPresetNavigationController") as? UINavigationController else {
             return
         }
-        guard let controller = navigationController.viewControllers[0] as? SPEAvatarPresetTableViewController else {
+        guard let controller = navigationController.viewControllers[0] as? SPEPresetTableViewController else {
             return
         }
         controller.gender = self.gender
-        controller.avatarPresetType = FKMotion.self
-        controller.selectPresetClosure = {(preset: FKAvatarPreset) -> Void in
+        controller.presetType = FKMotion.self
+        controller.selectPresetClosure = {(preset: FKPreset) -> Void in
             if let motion = preset as? FKMotion {
                 let hud = MBProgressHUD(view: self.view)
                 hud.labelText = "Downloading..."
@@ -206,15 +206,15 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
     }
     
     @IBAction func changeGlasses(sender: UIButton) {
-        guard let navigationController = self.storyboard?.instantiateViewControllerWithIdentifier("SPEAvatarPresetNavigationController") as? UINavigationController else {
+        guard let navigationController = self.storyboard?.instantiateViewControllerWithIdentifier("SPEPresetNavigationController") as? UINavigationController else {
             return
         }
-        guard let controller = navigationController.viewControllers[0] as? SPEAvatarPresetTableViewController else {
+        guard let controller = navigationController.viewControllers[0] as? SPEPresetTableViewController else {
             return
         }
         controller.gender = self.gender
-        controller.avatarPresetType = FKGlasses.self
-        controller.selectPresetClosure = {(preset: FKAvatarPreset) -> Void in
+        controller.presetType = FKGlasses.self
+        controller.selectPresetClosure = {(preset: FKPreset) -> Void in
             if let glasses = preset as? FKGlasses {
                 let hud = MBProgressHUD(view: self.view)
                 hud.labelText = "Downloading..."

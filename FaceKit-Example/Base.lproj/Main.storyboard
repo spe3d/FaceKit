@@ -212,16 +212,16 @@
             </objects>
             <point key="canvasLocation" x="308" y="299"/>
         </scene>
-        <!--Avatar Preset Table View Controller-->
+        <!--Preset Table View Controller-->
         <scene sceneID="xWT-Ub-jcC">
             <objects>
-                <tableViewController id="4HZ-nQ-JiO" customClass="SPEAvatarPresetTableViewController" customModule="FaceKit_Preview" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="4HZ-nQ-JiO" customClass="SPEPresetTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="UB2-TN-Pwc">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="avatarPresetCell" textLabel="kaM-Eu-huP" style="IBUITableViewCellStyleDefault" id="UkQ-lw-zVf">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="presetCell" textLabel="kaM-Eu-huP" style="IBUITableViewCellStyleDefault" id="UkQ-lw-zVf">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UkQ-lw-zVf" id="03t-45-RX7">
@@ -348,7 +348,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Sgv-gf-jGC">
             <objects>
-                <navigationController storyboardIdentifier="SPEAvatarPresetNavigationController" id="HID-u4-Rhb" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SPEPresetNavigationController" id="HID-u4-Rhb" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="RmK-sW-Qal">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

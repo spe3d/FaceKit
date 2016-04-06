@@ -1,5 +1,5 @@
 //
-//  SPEAvatarPresetTableViewController.swift
+//  SPEPresetTableViewController.swift
 //  FaceKit
 //
 //  Created by Daniel on 2016/3/31.
@@ -9,34 +9,34 @@
 import UIKit
 import FaceKit
 
-class SPEAvatarPresetTableViewController: UITableViewController {
+class SPEPresetTableViewController: UITableViewController {
 
-    var avatarPresetType: FKAvatarPreset.Type?
+    var presetType: FKPreset.Type?
     var gender = FKGender.Male
-    var selectPresetClosure: ((FKAvatarPreset) -> Void)?
+    var selectPresetClosure: ((FKPreset) -> Void)?
     
-    var avatarPresets: [FKAvatarPreset] = []
+    var presets: [FKPreset] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.loadAvatarPresetData()
+        self.loadPresetData()
         
         self.clearsSelectionOnViewWillAppear = true
     }
 
-    func loadAvatarPresetData() {
-        if avatarPresetType is FKHair.Type {
-            self.avatarPresets = FKHair.getNumberList(self.gender)
+    func loadPresetData() {
+        if presetType is FKHair.Type {
+            self.presets = FKHair.getNumberList(self.gender)
         }
-        else if avatarPresetType is FKSuit.Type {
-            self.avatarPresets = FKSuit.getNumberList(self.gender)
+        else if presetType is FKSuit.Type {
+            self.presets = FKSuit.getNumberList(self.gender)
         }
-        else if avatarPresetType is FKMotion.Type {
-            self.avatarPresets = FKMotion.getNumberList(self.gender)
+        else if presetType is FKMotion.Type {
+            self.presets = FKMotion.getNumberList(self.gender)
         }
-        else if avatarPresetType is FKGlasses.Type {
-            self.avatarPresets = FKGlasses.getNumberList(self.gender)
+        else if presetType is FKGlasses.Type {
+            self.presets = FKGlasses.getNumberList(self.gender)
         }
         
         self.tableView.reloadData()
@@ -60,20 +60,20 @@ class SPEAvatarPresetTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.avatarPresets.count
+        return self.presets.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("avatarPresetCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("presetCell", forIndexPath: indexPath)
 
-        cell.textLabel?.text = self.avatarPresets[indexPath.row].name
-        cell.imageView?.image = self.avatarPresets[indexPath.row].previewImage
+        cell.textLabel?.text = self.presets[indexPath.row].name
+        cell.imageView?.image = self.presets[indexPath.row].previewImage
 
         return cell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.selectPresetClosure?(self.avatarPresets[indexPath.row])
+        self.selectPresetClosure?(self.presets[indexPath.row])
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }
