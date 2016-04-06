@@ -59,7 +59,17 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
     }
     
     @IBAction func cleanAvatarAction(sender: UIButton) {
+        guard let rootNode = self.avatarView.scene?.rootNode else {
+            return
+        }
         
+        for node in rootNode.childNodes {
+            node.removeFromParentNode()
+        }
+        
+        self.avatarObject = nil
+        self.avatarView.scene = nil
+        self.avatarHeadView.scene = nil
     }
     
     @IBAction func switchGenderAction(sender: UISegmentedControl) {
