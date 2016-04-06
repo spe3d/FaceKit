@@ -32,8 +32,8 @@ class SPEAvatarPresetTableViewController: UITableViewController {
         else if avatarPresetType is FKSuit.Type {
             self.avatarPresets = FKSuit.getNumberList(self.gender)
         }
-        else if avatarPresetType is FKAvatarMotion.Type {
-            self.avatarPresets = FKAvatarMotion.getNumberList(self.gender)
+        else if avatarPresetType is FKMotion.Type {
+            self.avatarPresets = FKMotion.getNumberList(self.gender)
         }
         else if avatarPresetType is FKGlasses.Type {
             self.avatarPresets = FKGlasses.getNumberList(self.gender)
