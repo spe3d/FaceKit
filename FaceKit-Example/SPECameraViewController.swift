@@ -65,7 +65,7 @@ class SPECameraViewController: SPEViewController, AVCaptureMetadataOutputObjects
         }
         
         self.frontCameraAction()
-        changeCameraButton.addTarget(self, action: "backCameraAction", forControlEvents: .TouchUpInside)
+        changeCameraButton.addTarget(self, action: #selector(SPECameraViewController.backCameraAction), forControlEvents: .TouchUpInside)
     }
     
     override func viewDidLayoutSubviews() {
@@ -238,8 +238,8 @@ class SPECameraViewController: SPEViewController, AVCaptureMetadataOutputObjects
         self.backCameraPreviewLayer.hidden = true
         self.frontCameraPreviewLayer.hidden = false
         
-        changeCameraButton.removeTarget(self, action: "frontCameraAction", forControlEvents: .TouchUpInside)
-        changeCameraButton.addTarget(self, action: "backCameraAction", forControlEvents: .TouchUpInside)
+        changeCameraButton.removeTarget(self, action: #selector(SPECameraViewController.frontCameraAction), forControlEvents: .TouchUpInside)
+        changeCameraButton.addTarget(self, action: #selector(SPECameraViewController.backCameraAction), forControlEvents: .TouchUpInside)
         
         changeCameraButton.setTitle("Back", forState: .Normal)
     }
@@ -251,8 +251,8 @@ class SPECameraViewController: SPEViewController, AVCaptureMetadataOutputObjects
         self.frontCameraPreviewLayer.hidden = true
         self.backCameraPreviewLayer.hidden = false
         
-        changeCameraButton.removeTarget(self, action: "backCameraAction", forControlEvents: .TouchUpInside)
-        changeCameraButton.addTarget(self, action: "frontCameraAction", forControlEvents: .TouchUpInside)
+        changeCameraButton.removeTarget(self, action: #selector(SPECameraViewController.backCameraAction), forControlEvents: .TouchUpInside)
+        changeCameraButton.addTarget(self, action: #selector(SPECameraViewController.frontCameraAction), forControlEvents: .TouchUpInside)
         
         changeCameraButton.setTitle("Front", forState: .Normal)
     }
