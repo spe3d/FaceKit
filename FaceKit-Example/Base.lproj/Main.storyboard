@@ -215,7 +215,7 @@
         <!--Preset Table View Controller-->
         <scene sceneID="xWT-Ub-jcC">
             <objects>
-                <tableViewController id="4HZ-nQ-JiO" customClass="SPEPresetTableViewController" sceneMemberID="viewController">
+                <tableViewController id="4HZ-nQ-JiO" customClass="SPEPresetTableViewController" customModule="FaceKit_Preview" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="UB2-TN-Pwc">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
