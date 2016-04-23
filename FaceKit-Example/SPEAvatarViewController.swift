@@ -44,7 +44,7 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
         self.avatarController = avatarController
         
         self.avatarView.scene?.rootNode.addChildNode(self.avatarController!.sceneNode)
-        self.avatarView.pointOfView = self.avatarController!.defaultCameraNode
+//        self.avatarView.pointOfView = self.avatarController!.defaultCameraNode
 //        self.avatarHeadView.pointOfView = self.avatarController!.headCameraNode
     }
     
@@ -292,7 +292,7 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
             }
         }
         
-        self.avatarView.pointOfView = avatarController.defaultCameraNode
+//        self.avatarView.pointOfView = avatarController.defaultCameraNode
 //        self.avatarHeadView.pointOfView = avatarController.headCameraNode
     }
 }
