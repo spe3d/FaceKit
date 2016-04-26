@@ -43,7 +43,7 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
         
         self.avatarController = avatarController
         
-        self.avatarView.scene?.rootNode.addChildNode(self.avatarController!.sceneNode)
+        self.avatarView.scene?.rootNode.addChildNode(avatarController.sceneNode)
         
         self.setupDefaultCamera()
         self.setupHeadCamera()
@@ -54,6 +54,7 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
             return
         }
         
+        camera.camera?.zFar = 500
         self.avatarView.scene?.rootNode.addChildNode(camera)
         self.avatarView.pointOfView = camera
     }
@@ -68,6 +69,23 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
     }
     
     // MARK: - action
+    
+    @IBAction func showBackgroundAction(sender: UIButton) {
+        self.avatarView.scene?.rootNode.childNodeWithName("background", recursively: true)?.removeFromParentNode()
+        
+        guard let avatarController = self.avatarController else {
+            return
+        }
+        
+        let scale = UIScreen.mainScreen().nativeScale / CGFloat(avatarController.sceneNode.childNodeWithName("Hips", recursively: true)!.scale.x)
+        let image = UIImage(named: "mvp_bg")!
+        let scenery = SCNPlane(width: image.size.width / scale, height: image.size.height / scale)
+        scenery.firstMaterial?.diffuse.contents = image
+        let node = SCNNode(geometry: scenery)
+        node.name = "background"
+        node.position = SCNVector3Make(0, 130, -130)
+        self.avatarView.scene?.rootNode.addChildNode(node)
+    }
     
     @IBAction func getDefaultAvatarAction(sender: UIButton) {
         guard let avatarController = FKAvatarController(genderOfDefaultAvatar: self.gender) else {
