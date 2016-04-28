@@ -131,12 +131,6 @@ SWIFT_CLASS("_TtC7FaceKit18FKAvatarController")
 /// The node of the avatar on the scene graph.
 @property (nonatomic, readonly, strong) SCNNode * _Nonnull sceneNode;
 
-/// The default camera shoots the avatar with full body.
-@property (nonatomic, readonly, strong) SCNNode * _Nonnull defaultCameraNode;
-
-/// Get focused on the avatar's head of the camera.
-@property (nonatomic, readonly, strong) SCNNode * _Nonnull headCameraNode;
-
 /// Returns an object initialized from data in a given unarchiver.
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 
@@ -145,6 +139,7 @@ SWIFT_CLASS("_TtC7FaceKit18FKAvatarController")
 
 /// Returns the class supports secure coding.
 + (BOOL)supportsSecureCoding;
+- (SCNNode * _Nonnull)getDefaultCameraNode;
 
 /// Changes suit at the avatar.
 - (void)setSuit:(FKSuit * _Null_unspecified)suit completionHandler:(void (^ _Nonnull)(BOOL, NSError * _Nullable))completionHandler;
