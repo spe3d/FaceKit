@@ -16,8 +16,8 @@ extension FKAvatarController {
         
         let camera = SCNCamera()
         
-        node.position = SCNVector3Make(22.377, -0.059, 37.138)
-        node.eulerAngles = SCNVector3Make(Float(-M_PI) / 20, 0, Float(-M_PI_2))
+        node.position = SCNVector3Make(17.377, -0.059, 37.138)
+        node.eulerAngles = SCNVector3Make(0, 0, Float(-M_PI_2))
         
         node.camera = camera
         
