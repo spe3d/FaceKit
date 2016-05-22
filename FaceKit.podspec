@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name         = "FaceKit"
-    s.version      = "1.3.12"
+    s.version      = "1.4.0"
     s.summary      = "Library to generate a 3D avatar from one single front face photo."
 
     s.description  = <<-DESC
@@ -32,6 +32,7 @@ Pod::Spec.new do |s|
     s.frameworks            = "SceneKit", "UIKit"
 
     s.vendored_frameworks   = "FaceKit/FaceKit.framework"
-    s.dependency 'NumSwift', '1.0.4'
+    s.dependency 'NumSwift', '~> 1.0.4'
+    s.dependency 'SSZipArchive', '~> 1.1'
 
 end
