@@ -27,16 +27,16 @@ class SPEPresetTableViewController: UITableViewController {
 
     func loadPresetData() {
         if presetType is FKHair.Type {
-            self.presets = FKHair.getNumberList(self.gender)
+            self.presets = FKHair.getPresets(self.gender)
         }
         else if presetType is FKSuit.Type {
-            self.presets = FKSuit.getNumberList(self.gender)
+            self.presets = FKSuit.getPresets(self.gender)
         }
         else if presetType is FKMotion.Type {
-            self.presets = FKMotion.getNumberList(self.gender)
+            self.presets = FKMotion.getPresets(self.gender)
         }
         else if presetType is FKGlasses.Type {
-            self.presets = FKGlasses.getNumberList(self.gender)
+            self.presets = FKGlasses.getPresets(self.gender)
         }
         
         self.tableView.reloadData()
