@@ -157,24 +157,22 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
             return
         }
         controller.gender = self.gender
-        controller.presetType = FKHair.self
-        controller.selectPresetClosure = {(preset: FKPreset) -> Void in
-            if let hair = preset as? FKHair {
-                let hud = MBProgressHUD(view: self.view)
-                hud.labelText = "Downloading..."
+        controller.presetType = .Hair
+        controller.selectPresetClosure = {(preset) -> Void in
+            let hud = MBProgressHUD(view: self.view)
+            hud.labelText = "Downloading..."
+            
+            self.view.addSubview(hud)
+            hud.show(true)
+            self.avatarController?.setPreset(preset, completionHandler: { (success: Bool, error: NSError?) in
+                MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
                 
-                self.view.addSubview(hud)
-                hud.show(true)
-                self.avatarController?.setHair(hair, completionHandler: { (success: Bool, error: NSError?) in
-                    MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
-                    
-                    if let error = error {
-                        NSLog("%@", error)
-                    }
-                    
-                    NSLog("\(success)")
-                })
-            }
+                if let error = error {
+                    NSLog("%@", error)
+                }
+                
+                NSLog("\(success)")
+            })
         }
         controller.title = "Hair"
         self.presentViewController(navigationController, animated: true, completion: nil)
@@ -188,24 +186,22 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
             return
         }
         controller.gender = self.gender
-        controller.presetType = FKSuit.self
-        controller.selectPresetClosure = {(preset: FKPreset) -> Void in
-            if let suit = preset as? FKSuit {
-                let hud = MBProgressHUD(view: self.view)
-                hud.labelText = "Downloading..."
+        controller.presetType = .Suit
+        controller.selectPresetClosure = {(preset) -> Void in
+            let hud = MBProgressHUD(view: self.view)
+            hud.labelText = "Downloading..."
+            
+            self.view.addSubview(hud)
+            hud.show(true)
+            self.avatarController?.setPreset(preset, completionHandler: { (success: Bool, error: NSError?) in
+                MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
                 
-                self.view.addSubview(hud)
-                hud.show(true)
-                self.avatarController?.setSuit(suit, completionHandler: { (success: Bool, error: NSError?) in
-                    MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
-                    
-                    if let error = error {
-                        NSLog("%@", error)
-                    }
-                    
-                    NSLog("\(success)")
-                })
-            }
+                if let error = error {
+                    NSLog("%@", error)
+                }
+                
+                NSLog("\(success)")
+            })
         }
         controller.title = "Suit"
         self.presentViewController(navigationController, animated: true, completion: nil)
@@ -219,30 +215,28 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
             return
         }
         controller.gender = self.gender
-        controller.presetType = FKMotion.self
-        controller.selectPresetClosure = {(preset: FKPreset) -> Void in
-            if let motion = preset as? FKMotion {
-                let hud = MBProgressHUD(view: self.view)
-                hud.labelText = "Downloading..."
+        controller.presetType = .Motion
+        controller.selectPresetClosure = {(preset) -> Void in
+            let hud = MBProgressHUD(view: self.view)
+            hud.labelText = "Downloading..."
+            
+            self.view.addSubview(hud)
+            hud.show(true)
+            self.avatarController?.setPreset(preset, completionHandler: { (success: Bool, error: NSError?) in
+                MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
                 
-                self.view.addSubview(hud)
-                hud.show(true)
-                self.avatarController?.setMotion(motion, completionHandler: { (success: Bool, error: NSError?) in
-                    MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
-                    
-                    if let error = error {
-                        NSLog("%@", error)
-                    }
-                    
-                    NSLog("\(success)")
-                })
-            }
+                if let error = error {
+                    NSLog("%@", error)
+                }
+                
+                NSLog("\(success)")
+            })
         }
         controller.title = "Motion"
         self.presentViewController(navigationController, animated: true, completion: nil)
     }
     
-    @IBAction func changeGlasses(sender: UIButton) {
+    @IBAction func changeAccessory(sender: UIButton) {
         guard let navigationController = self.storyboard?.instantiateViewControllerWithIdentifier("SPEPresetNavigationController") as? UINavigationController else {
             return
         }
@@ -250,26 +244,24 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
             return
         }
         controller.gender = self.gender
-        controller.presetType = FKGlasses.self
-        controller.selectPresetClosure = {(preset: FKPreset) -> Void in
-            if let glasses = preset as? FKGlasses {
-                let hud = MBProgressHUD(view: self.view)
-                hud.labelText = "Downloading..."
+        controller.presetType = .Accessory
+        controller.selectPresetClosure = {(preset) -> Void in
+            let hud = MBProgressHUD(view: self.view)
+            hud.labelText = "Downloading..."
+            
+            self.view.addSubview(hud)
+            hud.show(true)
+            self.avatarController?.setPreset(preset, completionHandler: { (success: Bool, error: NSError?) in
+                MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
                 
-                self.view.addSubview(hud)
-                hud.show(true)
-                self.avatarController?.setGlasses(glasses, completionHandler: { (success: Bool, error: NSError?) in
-                    MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
-                    
-                    if let error = error {
-                        NSLog("%@", error)
-                    }
-                    
-                    NSLog("\(success)")
-                })
-            }
+                if let error = error {
+                    NSLog("%@", error)
+                }
+                
+                NSLog("\(success)")
+            })
         }
-        controller.title = "Glasses"
+        controller.title = "Accessory"
         self.presentViewController(navigationController, animated: true, completion: nil)
     }
     

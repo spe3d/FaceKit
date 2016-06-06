@@ -11,7 +11,7 @@ import FaceKit
 
 class SPEPresetTableViewController: UITableViewController {
 
-    var presetType: FKPreset.Type?
+    var presetType: FKPresetType?
     var gender = FKGender.Male
     var selectPresetClosure: ((FKPreset) -> Void)?
     
@@ -26,18 +26,11 @@ class SPEPresetTableViewController: UITableViewController {
     }
 
     func loadPresetData() {
-        if presetType is FKHair.Type {
-            self.presets = FKHair.getPresets(self.gender)
+        guard let presetType = self.presetType else {
+            return
         }
-        else if presetType is FKSuit.Type {
-            self.presets = FKSuit.getPresets(self.gender)
-        }
-        else if presetType is FKMotion.Type {
-            self.presets = FKMotion.getPresets(self.gender)
-        }
-        else if presetType is FKGlasses.Type {
-            self.presets = FKGlasses.getPresets(self.gender)
-        }
+        
+        self.presets = FKPreset.getPresets(presetType, gender: self.gender)
         
         self.tableView.reloadData()
     }
