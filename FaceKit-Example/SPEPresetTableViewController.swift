@@ -60,7 +60,11 @@ class SPEPresetTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("presetCell", forIndexPath: indexPath)
 
         cell.textLabel?.text = self.presets[indexPath.row].name
-        cell.imageView?.image = self.presets[indexPath.row].previewImage
+        
+        self.presets[indexPath.row].observePreviewImage({ (image) in
+            cell.imageView?.image = image
+            tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+        })
 
         return cell
     }
