@@ -92,7 +92,6 @@ typedef int swift_int4  __attribute__((__ext_vector_type__(4)));
 # endif
 #endif
 #if defined(__has_feature) && __has_feature(modules)
-@import CloudKit;
 @import ObjectiveC;
 @import Foundation;
 @import SceneKit;
@@ -100,17 +99,10 @@ typedef int swift_int4  __attribute__((__ext_vector_type__(4)));
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
 #pragma clang diagnostic ignored "-Wduplicate-method-arg"
-
-@interface CKContainer (SWIFT_EXTENSION(FaceKit))
-@end
-
 @class SCNNode;
 @class NSCoder;
-@class FKSuit;
+@class FKPreset;
 @class NSError;
-@class FKMotion;
-@class FKHair;
-@class FKGlasses;
 @class NSData;
 
 
@@ -140,18 +132,7 @@ SWIFT_CLASS("_TtC7FaceKit18FKAvatarController")
 /// Returns the class supports secure coding.
 + (BOOL)supportsSecureCoding;
 - (SCNNode * _Nonnull)getDefaultCameraNode;
-
-/// Changes suit at the avatar.
-- (void)setSuit:(FKSuit * _Null_unspecified)suit completionHandler:(void (^ _Nonnull)(BOOL, NSError * _Nullable))completionHandler;
-
-/// Changes motion at the avatar.
-- (void)setMotion:(FKMotion * _Null_unspecified)animation completionHandler:(void (^ _Nonnull)(BOOL, NSError * _Nullable))completionHandler;
-
-/// Changes hair at the avatar.
-- (void)setHair:(FKHair * _Null_unspecified)hair completionHandler:(void (^ _Nonnull)(BOOL, NSError * _Nullable))completionHandler;
-
-/// Changes glasses at the avatar.
-- (void)setGlasses:(FKGlasses * _Nullable)glasses completionHandler:(void (^ _Nonnull)(BOOL, NSError * _Nullable))completionHandler;
+- (void)setPreset:(FKPreset * _Nonnull)preset completionHandler:(void (^ _Nonnull)(BOOL, NSError * _Nullable))completionHandler;
 
 /// Changes facial at the avatar. We have more basic facial, the respective weight into the array where you can make the avatar show different facials. The weight range is 0-1.
 - (void)setFacial:(NSArray<NSNumber *> * _Nonnull)weights;
@@ -170,8 +151,6 @@ SWIFT_CLASS("_TtC7FaceKit15FKAvatarManager")
 
 /// The recommended way to install FaceKit into your APP is to place a call to +startWithAPIKey: in your -application:didFinishLaunchingWithOptions: or -applicationDidFinishLaunching: method.
 + (void)startWithAPIKey:(NSString * _Nonnull)apiKey;
-+ (void)startWithAPIKey:(NSString * _Nonnull)apiKey cloudKitContainerName:(NSString * _Nonnull)containerName;
-- (void)syncAvatarDefaultPresetsWithRestart:(BOOL)restart completionHandler:(void (^ _Nullable)(BOOL, NSError * _Nullable))completionHandler;
 @end
 
 @class UIImage;
@@ -179,34 +158,7 @@ SWIFT_CLASS("_TtC7FaceKit15FKAvatarManager")
 SWIFT_CLASS("_TtC7FaceKit8FKPreset")
 @interface FKPreset : NSObject
 @property (nonatomic, readonly, copy) NSString * _Nonnull name;
-@property (nonatomic, strong) UIImage * _Nonnull previewImage;
-@end
-
-
-
-/// An instance of the FKGlasses class implements a glasses on the avatar. You can use this class to wear glasses, such as those you might let your avatar in glesses.
-SWIFT_CLASS("_TtC7FaceKit9FKGlasses")
-@interface FKGlasses : FKPreset
-@end
-
-
-
-/// An instance of the FKHair class implements a hair on the avatar. You can use this class to hair design, such as those you might dress up your hair.
-SWIFT_CLASS("_TtC7FaceKit6FKHair")
-@interface FKHair : FKPreset
-@end
-
-
-
-/// An instance of the FKMotion class implements a motion on the avatar. You can use this class to motion, such as those you might let your avatar dancing.
-SWIFT_CLASS("_TtC7FaceKit8FKMotion")
-@interface FKMotion : FKPreset
-@end
-
-
-
-SWIFT_CLASS("_TtC7FaceKit6FKSuit")
-@interface FKSuit : FKPreset
+- (void)observePreviewImage:(void (^ _Nonnull)(UIImage * _Nonnull))closure;
 @end
 
 
