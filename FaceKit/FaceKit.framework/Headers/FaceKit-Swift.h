@@ -92,6 +92,9 @@ typedef int swift_int4  __attribute__((__ext_vector_type__(4)));
 # endif
 #endif
 #if defined(__has_feature) && __has_feature(modules)
+@import FirebaseAnalytics;
+@import FirebaseDatabase;
+@import FirebaseStorage;
 @import ObjectiveC;
 @import Foundation;
 @import SceneKit;
@@ -99,6 +102,18 @@ typedef int swift_int4  __attribute__((__ext_vector_type__(4)));
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
 #pragma clang diagnostic ignored "-Wduplicate-method-arg"
+
+@interface FIRApp (SWIFT_EXTENSION(FaceKit))
+@end
+
+
+@interface FIRDatabase (SWIFT_EXTENSION(FaceKit))
+@end
+
+
+@interface FIRStorage (SWIFT_EXTENSION(FaceKit))
+@end
+
 @class SCNNode;
 @class NSCoder;
 @class FKPreset;
