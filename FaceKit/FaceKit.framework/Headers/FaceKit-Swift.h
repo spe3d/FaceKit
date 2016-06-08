@@ -173,7 +173,7 @@ SWIFT_CLASS("_TtC7FaceKit15FKAvatarManager")
 SWIFT_CLASS("_TtC7FaceKit8FKPreset")
 @interface FKPreset : NSObject
 @property (nonatomic, readonly, copy) NSString * _Nonnull name;
-- (void)observePreviewImage:(void (^ _Nonnull)(UIImage * _Nonnull))closure;
+- (void)observePreviewImage:(void (^ _Nonnull)(FKPreset * _Nonnull, UIImage * _Nonnull))closure;
 @end
 
 
