@@ -61,7 +61,7 @@ class SPEPresetTableViewController: UITableViewController {
 
         cell.textLabel?.text = self.presets[indexPath.row].name
         
-        self.presets[indexPath.row].observePreviewImage({ (image) in
+        self.presets[indexPath.row].observePreviewImage({ (preset, image) in
             cell.imageView?.image = image
             tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
         })
