@@ -111,7 +111,14 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
             return
         }
         
-        self.assignAvatarController(avatarController)
+        if avatarController.isWornPresets {
+            self.assignAvatarController(avatarController)
+        }
+        else {
+            avatarController.observeAvatarHasWornPresets({ (avatarSceneNode) in
+                self.assignAvatarController(avatarController)
+            })
+        }
     }
     
     @IBAction func cleanAvatarAction(sender: UIButton) {
