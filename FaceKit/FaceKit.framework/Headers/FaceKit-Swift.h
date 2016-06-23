@@ -135,6 +135,9 @@ typedef int swift_int4  __attribute__((__ext_vector_type__(4)));
 SWIFT_CLASS("_TtC7FaceKit18FKAvatarController")
 @interface FKAvatarController : NSObject <NSSecureCoding, NSCoding>
 
+/// Returns a Boolean value indicating whether the scene node wears preset.
+@property (nonatomic, readonly) BOOL isWornPresets;
+
 /// The node of the avatar on the scene graph.
 @property (nonatomic, readonly, strong) SCNNode * _Nonnull sceneNode;
 
@@ -146,6 +149,7 @@ SWIFT_CLASS("_TtC7FaceKit18FKAvatarController")
 
 /// Returns the class supports secure coding.
 + (BOOL)supportsSecureCoding;
+- (void)observeAvatarHasWornPresets:(void (^ _Nonnull)(SCNNode * _Nonnull))completed;
 - (SCNNode * _Nonnull)getDefaultCameraNode;
 - (void)setPreset:(FKPreset * _Nonnull)preset completionHandler:(void (^ _Nonnull)(BOOL, NSError * _Nullable))completionHandler;
 
