@@ -26,4 +26,19 @@ extension FKAvatarController {
         
         return node
     }
+    
+    func getBustCameraNode() -> SCNNode {
+        let node = SCNNode()
+        
+        let camera = SCNCamera()
+        
+        node.position = SCNVector3Make(-0.021, 166.002, 729.037)
+        
+        camera.yFov = 11
+        camera.zFar = 1000
+        
+        node.camera = camera
+        
+        return node
+    }
 }
