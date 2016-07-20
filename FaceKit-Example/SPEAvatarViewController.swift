@@ -50,11 +50,10 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
     }
     
     func setupDefaultCamera() {
-        guard let camera = self.avatarView.scene?.rootNode.childNodeWithName("FKDefaultCamera", recursively: true) else {
+        guard let camera = self.avatarController?.getDefaultCameraNode() else {
             return
         }
         
-        camera.camera?.zFar = 500
         self.avatarView.pointOfView = camera
     }
     

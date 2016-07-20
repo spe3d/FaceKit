@@ -81,7 +81,7 @@
                                 </constraints>
                             </sceneKitView>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JT5-PR-hT9">
-                                <rect key="frame" x="30" y="350" width="60" height="45"/>
+                                <rect key="frame" x="30" y="380" width="60" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="QXh-DV-Thv"/>
                                     <constraint firstAttribute="width" constant="60" id="f8s-yQ-uHT"/>
@@ -92,7 +92,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4id-oc-wbc">
-                                <rect key="frame" x="30" y="405" width="60" height="45"/>
+                                <rect key="frame" x="30" y="435" width="60" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="LHO-9m-hP8"/>
                                     <constraint firstAttribute="height" constant="45" id="jj6-Zj-pPk"/>
@@ -103,7 +103,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0dH-JS-LTZ">
-                                <rect key="frame" x="30" y="295" width="60" height="45"/>
+                                <rect key="frame" x="30" y="325" width="60" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="l6Z-w8-Z8B"/>
                                     <constraint firstAttribute="width" constant="60" id="zxf-NR-iAZ"/>
@@ -114,7 +114,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oxX-gx-w5r">
-                                <rect key="frame" x="30" y="240" width="60" height="45"/>
+                                <rect key="frame" x="30" y="270" width="60" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="AxT-OI-L3d"/>
                                     <constraint firstAttribute="width" constant="60" id="R0x-xM-sMe"/>
@@ -194,7 +194,7 @@
                             <constraint firstItem="qj1-8M-UXu" firstAttribute="centerX" secondItem="luS-kR-Sgj" secondAttribute="trailing" multiplier="4:5" id="VQZ-97-q92"/>
                             <constraint firstItem="vEe-zf-o3W" firstAttribute="top" secondItem="RPQ-gy-ZcW" secondAttribute="bottom" constant="20" id="Wye-UU-Fgw"/>
                             <constraint firstItem="IDk-0K-g1L" firstAttribute="top" secondItem="D4c-UE-xFx" secondAttribute="bottom" constant="20" id="Z43-2H-oK3"/>
-                            <constraint firstItem="rMV-3S-0jG" firstAttribute="top" secondItem="4id-oc-wbc" secondAttribute="bottom" constant="150" id="Zkp-UU-izT"/>
+                            <constraint firstItem="rMV-3S-0jG" firstAttribute="top" secondItem="4id-oc-wbc" secondAttribute="bottom" constant="120" id="Zkp-UU-izT"/>
                             <constraint firstItem="oxX-gx-w5r" firstAttribute="leading" secondItem="luS-kR-Sgj" secondAttribute="leading" constant="30" id="acD-6f-v3s"/>
                             <constraint firstItem="4id-oc-wbc" firstAttribute="top" secondItem="JT5-PR-hT9" secondAttribute="bottom" constant="10" id="ccM-zC-UTH"/>
                             <constraint firstAttribute="trailing" secondItem="SdJ-eC-NGw" secondAttribute="trailing" constant="20" id="k4R-8Q-Oba"/>
