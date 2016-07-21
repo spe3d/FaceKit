@@ -71,6 +71,14 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
     
     // MARK: - action
     
+    @IBAction func snapshotAction(sender: UIButton) {
+        
+    }
+    
+    @IBAction func zoomHeadSceneViewAction(sender: UIButton) {
+        
+    }
+    
     @IBAction func showBackgroundAction(sender: UIButton) {
         self.avatarView.scene?.rootNode.childNodeWithName("background", recursively: true)?.removeFromParentNode()
         
