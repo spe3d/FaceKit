@@ -18,6 +18,8 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
     
     @IBOutlet var cleanButton: UIButton?
     
+    @IBOutlet var headViewSizeConstraint: NSLayoutConstraint?
+    
     var avatarController: FKAvatarController?
     var gender = FKGender.Male
     
@@ -76,7 +78,16 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
     }
     
     @IBAction func zoomHeadSceneViewAction(sender: UIButton) {
+        guard let constraint = self.headViewSizeConstraint else {
+            return
+        }
         
+        if constraint.constant < 100 {
+            constraint.constant = 120
+        }
+        else {
+            constraint.constant = 50
+        }
     }
     
     @IBAction func showBackgroundAction(sender: UIButton) {
