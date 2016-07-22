@@ -3,6 +3,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -169,12 +170,21 @@
                                     <action selector="showBackgroundAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="IEC-7r-Wok"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecv-T0-RsO">
+                                <rect key="frame" x="504" y="358" width="76" height="30"/>
+                                <state key="normal" title="Rec Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="57m-DD-QY4">
+                                <rect key="frame" x="501" y="398" width="79" height="30"/>
+                                <state key="normal" title="Play Button"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="dW2-Xq-twk" secondAttribute="trailing" constant="20" id="0dU-Qh-iWT"/>
                             <constraint firstItem="bMq-cD-nCz" firstAttribute="centerX" secondItem="luS-kR-Sgj" secondAttribute="trailing" multiplier="2:5" id="16Y-fT-or9"/>
                             <constraint firstItem="JT5-PR-hT9" firstAttribute="top" secondItem="0dH-JS-LTZ" secondAttribute="bottom" constant="10" id="238-Bc-ud6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ecv-T0-RsO" secondAttribute="trailing" id="3WV-45-9iP"/>
                             <constraint firstItem="D4c-UE-xFx" firstAttribute="top" secondItem="kMO-wQ-dSt" secondAttribute="bottom" constant="20" id="3rU-yp-fiO"/>
                             <constraint firstItem="kxx-yZ-4ko" firstAttribute="top" secondItem="dW2-Xq-twk" secondAttribute="bottom" constant="20" id="7YF-Ut-0GZ"/>
                             <constraint firstAttribute="trailing" secondItem="IDk-0K-g1L" secondAttribute="trailing" constant="20" id="7yh-ZV-VSo"/>
@@ -197,6 +207,8 @@
                             <constraint firstItem="rMV-3S-0jG" firstAttribute="top" secondItem="4id-oc-wbc" secondAttribute="bottom" constant="150" id="Zkp-UU-izT"/>
                             <constraint firstItem="oxX-gx-w5r" firstAttribute="leading" secondItem="luS-kR-Sgj" secondAttribute="leading" constant="30" id="acD-6f-v3s"/>
                             <constraint firstItem="4id-oc-wbc" firstAttribute="top" secondItem="JT5-PR-hT9" secondAttribute="bottom" constant="10" id="ccM-zC-UTH"/>
+                            <constraint firstItem="ecv-T0-RsO" firstAttribute="top" secondItem="SdJ-eC-NGw" secondAttribute="bottom" constant="10" id="g4b-vP-tVY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="57m-DD-QY4" secondAttribute="trailing" id="i0K-fM-yUA"/>
                             <constraint firstAttribute="trailing" secondItem="SdJ-eC-NGw" secondAttribute="trailing" constant="20" id="k4R-8Q-Oba"/>
                             <constraint firstAttribute="trailing" secondItem="D4c-UE-xFx" secondAttribute="trailing" constant="20" id="lcQ-3d-baH"/>
                             <constraint firstAttribute="trailing" secondItem="dMH-zF-BtO" secondAttribute="trailing" id="liK-jf-xHd"/>
@@ -206,6 +218,7 @@
                             <constraint firstItem="dMH-zF-BtO" firstAttribute="leading" secondItem="luS-kR-Sgj" secondAttribute="leading" id="ouR-CK-aQc"/>
                             <constraint firstItem="dW2-Xq-twk" firstAttribute="top" secondItem="IDk-0K-g1L" secondAttribute="bottom" constant="20" id="qJB-Mi-DNu"/>
                             <constraint firstItem="SdJ-eC-NGw" firstAttribute="top" secondItem="7ry-YJ-C03" secondAttribute="bottom" constant="20" id="uaf-Ea-sij"/>
+                            <constraint firstItem="57m-DD-QY4" firstAttribute="top" secondItem="ecv-T0-RsO" secondAttribute="bottom" constant="10" id="vBs-35-u9t"/>
                             <constraint firstAttribute="trailing" secondItem="kxx-yZ-4ko" secondAttribute="trailing" constant="20" id="vVq-gK-BNi"/>
                             <constraint firstItem="0dH-JS-LTZ" firstAttribute="leading" secondItem="luS-kR-Sgj" secondAttribute="leading" constant="30" id="z5U-Jt-ZeV"/>
                         </constraints>
@@ -215,6 +228,8 @@
                         <outlet property="avatarHeadView" destination="vEe-zf-o3W" id="e03-xm-IOz"/>
                         <outlet property="avatarView" destination="dMH-zF-BtO" id="ePu-fO-OSL"/>
                         <outlet property="cleanButton" destination="7ry-YJ-C03" id="gRF-cZ-HhM"/>
+                        <outlet property="playButton" destination="57m-DD-QY4" id="toZ-Ql-OjE"/>
+                        <outlet property="recButton" destination="ecv-T0-RsO" id="Xql-hH-OgR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
@@ -234,11 +249,11 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UkQ-lw-zVf" id="03t-45-RX7">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kaM-Eu-huP">
-                                            <rect key="frame" x="15" y="0.0" width="570" height="43"/>
+                                            <rect key="frame" x="15" y="0.0" width="570" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>

@@ -18,13 +18,29 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
     
     @IBOutlet var cleanButton: UIButton?
     
-    var avatarController: FKAvatarController?
+    var avatarController: FKAvatarController? {
+        didSet {
+            recorder.avatarController = self.avatarController
+        }
+    }
     var gender = FKGender.Male
     
     var avatarData: NSData?
     
+    let recorder = SPERecorderManager()
+    @IBOutlet var recButton: UIButton?
+    @IBOutlet var playButton: UIButton?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        recorder.recButton = self.recButton;
+        self.recButton?.addTarget(recorder,
+                                  action: #selector(SPERecorderManager.recButtonPushed),
+                                  forControlEvents: UIControlEvents.TouchUpInside)
+        recorder.playButton = self.playButton;
+        self.playButton?.addTarget(recorder,
+                                   action: #selector(SPERecorderManager.playButtonPushed),
+                                   forControlEvents: UIControlEvents.TouchUpInside)
     }
     
     override func viewDidAppear(animated: Bool) {
