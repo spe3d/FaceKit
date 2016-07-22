@@ -98,8 +98,11 @@ class SPEAudioEngineManager: NSObject {
                 return Double(value)
             })
             
-            //TODO: If buffer.floatChannelData is nil, or value not in range -1 ~ 1
-            _ = try? self.avatarController?.append(doublesArray)
+            //TODO: If buffer.floatChannelData is nil, or value out of range [-1, 1]
+            let error = self.avatarController?.append(doublesArray)
+            if (error != nil) {
+                print(error)
+            }
         }
         
         // AVAudioEngine start
@@ -124,10 +127,13 @@ class SPEAudioEngineManager: NSObject {
         let dict = try! NSFileManager.defaultManager().attributesOfItemAtPath(self.outputFile.url.path!)
         print("File Size:\((dict[NSFileSize] as! Int) / 1024)KB")
         
-        //TODO: If buffer.floatChannelData is nil, or value not in range -1 ~ 1
-        _ = try? self.avatarController?.stopRecord({
+        //TODO: If buffer.floatChannelData is nil, or value out of range [-1, 1]
+        let error = self.avatarController?.stopRecord({
             self.avatarController?.saveVoice(self.recFileURL().path!);
         })
+        if (error != nil) {
+            print(error)
+        }
     }
     
     func playRecData() {

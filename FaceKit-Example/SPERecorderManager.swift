@@ -82,8 +82,6 @@ class SPERecorderManager: NSObject {
     
     //MARK:
     func recButtonPushed() {
-        if audioEngineMnager.status == .isPlaying { return }
-        
         switch audioEngineMnager.status {
         case .Default:
             audioEngineMnager.record()
@@ -94,8 +92,6 @@ class SPERecorderManager: NSObject {
     }
     
     func playButtonPushed() {
-        if audioEngineMnager.status == .isRecording { return }
-        
         switch audioEngineMnager.status {
         case .Default:
             audioEngineMnager.playRecData()
