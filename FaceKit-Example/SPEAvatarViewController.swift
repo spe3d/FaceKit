@@ -26,8 +26,6 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
     
     var avatarData: NSData?
     
-    @IBOutlet var recButton: UIButton?
-    @IBOutlet var playButton: UIButton?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -291,14 +289,6 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
         }
         controller.title = "Accessory"
         self.presentViewController(navigationController, animated: true, completion: nil)
-    }
-    
-    @IBAction func talkAction(sender: UIButton) {
-        
-    }
-    
-    @IBAction func replayTalkAction(sender: UIButton) {
-        
     }
 
     // MARK: - SPECameraViewControllerDelegate
