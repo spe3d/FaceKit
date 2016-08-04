@@ -20,13 +20,29 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
     
     @IBOutlet var headViewSizeConstraint: NSLayoutConstraint?
     
-    var avatarController: FKAvatarController?
+    var avatarController: FKAvatarController? {
+        didSet {
+            recorder.avatarController = self.avatarController
+        }
+    }
     var gender = FKGender.Male
     
     var avatarData: NSData?
     
+    let recorder = SPERecorderManager()
+    @IBOutlet var recButton: UIButton?
+    @IBOutlet var playButton: UIButton?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        recorder.recButton = self.recButton;
+        self.recButton?.addTarget(recorder,
+                                  action: #selector(SPERecorderManager.recButtonPushed),
+                                  forControlEvents: UIControlEvents.TouchUpInside)
+        recorder.playButton = self.playButton;
+        self.playButton?.addTarget(recorder,
+                                   action: #selector(SPERecorderManager.playButtonPushed),
+                                   forControlEvents: UIControlEvents.TouchUpInside)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -72,10 +88,6 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
     }
     
     // MARK: - action
-    
-    @IBAction func snapshotAction(sender: UIButton) {
-        
-    }
     
     @IBAction func zoomHeadSceneViewAction(sender: UIButton) {
         guard let constraint = self.headViewSizeConstraint else {
