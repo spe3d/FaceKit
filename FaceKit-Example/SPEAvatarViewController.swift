@@ -20,29 +20,18 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
     
     @IBOutlet var headViewSizeConstraint: NSLayoutConstraint?
     
-    var avatarController: FKAvatarController? {
-        didSet {
-            recorder.avatarController = self.avatarController
-        }
-    }
+    var avatarController: FKAvatarController?
+    
     var gender = FKGender.Male
     
     var avatarData: NSData?
     
-    let recorder = SPERecorderManager()
     @IBOutlet var recButton: UIButton?
     @IBOutlet var playButton: UIButton?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        recorder.recButton = self.recButton;
-        self.recButton?.addTarget(recorder,
-                                  action: #selector(SPERecorderManager.recButtonPushed),
-                                  forControlEvents: UIControlEvents.TouchUpInside)
-        recorder.playButton = self.playButton;
-        self.playButton?.addTarget(recorder,
-                                   action: #selector(SPERecorderManager.playButtonPushed),
-                                   forControlEvents: UIControlEvents.TouchUpInside)
+        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -305,43 +294,11 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
     }
     
     @IBAction func talkAction(sender: UIButton) {
-        var wavFileURL: NSURL? = nil
-        switch sender.tag {
-        case 1:
-            wavFileURL = NSBundle.mainBundle().URLForResource("hello", withExtension: "wav")
-            break
-        case 2:
-            wavFileURL = NSBundle.mainBundle().URLForResource("KP_NewYear_clip", withExtension: "wav")
-            break
-        case 3:
-            wavFileURL = NSBundle.mainBundle().URLForResource("welcome_to_talkii", withExtension: "wav")
-            break
-        default:
-            break
-        }
         
-        if let wavFileURL = wavFileURL {
-            guard let wavFileData = NSData(contentsOfURL: wavFileURL) else {
-                return
-            }
-            let hud = MBProgressHUD(view: self.view)
-            hud.labelText = "Calculating..."
-            
-            self.view.addSubview(hud)
-            hud.show(true)
-            
-            self.avatarController?.saveAndPlayVoice(wavFileData, willPlayClosure: { () -> Void in
-                MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
-                }, completion: { (success: Bool) -> Void in
-                    
-            })
-        }
     }
     
     @IBAction func replayTalkAction(sender: UIButton) {
-        self.avatarController?.playLastVoice({ (success: Bool) -> Void in
-            NSLog("\(String(success))")
-        })
+        
     }
 
     // MARK: - SPECameraViewControllerDelegate
