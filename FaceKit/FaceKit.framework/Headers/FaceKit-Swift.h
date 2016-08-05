@@ -118,7 +118,6 @@ typedef int swift_int4  __attribute__((__ext_vector_type__(4)));
 @class NSCoder;
 @class FKPreset;
 @class NSError;
-@class NSData;
 
 
 /// An FKAvatarController class has a node of the avatar on a scene graph. You have to show the avatar, you need to add sceneNode in your scene. To modify style on the avatar, use methods of FKAvatarController can immediately to update on the sceneNode.
@@ -155,8 +154,6 @@ SWIFT_CLASS("_TtC7FaceKit18FKAvatarController")
 
 /// Changes facial at the avatar. We have more basic facial, the respective weight into the array where you can make the avatar show different facials. The weight range is 0-1.
 - (void)setFacial:(NSArray<NSNumber *> * _Nonnull)weights;
-- (void)saveAndPlayVoice:(NSData * _Nonnull)wavFileData willPlayClosure:(void (^ _Nullable)(void))willPlayClosure completion:(void (^ _Nullable)(BOOL success))completion;
-- (void)playLastVoice:(void (^ _Nullable)(BOOL success))completion;
 @end
 
 
