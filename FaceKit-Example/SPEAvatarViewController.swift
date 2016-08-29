@@ -20,9 +20,9 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
     
     @IBOutlet var headViewSizeConstraint: NSLayoutConstraint?
     
-    var avatarController: FKAvatarController?
+    var avatarController: FACAvatarController?
     
-    var gender = FKGender.Male
+    var gender = FACGender.Male
     
     var avatarData: NSData?
     
@@ -41,7 +41,7 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
         // Dispose of any resources that can be recreated.
     }
     
-    func assignAvatarController(avatarController: FKAvatarController) {
+    func assignAvatarController(avatarController: FACAvatarController) {
         let scene = SCNScene()
         self.avatarView.scene = scene
         self.avatarHeadView.scene = scene
@@ -55,9 +55,7 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
     }
     
     func setupDefaultCamera() {
-        guard let camera = self.avatarController?.getDefaultCameraNode() else {
-            return
-        }
+        let camera = FACAvatarController.getDefaultCameraNode()
         
         self.avatarView.scene?.rootNode.addChildNode(camera)
         
@@ -107,9 +105,7 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
     }
     
     @IBAction func getDefaultAvatarAction(sender: UIButton) {
-        guard let avatarController = FKAvatarController(genderOfDefaultAvatar: self.gender) else {
-            return
-        }
+        let avatarController = FACAvatarController(genderOfDefaultAvatar: self.gender)
         
         self.assignAvatarController(avatarController)
     }
@@ -126,7 +122,7 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
             return
         }
         
-        guard let avatarController = NSKeyedUnarchiver.unarchiveObjectWithData(avatarData) as? FKAvatarController else {
+        guard let avatarController = NSKeyedUnarchiver.unarchiveObjectWithData(avatarData) as? FACAvatarController else {
             return
         }
         
@@ -293,7 +289,7 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
 
     // MARK: - SPECameraViewControllerDelegate
     
-    func cameraViewController(viewController: SPECameraViewController, didCreateAvatarController avatarController: FKAvatarController) {
+    func cameraViewController(viewController: SPECameraViewController, didCreateAvatarController avatarController: FACAvatarController) {
         self.assignAvatarController(avatarController)
         
         if let rootNode = self.avatarView.scene?.rootNode {

@@ -31,7 +31,7 @@ class SPECameraViewController: SPEViewController, AVCaptureMetadataOutputObjects
     
     var faceImage: UIImage?
     
-    var gender = FKGender.Male
+    var gender = FACGender.Male
     
     override func loadView() {
         super.loadView()
@@ -167,13 +167,13 @@ class SPECameraViewController: SPEViewController, AVCaptureMetadataOutputObjects
     
     func createAvatar() {
         if let faceImage = self.faceImage {
-            FKAvatarManager.currentManager.createAvatar(gender: gender, faceImage: faceImage, success: { (avatarController) -> Void in
+            FACAvatarManager.currentManager().createAvatarWithGender(gender, faceImage: faceImage, successBlock: { (avatarController) -> Void in
                 MBProgressHUD.hideAllHUDsForView(self.view.window, animated: true)
                 
                 self.delegate?.cameraViewController?(self, didCreateAvatarController: avatarController)
                 
                 self.dismissViewControllerAnimated(true, completion: nil)
-                }, failure: { (error) -> Void in
+                }, failureBlock: { (error) -> Void in
                     
             })
         }
@@ -278,5 +278,5 @@ class SPECameraViewController: SPEViewController, AVCaptureMetadataOutputObjects
 
 @objc
 protocol SPECameraViewControllerDelegate: NSObjectProtocol {
-    optional func cameraViewController(viewController: SPECameraViewController, didCreateAvatarController avatarController: FKAvatarController)
+    optional func cameraViewController(viewController: SPECameraViewController, didCreateAvatarController avatarController: FACAvatarController)
 }

@@ -11,11 +11,11 @@ import FaceKit
 
 class SPEPresetTableViewController: UITableViewController {
 
-    var presetType: FKPresetType?
-    var gender = FKGender.Male
-    var selectPresetClosure: ((FKPreset) -> Void)?
+    var presetType: FACPresetType?
+    var gender = FACGender.Male
+    var selectPresetClosure: ((FACPreset) -> Void)?
     
-    var presets: [FKPreset] = []
+    var presets: [FACPreset] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +30,7 @@ class SPEPresetTableViewController: UITableViewController {
             return
         }
         
-        self.presets = FKPreset.getPresets(presetType, gender: self.gender)
+        self.presets = FACPreset.getPresetsForType(presetType, gender: self.gender)
         
         self.tableView.reloadData()
     }

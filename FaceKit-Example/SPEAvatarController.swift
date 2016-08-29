@@ -10,7 +10,7 @@ import Foundation
 import FaceKit
 import SceneKit
 
-extension FKAvatarController {
+extension FACAvatarController {
     func getHeadCameraNode() -> SCNNode {
         let node = SCNNode()
         
