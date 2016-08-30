@@ -55,15 +55,20 @@ class SPEPresetTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.presets.count
     }
-
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("presetCell", forIndexPath: indexPath)
 
         cell.textLabel?.text = self.presets[indexPath.row].name
         
         self.presets[indexPath.row].observePreviewImage({ (preset, image) in
-            cell.imageView?.image = image
-            tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+            if cell.imageView?.image != image {
+                cell.imageView?.image = image
+                
+                if self.tableView == tableView {
+                    tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+                }
+            }
         })
 
         return cell
