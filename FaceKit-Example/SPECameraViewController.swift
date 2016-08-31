@@ -259,7 +259,7 @@ class SPECameraViewController: SPEViewController, AVCaptureMetadataOutputObjects
 
     // MARK: - UIImagePickerControllerDelegate
 
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
 
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             self.faceImage = image.fixOrientation()

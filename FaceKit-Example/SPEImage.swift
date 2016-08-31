@@ -61,11 +61,11 @@ extension UIImage {
         switch (self.imageOrientation) {
         case .left, .leftMirrored, .right, .rightMirrored:
             // Grr...
-            ctx?.draw(in: CGRect(x: 0,y: 0,width: self.size.height,height: self.size.width), image: self.cgImage!);
+            ctx?.draw(self.cgImage!, in: CGRect(x: 0,y: 0,width: self.size.height,height: self.size.width));
             break;
 
         default:
-            ctx?.draw(in: CGRect(x: 0,y: 0,width: self.size.width,height: self.size.height), image: self.cgImage!);
+            ctx?.draw(self.cgImage!, in: CGRect(x: 0,y: 0,width: self.size.width,height: self.size.height));
             break;
         }
 
