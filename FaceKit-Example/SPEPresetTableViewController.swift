@@ -12,7 +12,7 @@ import FaceKit
 class SPEPresetTableViewController: UITableViewController {
 
     var presetType: FACPresetType?
-    var gender = FACGender.Male
+    var gender = FACGender.male
     var selectPresetClosure: ((FACPreset) -> Void)?
     
     var presets: [FACPreset] = []
@@ -30,7 +30,7 @@ class SPEPresetTableViewController: UITableViewController {
             return
         }
         
-        self.presets = FACPreset.getPresetsForType(presetType, gender: self.gender)
+        self.presets = FACPreset.getPresetsFor(presetType, gender: self.gender)
         
         self.tableView.reloadData()
     }
@@ -42,31 +42,31 @@ class SPEPresetTableViewController: UITableViewController {
 
     // MARK: - action
     
-    @IBAction func closeAction(sender: UIBarButtonItem) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func closeAction(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.presets.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("presetCell", forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "presetCell", for: indexPath)
 
-        cell.textLabel?.text = self.presets[indexPath.row].name
+        cell.textLabel?.text = self.presets[(indexPath as NSIndexPath).row].name
         
-        self.presets[indexPath.row].observePreviewImage({ (preset, image) in
+        self.presets[(indexPath as NSIndexPath).row].observePreviewImage({ (preset, image) in
             if cell.imageView?.image != image {
                 cell.imageView?.image = image
                 
                 if self.tableView == tableView {
-                    tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+                    tableView.reloadRows(at: [indexPath], with: .none)
                 }
             }
         })
@@ -74,9 +74,9 @@ class SPEPresetTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.selectPresetClosure?(self.presets[indexPath.row])
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selectPresetClosure?(self.presets[(indexPath as NSIndexPath).row])
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 }

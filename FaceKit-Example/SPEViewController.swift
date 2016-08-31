@@ -1,6 +1,6 @@
 //
 //  SPEViewController.swift
-//  Insta3D_iOS-Sample
+//  FaceKit
 //
 //  Created by Daniel on 2015/10/16.
 //  Copyright © 2015年 Speed 3D Inc. All rights reserved.
@@ -19,11 +19,11 @@ class SPEViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    override func prefersStatusBarHidden() -> Bool {
+
+    override var prefersStatusBarHidden: Bool {
         return true
     }
-    
+
     /*
     // MARK: - Navigation
 

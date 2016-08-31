@@ -1,6 +1,6 @@
 //
 //  SPEImage.swift
-//  Insta3D_iOS-Sample
+//  FaceKit
 //
 //  Created by Daniel on 2015/10/19.
 //  Modified by Daniel on 2015/11/5.
@@ -11,67 +11,67 @@ import UIKit
 
 extension UIImage {
     func fixOrientation()->UIImage {
-        if self.imageOrientation == .Up {
+        if self.imageOrientation == .up {
             return self
         }
-        
-        var transform = CGAffineTransformIdentity
-        
+
+        var transform = CGAffineTransform.identity
+
         switch (self.imageOrientation) {
-        case .Down, .DownMirrored:
-            transform = CGAffineTransformTranslate(transform, self.size.width, self.size.height)
-            transform = CGAffineTransformRotate(transform, CGFloat(M_PI))
+        case .down, .downMirrored:
+            transform = transform.translatedBy(x: self.size.width, y: self.size.height)
+            transform = transform.rotated(by: CGFloat(M_PI))
             break
-            
-        case .Left, .LeftMirrored:
-            transform = CGAffineTransformTranslate(transform, self.size.width, 0)
-            transform = CGAffineTransformRotate(transform, CGFloat(M_PI_2))
+
+        case .left, .leftMirrored:
+            transform = transform.translatedBy(x: self.size.width, y: 0)
+            transform = transform.rotated(by: CGFloat(M_PI_2))
             break
-            
-        case .Right, .RightMirrored:
-            transform = CGAffineTransformTranslate(transform, 0, self.size.height)
-            transform = CGAffineTransformRotate(transform, CGFloat(-M_PI_2))
+
+        case .right, .rightMirrored:
+            transform = transform.translatedBy(x: 0, y: self.size.height)
+            transform = transform.rotated(by: CGFloat(-M_PI_2))
             break
-        case .Up, .UpMirrored:
+        case .up, .upMirrored:
             break
         }
-        
+
         switch (self.imageOrientation) {
-        case .UpMirrored, .DownMirrored:
-            transform = CGAffineTransformTranslate(transform, self.size.width, 0)
-            transform = CGAffineTransformScale(transform, -1, 1)
+        case .upMirrored, .downMirrored:
+            transform = transform.translatedBy(x: self.size.width, y: 0)
+            transform = transform.scaledBy(x: -1, y: 1)
             break
-            
-        case .LeftMirrored, .RightMirrored:
-            transform = CGAffineTransformTranslate(transform, self.size.height, 0)
-            transform = CGAffineTransformScale(transform, -1, 1)
+
+        case .leftMirrored, .rightMirrored:
+            transform = transform.translatedBy(x: self.size.height, y: 0)
+            transform = transform.scaledBy(x: -1, y: 1)
             break
-        case .Up, .Down, .Left, .Right:
+        case .up, .down, .left, .right:
             break
         }
-        
+
         // Now we draw the underlying CGImage into a new context, applying the transform
         // calculated above.
-        let ctx = CGBitmapContextCreate(nil, Int(self.size.width), Int(self.size.height),
-            CGImageGetBitsPerComponent(self.CGImage), 0,
-            CGImageGetColorSpace(self.CGImage),
-            CGImageGetBitmapInfo(self.CGImage).rawValue)
-        
-        CGContextConcatCTM(ctx, transform)
+        let ctx = CGContext(data: nil, width: Int(self.size.width), height: Int(self.size.height),
+            bitsPerComponent: (self.cgImage?.bitsPerComponent)!, bytesPerRow: 0,
+            space: (self.cgImage?.colorSpace!)!,
+            bitmapInfo: (self.cgImage?.bitmapInfo.rawValue)!)
+
+        ctx?.concatenate(transform)
         switch (self.imageOrientation) {
-        case .Left, .LeftMirrored, .Right, .RightMirrored:
+        case .left, .leftMirrored, .right, .rightMirrored:
             // Grr...
-            CGContextDrawImage(ctx, CGRectMake(0,0,self.size.height,self.size.width), self.CGImage);
+            ctx?.draw(in: CGRect(x: 0,y: 0,width: self.size.height,height: self.size.width), image: self.cgImage!);
             break;
-            
+
         default:
-            CGContextDrawImage(ctx, CGRectMake(0,0,self.size.width,self.size.height), self.CGImage);
+            ctx?.draw(in: CGRect(x: 0,y: 0,width: self.size.width,height: self.size.height), image: self.cgImage!);
             break;
         }
-        
+
         // And now we just create a new UIImage from the drawing context
-        let cgimg = CGBitmapContextCreateImage(ctx)
-        let img = UIImage(CGImage: cgimg!)
+        let cgimg = ctx?.makeImage()
+        let img = UIImage(cgImage: cgimg!)
         return img;
     }
 }

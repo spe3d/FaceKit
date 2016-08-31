@@ -1,6 +1,6 @@
 //
 //  SPEAvatarViewController.swift
-//  Insta3D_iOS-Sample
+//  FaceKit
 //
 //  Created by Daniel on 2015/10/15.
 //  Copyright © 2015年 Speed 3D Inc. All rights reserved.
@@ -15,24 +15,24 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
 
     @IBOutlet var avatarView: SCNView!
     @IBOutlet var avatarHeadView: SCNView!
-    
+
     @IBOutlet var cleanButton: UIButton?
-    
+
     @IBOutlet var headViewSizeConstraint: NSLayoutConstraint?
-    
+
     var avatarController: FACAvatarController?
-    
-    var gender = FACGender.Male
-    
-    var avatarData: NSData?
-    
-    
+
+    var gender = FACGender.male
+
+    var avatarData: Data?
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
     }
-    
-    override func viewDidAppear(animated: Bool) {
+
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
 
@@ -40,45 +40,45 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    func assignAvatarController(avatarController: FACAvatarController) {
+
+    func assignAvatarController(_ avatarController: FACAvatarController) {
         let scene = SCNScene()
         self.avatarView.scene = scene
         self.avatarHeadView.scene = scene
-        
+
         self.avatarController = avatarController
-        
+
         self.avatarView.scene?.rootNode.addChildNode(avatarController.sceneNode)
-        
+
         self.setupDefaultCamera()
         self.setupHeadCamera()
     }
-    
+
     func setupDefaultCamera() {
         let camera = FACAvatarController.getDefaultCameraNode()
-        
+
         self.avatarView.scene?.rootNode.addChildNode(camera)
-        
+
         self.avatarView.pointOfView = camera
     }
-    
+
     func setupHeadCamera() {
         guard let camera = self.avatarController?.getHeadCameraNode() else {
             return
         }
-        
-        self.avatarView.scene?.rootNode.childNodeWithName("Neck", recursively: true)?.addChildNode(camera)
-        
+
+        self.avatarView.scene?.rootNode.childNode(withName: "Neck", recursively: true)?.addChildNode(camera)
+
         self.avatarHeadView.pointOfView = camera
     }
-    
+
     // MARK: - action
-    
-    @IBAction func zoomHeadSceneViewAction(sender: UIButton) {
+
+    @IBAction func zoomHeadSceneViewAction(_ sender: UIButton) {
         guard let constraint = self.headViewSizeConstraint else {
             return
         }
-        
+
         if constraint.constant < 100 {
             constraint.constant = 120
         }
@@ -86,15 +86,15 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
             constraint.constant = 50
         }
     }
-    
-    @IBAction func showBackgroundAction(sender: UIButton) {
-        self.avatarView.scene?.rootNode.childNodeWithName("background", recursively: true)?.removeFromParentNode()
-        
+
+    @IBAction func showBackgroundAction(_ sender: UIButton) {
+        self.avatarView.scene?.rootNode.childNode(withName: "background", recursively: true)?.removeFromParentNode()
+
         guard let avatarController = self.avatarController else {
             return
         }
-        
-        let scale = UIScreen.mainScreen().nativeScale / CGFloat(avatarController.sceneNode.childNodeWithName("Hips", recursively: true)!.scale.x)
+
+        let scale = UIScreen.main.nativeScale / CGFloat(avatarController.sceneNode.childNode(withName: "Hips", recursively: true)!.scale.x)
         let image = UIImage(named: "mvp_bg")!
         let scenery = SCNPlane(width: image.size.width / scale, height: image.size.height / scale)
         scenery.firstMaterial?.diffuse.contents = image
@@ -103,29 +103,29 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
         node.position = SCNVector3Make(0, 130, -130)
         self.avatarView.scene?.rootNode.addChildNode(node)
     }
-    
-    @IBAction func getDefaultAvatarAction(sender: UIButton) {
+
+    @IBAction func getDefaultAvatarAction(_ sender: UIButton) {
         let avatarController = FACAvatarController(genderOfDefaultAvatar: self.gender)
-        
+
         self.assignAvatarController(avatarController)
     }
-    
-    @IBAction func saveAvatarAction(sender: UIButton) {
+
+    @IBAction func saveAvatarAction(_ sender: UIButton) {
         guard let avatarController = self.avatarController else {
             return
         }
-        self.avatarData = NSKeyedArchiver.archivedDataWithRootObject(avatarController)
+        self.avatarData = NSKeyedArchiver.archivedData(withRootObject: avatarController)
     }
-    
-    @IBAction func loadAvatarAction(sender: UIButton) {
+
+    @IBAction func loadAvatarAction(_ sender: UIButton) {
         guard let avatarData = self.avatarData else {
             return
         }
-        
-        guard let avatarController = NSKeyedUnarchiver.unarchiveObjectWithData(avatarData) as? FACAvatarController else {
+
+        guard let avatarController = NSKeyedUnarchiver.unarchiveObject(with: avatarData) as? FACAvatarController else {
             return
         }
-        
+
         if avatarController.isWornPresets {
             self.assignAvatarController(avatarController)
         }
@@ -135,167 +135,167 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
             })
         }
     }
-    
-    @IBAction func cleanAvatarAction(sender: UIButton) {
+
+    @IBAction func cleanAvatarAction(_ sender: UIButton) {
         guard let rootNode = self.avatarView.scene?.rootNode else {
             return
         }
-        
+
         for node in rootNode.childNodes {
             node.removeFromParentNode()
         }
-        
+
         self.avatarController = nil
         self.avatarView.scene = nil
         self.avatarHeadView.scene = nil
     }
-    
-    @IBAction func switchGenderAction(sender: UISegmentedControl) {
+
+    @IBAction func switchGenderAction(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            self.gender = .Male
+            self.gender = .male
         case 1:
-            self.gender = .Female
+            self.gender = .female
         default: break
         }
-        
-        self.cleanButton?.sendActionsForControlEvents(.TouchUpInside)
+
+        self.cleanButton?.sendActions(for: .touchUpInside)
     }
-    
-    @IBAction func uploadFaceAction(sender: UIButton) {
-        if let controller = self.storyboard?.instantiateViewControllerWithIdentifier("SPECameraViewController") as? SPECameraViewController {
-            controller.modalTransitionStyle = .CrossDissolve
+
+    @IBAction func uploadFaceAction(_ sender: UIButton) {
+        if let controller = self.storyboard?.instantiateViewController(withIdentifier: "SPECameraViewController") as? SPECameraViewController {
+            controller.modalTransitionStyle = .crossDissolve
             controller.gender = self.gender
             controller.delegate = self
-            self.presentViewController(controller, animated: true, completion: nil)
+            self.present(controller, animated: true, completion: nil)
         }
     }
-    
-    @IBAction func changeHair(sender: UIButton) {
-        guard let navigationController = self.storyboard?.instantiateViewControllerWithIdentifier("SPEPresetNavigationController") as? UINavigationController else {
+
+    @IBAction func changeHair(_ sender: UIButton) {
+        guard let navigationController = self.storyboard?.instantiateViewController(withIdentifier: "SPEPresetNavigationController") as? UINavigationController else {
             return
         }
         guard let controller = navigationController.viewControllers[0] as? SPEPresetTableViewController else {
             return
         }
         controller.gender = self.gender
-        controller.presetType = .Hair
+        controller.presetType = .hair
         controller.selectPresetClosure = {(preset) -> Void in
             let hud = MBProgressHUD(view: self.view)
-            hud.labelText = "Downloading..."
-            
-            self.view.addSubview(hud)
-            hud.show(true)
-            self.avatarController?.setPreset(preset, completionHandler: { (success: Bool, error: NSError?) in
-                MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
-                
-                if let error = error {
+            hud?.labelText = "Downloading..."
+
+            self.view.addSubview(hud!)
+            hud?.show(true)
+            self.avatarController?.setPreset(preset, completionHandler: { (success: Bool, error: Error?) in
+                MBProgressHUD.hideAllHUDs(for: self.view, animated: true)
+
+                if let error = error as? NSError {
                     NSLog("%@", error)
                 }
-                
+
                 NSLog("\(success)")
             })
         }
         controller.title = "Hair"
-        self.presentViewController(navigationController, animated: true, completion: nil)
+        self.present(navigationController, animated: true, completion: nil)
     }
-    
-    @IBAction func changeSuit(sender: UIButton) {
-        guard let navigationController = self.storyboard?.instantiateViewControllerWithIdentifier("SPEPresetNavigationController") as? UINavigationController else {
+
+    @IBAction func changeSuit(_ sender: UIButton) {
+        guard let navigationController = self.storyboard?.instantiateViewController(withIdentifier: "SPEPresetNavigationController") as? UINavigationController else {
             return
         }
         guard let controller = navigationController.viewControllers[0] as? SPEPresetTableViewController else {
             return
         }
         controller.gender = self.gender
-        controller.presetType = .Suit
+        controller.presetType = .suit
         controller.selectPresetClosure = {(preset) -> Void in
             let hud = MBProgressHUD(view: self.view)
-            hud.labelText = "Downloading..."
-            
-            self.view.addSubview(hud)
-            hud.show(true)
-            self.avatarController?.setPreset(preset, completionHandler: { (success: Bool, error: NSError?) in
-                MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
-                
-                if let error = error {
+            hud?.labelText = "Downloading..."
+
+            self.view.addSubview(hud!)
+            hud?.show(true)
+            self.avatarController?.setPreset(preset, completionHandler: { (success: Bool, error: Error?) in
+                MBProgressHUD.hideAllHUDs(for: self.view, animated: true)
+
+                if let error = error as? NSError {
                     NSLog("%@", error)
                 }
-                
+
                 NSLog("\(success)")
             })
         }
         controller.title = "Suit"
-        self.presentViewController(navigationController, animated: true, completion: nil)
+        self.present(navigationController, animated: true, completion: nil)
     }
-    
-    @IBAction func changeMotion(sender: UIButton) {
-        guard let navigationController = self.storyboard?.instantiateViewControllerWithIdentifier("SPEPresetNavigationController") as? UINavigationController else {
+
+    @IBAction func changeMotion(_ sender: UIButton) {
+        guard let navigationController = self.storyboard?.instantiateViewController(withIdentifier: "SPEPresetNavigationController") as? UINavigationController else {
             return
         }
         guard let controller = navigationController.viewControllers[0] as? SPEPresetTableViewController else {
             return
         }
         controller.gender = self.gender
-        controller.presetType = .Motion
+        controller.presetType = .motion
         controller.selectPresetClosure = {(preset) -> Void in
             let hud = MBProgressHUD(view: self.view)
-            hud.labelText = "Downloading..."
-            
-            self.view.addSubview(hud)
-            hud.show(true)
-            self.avatarController?.setPreset(preset, completionHandler: { (success: Bool, error: NSError?) in
-                MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
-                
-                if let error = error {
+            hud?.labelText = "Downloading..."
+
+            self.view.addSubview(hud!)
+            hud?.show(true)
+            self.avatarController?.setPreset(preset, completionHandler: { (success: Bool, error: Error?) in
+                MBProgressHUD.hideAllHUDs(for: self.view, animated: true)
+
+                if let error = error as? NSError {
                     NSLog("%@", error)
                 }
-                
+
                 NSLog("\(success)")
             })
         }
         controller.title = "Motion"
-        self.presentViewController(navigationController, animated: true, completion: nil)
+        self.present(navigationController, animated: true, completion: nil)
     }
-    
-    @IBAction func changeAccessory(sender: UIButton) {
-        guard let navigationController = self.storyboard?.instantiateViewControllerWithIdentifier("SPEPresetNavigationController") as? UINavigationController else {
+
+    @IBAction func changeAccessory(_ sender: UIButton) {
+        guard let navigationController = self.storyboard?.instantiateViewController(withIdentifier: "SPEPresetNavigationController") as? UINavigationController else {
             return
         }
         guard let controller = navigationController.viewControllers[0] as? SPEPresetTableViewController else {
             return
         }
         controller.gender = self.gender
-        controller.presetType = .Accessory
+        controller.presetType = .accessory
         controller.selectPresetClosure = {(preset) -> Void in
             let hud = MBProgressHUD(view: self.view)
-            hud.labelText = "Downloading..."
-            
-            self.view.addSubview(hud)
-            hud.show(true)
-            self.avatarController?.setPreset(preset, completionHandler: { (success: Bool, error: NSError?) in
-                MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
-                
-                if let error = error {
+            hud?.labelText = "Downloading..."
+
+            self.view.addSubview(hud!)
+            hud?.show(true)
+            self.avatarController?.setPreset(preset, completionHandler: { (success: Bool, error: Error?) in
+                MBProgressHUD.hideAllHUDs(for: self.view, animated: true)
+
+                if let error = error as? NSError {
                     NSLog("%@", error)
                 }
-                
+
                 NSLog("\(success)")
             })
         }
         controller.title = "Accessory"
-        self.presentViewController(navigationController, animated: true, completion: nil)
+        self.present(navigationController, animated: true, completion: nil)
     }
 
     // MARK: - SPECameraViewControllerDelegate
-    
-    func cameraViewController(viewController: SPECameraViewController, didCreateAvatarController avatarController: FACAvatarController) {
+
+    func cameraViewController(_ viewController: SPECameraViewController, didCreateAvatarController avatarController: FACAvatarController) {
         self.assignAvatarController(avatarController)
-        
+
         if let rootNode = self.avatarView.scene?.rootNode {
-            rootNode.childNodeWithName("FKAvatarNode", recursively: true)?.removeFromParentNode()
+            rootNode.childNode(withName: "FKAvatarNode", recursively: true)?.removeFromParentNode()
             rootNode.addChildNode(avatarController.sceneNode)
-            
+
             for node in rootNode.childNodes {
                 if node.camera != nil {
                     node.removeFromParentNode()
