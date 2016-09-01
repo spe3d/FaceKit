@@ -291,16 +291,5 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
 
     func cameraViewController(_ viewController: SPECameraViewController, didCreateAvatarController avatarController: FACAvatarController) {
         self.assignAvatarController(avatarController)
-
-        if let rootNode = self.avatarView.scene?.rootNode {
-            rootNode.childNode(withName: "FKAvatarNode", recursively: true)?.removeFromParentNode()
-            rootNode.addChildNode(avatarController.sceneNode)
-
-            for node in rootNode.childNodes {
-                if node.camera != nil {
-                    node.removeFromParentNode()
-                }
-            }
-        }
     }
 }
