@@ -87,6 +87,10 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
         }
     }
 
+    @IBAction func smileAction(_ sender: UIButton) {
+        self.avatarController?.setFacialWithWeights([0,0,0,0,0,0,1])
+    }
+    
     @IBAction func showBackgroundAction(_ sender: UIButton) {
         self.avatarView.scene?.rootNode.childNode(withName: "background", recursively: true)?.removeFromParentNode()
 

@@ -135,6 +135,12 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="db6-To-O0W">
+                                <state key="normal" title="smile"/>
+                                <connections>
+                                    <action selector="smileAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="SRn-7E-em6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -143,6 +149,7 @@
                             <constraint firstItem="D4c-UE-xFx" firstAttribute="top" secondItem="kMO-wQ-dSt" secondAttribute="bottom" constant="20" id="3rU-yp-fiO"/>
                             <constraint firstItem="5fj-8k-2kC" firstAttribute="leading" secondItem="dW2-Xq-twk" secondAttribute="trailing" constant="10" id="46k-eg-vaL"/>
                             <constraint firstAttribute="trailing" secondItem="IDk-0K-g1L" secondAttribute="trailing" constant="20" id="7yh-ZV-VSo"/>
+                            <constraint firstAttribute="trailing" secondItem="db6-To-O0W" secondAttribute="trailing" constant="20" id="9Dq-yx-dHs"/>
                             <constraint firstItem="rMV-3S-0jG" firstAttribute="top" secondItem="qj1-8M-UXu" secondAttribute="bottom" constant="20" id="Ak8-pw-swt"/>
                             <constraint firstItem="rMV-3S-0jG" firstAttribute="top" secondItem="nur-1W-78D" secondAttribute="bottom" constant="20" id="Cu2-Pf-g6j"/>
                             <constraint firstItem="rMV-3S-0jG" firstAttribute="top" secondItem="fYs-OS-Zgq" secondAttribute="bottom" constant="20" id="Dev-8Y-GFR"/>
@@ -163,6 +170,7 @@
                             <constraint firstAttribute="trailing" secondItem="dMH-zF-BtO" secondAttribute="trailing" id="liK-jf-xHd"/>
                             <constraint firstItem="rMV-3S-0jG" firstAttribute="top" secondItem="dMH-zF-BtO" secondAttribute="bottom" id="mmN-55-4Zq"/>
                             <constraint firstAttribute="trailing" secondItem="7ry-YJ-C03" secondAttribute="trailing" constant="20" id="oak-bw-BwY"/>
+                            <constraint firstItem="db6-To-O0W" firstAttribute="top" secondItem="SdJ-eC-NGw" secondAttribute="bottom" constant="20" id="otT-d2-sv4"/>
                             <constraint firstItem="dMH-zF-BtO" firstAttribute="leading" secondItem="luS-kR-Sgj" secondAttribute="leading" id="ouR-CK-aQc"/>
                             <constraint firstItem="kxx-yZ-4ko" firstAttribute="centerY" secondItem="5fj-8k-2kC" secondAttribute="centerY" id="sAs-c7-4IC"/>
                             <constraint firstItem="hi4-rB-z42" firstAttribute="top" secondItem="RPQ-gy-ZcW" secondAttribute="bottom" constant="20" id="tpe-G3-70b"/>
