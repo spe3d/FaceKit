@@ -4,7 +4,3 @@ framework module FaceKit {
   export *
   module * { export * }
 }
-
-module FaceKit.Swift {
-    header "FaceKit-Swift.h"
-}

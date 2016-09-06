@@ -14,6 +14,10 @@ FOUNDATION_EXPORT double FaceKitVersionNumber;
 //! Project version string for FaceKit.
 FOUNDATION_EXPORT const unsigned char FaceKitVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import <FaceKit/PublicHeader.h>
+#import <FaceKit/FACAvatarManager.h>
+#import <FaceKit/FACAvatarController.h>
+#import <FaceKit/FACGender.h>
+#import <FaceKit/FACPreset.h>
+#import <FaceKit/FACPresetType.h>
 
 
