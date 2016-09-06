@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name         = "FaceKit"
-    s.version      = "1.6.0"
+    s.version      = "2.0.0.alpha2"
     s.summary      = "Library to generate a 3D avatar from one single front face photo."
 
     s.description  = <<-DESC
@@ -11,7 +11,6 @@ Pod::Spec.new do |s|
         * Render the 3D avatar in the iOS device
         * Avatar management
         * Assets (accessories management)
-        * Change skin colors
 
     DESC
 
@@ -35,5 +34,6 @@ Pod::Spec.new do |s|
     s.dependency 'Firebase'
     s.dependency 'Firebase/Storage'
     s.dependency 'Firebase/Database'
+    s.dependency 'OpenCV', '~> 3.1.0'
 
 end
