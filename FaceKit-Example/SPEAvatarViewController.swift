@@ -190,7 +190,7 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
 
             self.view.addSubview(hud!)
             hud?.show(true)
-            self.avatarController?.setPreset(preset, completionHandler: { (success: Bool, error: Error?) in
+            self.avatarController?.setHair(preset, completionHandler: { (success: Bool, error: Error?) in
                 MBProgressHUD.hideAllHUDs(for: self.view, animated: true)
 
                 if let error = error as? NSError {
@@ -219,7 +219,7 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
 
             self.view.addSubview(hud!)
             hud?.show(true)
-            self.avatarController?.setPreset(preset, completionHandler: { (success: Bool, error: Error?) in
+            self.avatarController?.setSuit(preset, completionHandler: { (success: Bool, error: Error?) in
                 MBProgressHUD.hideAllHUDs(for: self.view, animated: true)
 
                 if let error = error as? NSError {
@@ -248,7 +248,7 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
 
             self.view.addSubview(hud!)
             hud?.show(true)
-            self.avatarController?.setPreset(preset, completionHandler: { (success: Bool, error: Error?) in
+            self.avatarController?.setMotion(preset, completionHandler: { (success: Bool, error: Error?) in
                 MBProgressHUD.hideAllHUDs(for: self.view, animated: true)
 
                 if let error = error as? NSError {
@@ -277,7 +277,7 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
 
             self.view.addSubview(hud!)
             hud?.show(true)
-            self.avatarController?.setPreset(preset, completionHandler: { (success: Bool, error: Error?) in
+            self.avatarController?.setAccessory(preset, completionHandler: { (success: Bool, error: Error?) in
                 MBProgressHUD.hideAllHUDs(for: self.view, animated: true)
 
                 if let error = error as? NSError {
