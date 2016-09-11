@@ -23,10 +23,6 @@
  */
 + (nonnull FACAvatarManager *)currentManager;
 
-/**
- The recommended way to install `FaceKit` into your APP is to place a call to `+startWithAPIKey:` in your `-application:didFinishLaunchingWithOptions:` or `-applicationDidFinishLaunching:` method.
- */
-+ (void)startWithAPIKey:(nonnull NSString *)apiKey;
 
 /**
  Uploads image of face, that creates the avatar node.
