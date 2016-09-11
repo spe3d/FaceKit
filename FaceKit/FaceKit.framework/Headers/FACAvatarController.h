@@ -13,14 +13,14 @@
 
 
 /**
- An `FKAvatarController` class has a node of the avatar on a scene graph.
+ An `FACAvatarController` class has a node of the avatar on a scene graph.
  You have to show the avatar, you need to add `sceneNode` in your scene.
- To modify style on the avatar, use methods of `FKAvatarController` can immediately to update on the `sceneNode`.
+ To modify style on the avatar, use methods of `FACAvatarController` can immediately to update on the `sceneNode`.
  
  Save an Avatar
  
  FaceKit provides to save an avatar to a file.
- `FKAvatarController` class support the `NSSecureCoding` protocol.
+ `FACAvatarController` class support the `NSSecureCoding` protocol.
  Use the `NSKeyedArchiver` class to serialize an avatar and all its contents, and the `NSKeyedUnarchiver` class to load an archived avatar.
  */
 @interface FACAvatarController : NSObject <NSSecureCoding>

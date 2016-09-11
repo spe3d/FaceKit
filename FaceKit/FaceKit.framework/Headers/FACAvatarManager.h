@@ -13,7 +13,7 @@
 #define kFaceKitErrorDomain  @"FACErrorDomain"
 
 /**
- An `FKAvatarManager` object lets you create a scene node, including a avatar.
+ An `FACAvatarManager` object lets you create a scene node, including a avatar.
  An avatar manager object is usually your first interaction with the scene node.
  */
 @interface FACAvatarManager : NSObject
