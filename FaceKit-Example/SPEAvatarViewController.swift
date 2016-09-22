@@ -15,6 +15,8 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
 
     @IBOutlet var avatarView: SCNView!
     @IBOutlet var avatarHeadView: SCNView!
+    
+    @IBOutlet var versionSegmented: UISegmentedControl!
 
     @IBOutlet var cleanButton: UIButton?
 
@@ -109,7 +111,7 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
     }
 
     @IBAction func getDefaultAvatarAction(_ sender: UIButton) {
-        let avatarController = FACAvatarController(genderOfDefaultAvatar: self.gender)
+        let avatarController = FACAvatarController(genderOfDefaultAvatar: self.gender, version: Int(self.versionSegmented.titleForSegment(at: self.versionSegmented.selectedSegmentIndex)!)!)
 
         self.assignAvatarController(avatarController)
     }
@@ -170,6 +172,7 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
         if let controller = self.storyboard?.instantiateViewController(withIdentifier: "SPECameraViewController") as? SPECameraViewController {
             controller.modalTransitionStyle = .crossDissolve
             controller.gender = self.gender
+            controller.version = Int(self.versionSegmented.titleForSegment(at: self.versionSegmented.selectedSegmentIndex)!)!
             controller.delegate = self
             self.present(controller, animated: true, completion: nil)
         }

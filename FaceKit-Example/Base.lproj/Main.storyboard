@@ -137,8 +137,8 @@
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="pad-bX-NiN">
                                 <segments>
-                                    <segment title="V1"/>
-                                    <segment title="V2"/>
+                                    <segment title="1"/>
+                                    <segment title="2"/>
                                 </segments>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kMO-wQ-dSt">
@@ -192,6 +192,7 @@
                         <outlet property="avatarView" destination="dMH-zF-BtO" id="ePu-fO-OSL"/>
                         <outlet property="cleanButton" destination="7ry-YJ-C03" id="gRF-cZ-HhM"/>
                         <outlet property="headViewSizeConstraint" destination="Ioo-OA-oEw" id="0FM-Nf-qgA"/>
+                        <outlet property="versionSegmented" destination="pad-bX-NiN" id="pn4-Eq-pDm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
@@ -211,11 +212,11 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UkQ-lw-zVf" id="03t-45-RX7">
-                                    <frame key="frameInset" width="375" height="43.5"/>
+                                    <frame key="frameInset" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kaM-Eu-huP">
-                                            <frame key="frameInset" minX="15" width="345" height="43.5"/>
+                                            <frame key="frameInset" minX="15" width="345" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
