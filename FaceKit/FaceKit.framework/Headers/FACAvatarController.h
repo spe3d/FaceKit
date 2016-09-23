@@ -49,6 +49,8 @@
 + (nonnull SCNNode *)getDefaultCameraNode;
 
 
+- (NSInteger)version;
+
 - (void)setSuit:(nonnull FACPreset *)suit completionHandler:(void (^ _Nullable)(BOOL success, NSError * _Nullable error))block;
 
 - (void)setMotion:(nonnull FACPreset *)motion completionHandler:(void (^ _Nullable)(BOOL success, NSError * _Nullable error))block;
