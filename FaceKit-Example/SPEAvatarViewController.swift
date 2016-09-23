@@ -24,8 +24,6 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
 
     var gender = FACGender.male
 
-    var avatarData: Data?
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +68,10 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
         self.avatarView.scene?.rootNode.childNode(withName: "Neck", recursively: true)?.addChildNode(camera)
 
         self.avatarHeadView.pointOfView = camera
+    }
+    
+    func localAvatarPath() -> String {
+        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("AvatarController").path
     }
 
     // MARK: - action
@@ -118,15 +120,12 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
         guard let avatarController = self.avatarController else {
             return
         }
-        self.avatarData = NSKeyedArchiver.archivedData(withRootObject: avatarController)
+        
+        let _ = NSKeyedArchiver.archiveRootObject(avatarController, toFile: self.localAvatarPath())
     }
 
     @IBAction func loadAvatarAction(_ sender: UIButton) {
-        guard let avatarData = self.avatarData else {
-            return
-        }
-
-        guard let avatarController = NSKeyedUnarchiver.unarchiveObject(with: avatarData) as? FACAvatarController else {
+        guard let avatarController = NSKeyedUnarchiver.unarchiveObject(withFile: self.localAvatarPath()) as? FACAvatarController else {
             return
         }
 
