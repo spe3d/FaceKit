@@ -32,7 +32,6 @@ class SPECameraViewController: SPEViewController, AVCaptureMetadataOutputObjects
     var faceImage: UIImage?
 
     var gender = FACGender.male
-    var version = NSIntegerMax
 
     override func loadView() {
         super.loadView()
@@ -168,7 +167,7 @@ class SPECameraViewController: SPEViewController, AVCaptureMetadataOutputObjects
 
     func createAvatar() {
         if let faceImage = self.faceImage {
-            FACAvatarManager.current().createAvatar(with: self.gender, face: faceImage, version: self.version, successBlock: { (avatarController) -> Void in
+            FACAvatarManager.current().createAvatar(with: self.gender, face: faceImage, successBlock: { (avatarController) -> Void in
                 MBProgressHUD.hideAllHUDs(for: self.view.window, animated: true)
 
                 self.delegate?.cameraViewController?(self, didCreateAvatarController: avatarController)

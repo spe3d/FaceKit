@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11521.1" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11517.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -135,12 +135,6 @@
                                     <action selector="facialAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="KLG-aT-oKm"/>
                                 </connections>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="pad-bX-NiN">
-                                <segments>
-                                    <segment title="1"/>
-                                    <segment title="2"/>
-                                </segments>
-                            </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kMO-wQ-dSt">
                                 <state key="normal" title="Upload Face"/>
                                 <connections>
@@ -150,7 +144,6 @@
                         </subviews>
                         <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="pad-bX-NiN" secondAttribute="trailing" constant="20" id="10h-6E-Une"/>
                             <constraint firstItem="hi4-rB-z42" firstAttribute="leading" secondItem="luS-kR-Sgj" secondAttribute="leading" constant="20" id="111-CD-bxP"/>
                             <constraint firstItem="bMq-cD-nCz" firstAttribute="centerX" secondItem="luS-kR-Sgj" secondAttribute="trailing" multiplier="2:5" id="16Y-fT-or9"/>
                             <constraint firstItem="D4c-UE-xFx" firstAttribute="top" secondItem="kMO-wQ-dSt" secondAttribute="bottom" constant="20" id="3rU-yp-fiO"/>
@@ -160,18 +153,17 @@
                             <constraint firstItem="rMV-3S-0jG" firstAttribute="top" secondItem="qj1-8M-UXu" secondAttribute="bottom" constant="20" id="Ak8-pw-swt"/>
                             <constraint firstItem="rMV-3S-0jG" firstAttribute="top" secondItem="nur-1W-78D" secondAttribute="bottom" constant="20" id="Cu2-Pf-g6j"/>
                             <constraint firstItem="rMV-3S-0jG" firstAttribute="top" secondItem="fYs-OS-Zgq" secondAttribute="bottom" constant="20" id="Dev-8Y-GFR"/>
-                            <constraint firstItem="pad-bX-NiN" firstAttribute="top" secondItem="RPQ-gy-ZcW" secondAttribute="bottom" constant="20" id="DxE-hb-0al"/>
                             <constraint firstItem="nur-1W-78D" firstAttribute="centerX" secondItem="luS-kR-Sgj" secondAttribute="trailing" multiplier="1:5" id="Ei1-Pp-yJj"/>
                             <constraint firstItem="7ry-YJ-C03" firstAttribute="top" secondItem="kxx-yZ-4ko" secondAttribute="bottom" constant="20" id="IKH-9n-3kv"/>
                             <constraint firstItem="fYs-OS-Zgq" firstAttribute="centerX" secondItem="luS-kR-Sgj" secondAttribute="trailing" multiplier="3:5" id="JPW-ZR-zpm"/>
                             <constraint firstItem="kxx-yZ-4ko" firstAttribute="leading" secondItem="5fj-8k-2kC" secondAttribute="trailing" constant="10" id="JTI-1C-NkR"/>
-                            <constraint firstItem="kMO-wQ-dSt" firstAttribute="top" secondItem="pad-bX-NiN" secondAttribute="bottom" constant="20" id="Ozm-Ql-CJi"/>
                             <constraint firstItem="dMH-zF-BtO" firstAttribute="top" secondItem="RPQ-gy-ZcW" secondAttribute="bottom" id="Rdk-1i-bQn"/>
                             <constraint firstAttribute="trailing" secondItem="kMO-wQ-dSt" secondAttribute="trailing" constant="20" id="SKz-yO-FU9"/>
                             <constraint firstItem="rMV-3S-0jG" firstAttribute="top" secondItem="bMq-cD-nCz" secondAttribute="bottom" constant="20" id="TpM-Qu-svp"/>
                             <constraint firstItem="qj1-8M-UXu" firstAttribute="centerX" secondItem="luS-kR-Sgj" secondAttribute="trailing" multiplier="4:5" id="VQZ-97-q92"/>
                             <constraint firstItem="kxx-yZ-4ko" firstAttribute="top" secondItem="IDk-0K-g1L" secondAttribute="bottom" constant="20" id="Viz-Fb-Lky"/>
                             <constraint firstItem="IDk-0K-g1L" firstAttribute="top" secondItem="D4c-UE-xFx" secondAttribute="bottom" constant="20" id="Z43-2H-oK3"/>
+                            <constraint firstItem="kMO-wQ-dSt" firstAttribute="top" secondItem="RPQ-gy-ZcW" secondAttribute="bottom" constant="20" id="ZSM-Og-agN"/>
                             <constraint firstAttribute="trailing" secondItem="SdJ-eC-NGw" secondAttribute="trailing" constant="20" id="k4R-8Q-Oba"/>
                             <constraint firstItem="kxx-yZ-4ko" firstAttribute="centerY" secondItem="dW2-Xq-twk" secondAttribute="centerY" id="lIL-XH-vAc"/>
                             <constraint firstAttribute="trailing" secondItem="D4c-UE-xFx" secondAttribute="trailing" constant="20" id="lcQ-3d-baH"/>
@@ -192,7 +184,6 @@
                         <outlet property="avatarView" destination="dMH-zF-BtO" id="ePu-fO-OSL"/>
                         <outlet property="cleanButton" destination="7ry-YJ-C03" id="gRF-cZ-HhM"/>
                         <outlet property="headViewSizeConstraint" destination="Ioo-OA-oEw" id="0FM-Nf-qgA"/>
-                        <outlet property="versionSegmented" destination="pad-bX-NiN" id="pn4-Eq-pDm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
@@ -212,11 +203,11 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UkQ-lw-zVf" id="03t-45-RX7">
-                                    <frame key="frameInset" width="375" height="43"/>
+                                    <frame key="frameInset" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kaM-Eu-huP">
-                                            <frame key="frameInset" minX="15" width="345" height="43"/>
+                                            <frame key="frameInset" minX="15" width="345" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
