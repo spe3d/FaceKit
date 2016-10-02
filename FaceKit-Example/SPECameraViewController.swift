@@ -167,7 +167,7 @@ class SPECameraViewController: SPEViewController, AVCaptureMetadataOutputObjects
 
     func createAvatar() {
         if let faceImage = self.faceImage {
-            FACAvatarManager.current().createAvatar(with: self.gender, face: faceImage, successBlock: { (avatarController) -> Void in
+            FACAvatarManager.current().createAvatar(with: self.gender, face: faceImage, fixLandmarks: nil, successBlock: { (avatarController) -> Void in
                 MBProgressHUD.hideAllHUDs(for: self.view.window, animated: true)
 
                 self.delegate?.cameraViewController?(self, didCreateAvatarController: avatarController)
