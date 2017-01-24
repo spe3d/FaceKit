@@ -90,7 +90,9 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
     }
 
     @IBAction func facialAction(_ sender: UIButton) {
-        self.avatarController?.setFacialWithWeights([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1])
+        var array: [NSNumber] = Array(repeating: 0, count: 26)
+        array[25] = 1
+        self.avatarController?.setFacialWithWeights(array)
     }
     
     @IBAction func showBackgroundAction(_ sender: UIButton) {
