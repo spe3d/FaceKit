@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name         = "FaceKit"
-    s.version      = "2.1.10"
+    s.version      = "2.1.11"
     s.summary      = "Library to generate a 3D avatar from one single front face photo."
 
     s.description  = <<-DESC
@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
     s.frameworks            = "SceneKit", "UIKit"
 
     s.vendored_frameworks   = "FaceKit/FaceKit.framework"
-    s.dependency 'SSZipArchive', '~> 1.1'
+    s.dependency 'SSZipArchive', '~> 1.7.0'
     s.dependency 'Firebase'
     s.dependency 'Firebase/Storage'
     s.dependency 'Firebase/Database'
