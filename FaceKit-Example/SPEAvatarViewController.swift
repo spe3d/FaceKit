@@ -291,7 +291,13 @@ class SPEAvatarViewController: SPEViewController, SPECameraViewControllerDelegat
         controller.title = "Accessory"
         self.present(navigationController, animated: true, completion: nil)
     }
-
+    
+    @IBAction func saveAvatarAsOBJ(_ sender:UIButton){
+        let tmpPath = NSTemporaryDirectory()
+        if !FACAvatarManager.current().saveAvatar(tmpPath) {
+            print("fail to save avatar")
+        }
+    }
     // MARK: - SPECameraViewControllerDelegate
 
     func cameraViewController(_ viewController: SPECameraViewController, didCreateAvatarController avatarController: FACAvatarController) {
