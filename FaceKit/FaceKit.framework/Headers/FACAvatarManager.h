@@ -47,5 +47,6 @@
 
 - (void)createAvatarWithGender:(FACGender)gender faceImage:(nonnull UIImage *)image fixLandmarks:(nullable NSArray<NSValue *>*)fixLandmarks successBlock:(void(^ _Nullable)(FACAvatarController * _Nonnull avatarController))success failureBlock:(void(^ _Nullable)(NSError * _Nonnull error))failure;
 
+-(BOOL) saveAvatar:(NSString* _Nonnull) dirPath;
 
 @end
