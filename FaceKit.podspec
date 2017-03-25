@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name         = "FaceKit"
-    s.version      = "2.1.13"
+    s.version      = "2.1.14"
     s.summary      = "Library to generate a 3D avatar from one single front face photo."
 
     s.description  = <<-DESC
@@ -21,8 +21,8 @@ Pod::Spec.new do |s|
     s.authors               = { "Daniel Lee" => "daniel@spe3d.co", "James Sa" => "james@spe3d.co" }
 
 
-    s.platform              = :ios, "9.0"
-    s.ios.deployment_target = "9.0"
+    s.platform              = :ios, "10.0"
+    s.ios.deployment_target = "10.0"
     s.source                = { :git => "https://github.com/spe3d/FaceKit.git", :tag => s.version }
 
     s.requires_arc          = true
